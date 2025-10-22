@@ -5,11 +5,11 @@ extends State
 @export var unit : unit_base
 @export var nav_agent : NavigationAgent2D
 
-@export var friction : float
+@export var friction : float = 0.5
 
 
 func Enter():
-	print("idle")
+	print("unit_idle")
 
 
 func Physics_update(_delta):
@@ -17,4 +17,4 @@ func Physics_update(_delta):
 	unit.velocity = lerp(unit.velocity,Vector2.ZERO,friction)
 	
 	if unit.selected:
-		change_state.emit(self,"wait")
+		change_state.emit(self,"unit_wait")

@@ -4,12 +4,12 @@ extends State
 @export var unit : unit_base
 @export var nav_agent : NavigationAgent2D
 
-@export var speed : int
-@export var axel : float
+@export var speed : int = 100
+@export var axel : float = 0.05
 
 
 func Enter():
-	print("move")
+	print("unit_move")
 
 
 
@@ -21,7 +21,7 @@ func Physics_update(_delta):
 		var target_velocity = nav_point_direction * speed
 		unit.velocity = lerp(unit.velocity,target_velocity,axel)
 	else:
-		change_state.emit(self,"wait")
+		change_state.emit(self,"unit_wait")
 	
 	if unit.selected == false:
-		change_state.emit(self,"idle")
+		change_state.emit(self,"unit_idle")

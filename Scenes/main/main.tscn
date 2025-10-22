@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://bbfuxwc4ojay8"]
+[gd_scene load_steps=7 format=3 uid="uid://bbfuxwc4ojay8"]
 
 [ext_resource type="PackedScene" uid="uid://x1weeub25hk3" path="res://Scenes/units/healer.tscn" id="1_b20jg"]
 [ext_resource type="Script" uid="uid://buvpmjdq62mxv" path="res://Skripts/navigation manager/base_unit.gd" id="2_4etoo"]
 [ext_resource type="PackedScene" uid="uid://ys0qqts4phrr" path="res://Scenes/target/target.tscn" id="2_w1fgp"]
+[ext_resource type="PackedScene" uid="uid://dkp4a0q8dwq6t" path="res://Scenes/units/assasin.tscn" id="4_brlrh"]
 [ext_resource type="Script" uid="uid://dt30hat8kc2iv" path="res://Scenes/camera/camera.gd" id="4_wcurd"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_d5b0a"]
@@ -21,44 +22,12 @@ navigation_polygon = SubResource("NavigationPolygon_d5b0a")
 script = ExtResource("2_4etoo")
 target = NodePath("../target")
 
-[node name="base_unit" parent="navigation manger" instance=ExtResource("1_b20jg")]
-position = Vector2(75, 113)
+[node name="assasin" parent="navigation manger" instance=ExtResource("4_brlrh")]
+position = Vector2(298, 217)
 
-[node name="base_unit3" parent="navigation manger" instance=ExtResource("1_b20jg")]
-position = Vector2(134, 140)
+[node name="healer" parent="navigation manger" instance=ExtResource("1_b20jg")]
 
-[node name="base_unit2" parent="navigation manger" instance=ExtResource("1_b20jg")]
-position = Vector2(77, 177)
-
-[node name="base_unit4" parent="navigation manger" instance=ExtResource("1_b20jg")]
-position = Vector2(-19, 136)
-
-[node name="base_unit5" parent="navigation manger" instance=ExtResource("1_b20jg")]
-position = Vector2(-47, 241)
-
-[node name="base_unit6" parent="navigation manger" instance=ExtResource("1_b20jg")]
-position = Vector2(-25, 172)
-
-[node name="base_unit7" parent="navigation manger" instance=ExtResource("1_b20jg")]
-position = Vector2(-51, 91)
-
-[node name="base_unit8" parent="navigation manger" instance=ExtResource("1_b20jg")]
-position = Vector2(-48, 154)
-
-[node name="base_unit9" parent="navigation manger" instance=ExtResource("1_b20jg")]
-position = Vector2(199, 100)
-
-[node name="base_unit10" parent="navigation manger" instance=ExtResource("1_b20jg")]
-position = Vector2(45, 123)
-
-[node name="base_unit11" parent="navigation manger" instance=ExtResource("1_b20jg")]
-position = Vector2(42, 217)
-
-[node name="base_unit12" parent="navigation manger" instance=ExtResource("1_b20jg")]
-position = Vector2(111, 214)
-
-[node name="base_unit13" parent="navigation manger" instance=ExtResource("1_b20jg")]
-position = Vector2(183, 187)
+[node name="assasin2" parent="navigation manger" instance=ExtResource("4_brlrh")]
 
 [node name="Camera" type="Camera2D" parent="."]
 script = ExtResource("4_wcurd")

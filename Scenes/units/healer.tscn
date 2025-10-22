@@ -24,7 +24,6 @@ metadata/_custom_type_script = "uid://cyprxf4gmw8hy"
 [node name="puch bodes away" type="Area2D" parent="." node_paths=PackedStringArray("body")]
 script = ExtResource("7_8u560")
 body = NodePath("..")
-forse = 20.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="puch bodes away"]
 shape = SubResource("CircleShape2D_ao5sm")
@@ -44,27 +43,24 @@ texture = ExtResource("2_k7bkv")
 
 [node name="StateMashine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
 script = ExtResource("3_k7bkv")
-initial_state = NodePath("idle")
+initial_state = NodePath("unit_idle")
 metadata/_custom_type_script = "uid://p64qmyacpa4a"
 
-[node name="idle" type="Node" parent="StateMashine" node_paths=PackedStringArray("unit", "nav_agent")]
+[node name="unit_idle" type="Node" parent="StateMashine" node_paths=PackedStringArray("unit", "nav_agent")]
 script = ExtResource("4_pinif")
 unit = NodePath("../..")
 nav_agent = NodePath("../../NavigationAgent2D")
-friction = 0.5
 metadata/_custom_type_script = "uid://dvdan2nufoyq6"
 
-[node name="wait" type="Node" parent="StateMashine" node_paths=PackedStringArray("unit", "nav_agent")]
+[node name="unit_wait" type="Node" parent="StateMashine" node_paths=PackedStringArray("unit", "nav_agent")]
 script = ExtResource("5_ao3qh")
 unit = NodePath("../..")
 nav_agent = NodePath("../../NavigationAgent2D")
-friction = 0.5
 metadata/_custom_type_script = "uid://dvdan2nufoyq6"
 
-[node name="move" type="Node" parent="StateMashine" node_paths=PackedStringArray("unit", "nav_agent")]
+[node name="unit_move" type="Node" parent="StateMashine" node_paths=PackedStringArray("unit", "nav_agent")]
 script = ExtResource("5_llvpn")
 unit = NodePath("../..")
 nav_agent = NodePath("../../NavigationAgent2D")
 speed = 70
-axel = 0.05
 metadata/_custom_type_script = "uid://dvdan2nufoyq6"

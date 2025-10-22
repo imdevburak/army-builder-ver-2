@@ -1,12 +1,78 @@
-[gd_scene load_steps=3 format=3 uid="uid://dkp4a0q8dwq6t"]
+[gd_scene load_steps=12 format=3 uid="uid://dkp4a0q8dwq6t"]
 
 [ext_resource type="Script" uid="uid://cyprxf4gmw8hy" path="res://Skripts/base_unit.gd" id="1_l4f50"]
+[ext_resource type="Script" uid="uid://caombhjx3w1vv" path="res://Skripts/push bodes away/puch_bodes_away.gd" id="2_lx4x6"]
+[ext_resource type="Texture2D" uid="uid://dnka2dxuq6f01" path="res://Assets/units/healer.png" id="3_ff3is"]
+[ext_resource type="Script" uid="uid://p64qmyacpa4a" path="res://Skripts/state machine/State_Machine.gd" id="4_hxbk7"]
+[ext_resource type="Script" uid="uid://c7tkmavigwj07" path="res://Skripts/unit/states/idle.gd" id="5_xjqdp"]
+[ext_resource type="Script" uid="uid://chum2ktf3br45" path="res://Skripts/unit/states/move.gd" id="6_1csaq"]
+[ext_resource type="Script" uid="uid://c81x64hx8sfwy" path="res://Skripts/unit/states/wait.gd" id="7_fyb7g"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_lx4x6"]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_ff3is"]
+radius = 37.0135
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_pegs0"]
+radius = 12.0416
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_pegs0"]
+blend_mode = 1
+light_mode = 1
+
 [node name="assasin" type="CharacterBody2D"]
+collision_mask = 0
 script = ExtResource("1_l4f50")
 metadata/_custom_type_script = "uid://cyprxf4gmw8hy"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_lx4x6")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+debug_enabled = true
+
+[node name="push_bodes" type="Area2D" parent="." node_paths=PackedStringArray("body")]
+script = ExtResource("2_lx4x6")
+body = NodePath("..")
+forse = 100
+metadata/_custom_type_script = "uid://caombhjx3w1vv"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="push_bodes"]
+shape = SubResource("CircleShape2D_ff3is")
+
+[node name="hitbox" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_pegs0")
+debug_color = Color(0.984323, 0, 0.344669, 0.42)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_as_relative = false
+y_sort_enabled = true
+material = SubResource("CanvasItemMaterial_pegs0")
+position = Vector2(0, -10)
+texture = ExtResource("3_ff3is")
+
+[node name="StateMashine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
+script = ExtResource("4_hxbk7")
+initial_state = NodePath("unit_idle")
+metadata/_custom_type_script = "uid://p64qmyacpa4a"
+
+[node name="unit_idle" type="Node" parent="StateMashine" node_paths=PackedStringArray("unit", "nav_agent")]
+script = ExtResource("5_xjqdp")
+unit = NodePath("../..")
+nav_agent = NodePath("../../NavigationAgent2D")
+metadata/_custom_type_script = "uid://c7tkmavigwj07"
+
+[node name="unit_move" type="Node" parent="StateMashine" node_paths=PackedStringArray("unit", "nav_agent")]
+script = ExtResource("6_1csaq")
+unit = NodePath("../..")
+nav_agent = NodePath("../../NavigationAgent2D")
+speed = 150
+axel = 0.1
+metadata/_custom_type_script = "uid://chum2ktf3br45"
+
+[node name="unit_wait" type="Node" parent="StateMashine" node_paths=PackedStringArray("unit", "nav_agent")]
+script = ExtResource("7_fyb7g")
+unit = NodePath("../..")
+nav_agent = NodePath("../../NavigationAgent2D")
+friction = 0.1
+metadata/_custom_type_script = "uid://c81x64hx8sfwy"

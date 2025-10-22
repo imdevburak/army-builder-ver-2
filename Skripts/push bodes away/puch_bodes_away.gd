@@ -3,7 +3,8 @@ extends Area2D
 
 @export var body : CharacterBody2D
 
-@export var forse : float
+@export var forse : int = 20
+
 
 func _process(delta: float) -> void:
 	var overping_bodies = get_overlapping_bodies()
