@@ -1,9 +1,9 @@
 [gd_scene load_steps=7 format=3 uid="uid://bbfuxwc4ojay8"]
 
+[ext_resource type="PackedScene" uid="uid://x1weeub25hk3" path="res://Scenes/units/healer.tscn" id="1_b20jg"]
 [ext_resource type="Script" uid="uid://buvpmjdq62mxv" path="res://Skripts/navigation manager/base_unit.gd" id="2_4etoo"]
 [ext_resource type="PackedScene" uid="uid://ys0qqts4phrr" path="res://Scenes/target/target.tscn" id="2_w1fgp"]
 [ext_resource type="PackedScene" uid="uid://bvg1b88eko3px" path="res://Scenes/enemies/boss.tscn" id="3_4jhlv"]
-[ext_resource type="PackedScene" uid="uid://dkp4a0q8dwq6t" path="res://Scenes/units/assasin.tscn" id="3_b3x3g"]
 [ext_resource type="Script" uid="uid://dt30hat8kc2iv" path="res://Scenes/camera/camera.gd" id="4_wcurd"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_d5b0a"]
@@ -22,11 +22,15 @@ navigation_polygon = SubResource("NavigationPolygon_d5b0a")
 script = ExtResource("2_4etoo")
 target = NodePath("../target")
 
-[node name="assasin" parent="navigation manger" instance=ExtResource("3_b3x3g")]
-position = Vector2(438, 305)
-
 [node name="boss" parent="navigation manger" instance=ExtResource("3_4jhlv")]
-position = Vector2(438, 305)
+position = Vector2(272, 304)
+
+[node name="boss2" parent="navigation manger" instance=ExtResource("3_4jhlv")]
+position = Vector2(616, 294)
+
+[node name="healer" parent="navigation manger" instance=ExtResource("1_b20jg")]
+position = Vector2(422, 178)
 
 [node name="Camera" type="Camera2D" parent="."]
+position = Vector2(457, 184)
 script = ExtResource("4_wcurd")

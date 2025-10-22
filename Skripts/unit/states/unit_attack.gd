@@ -18,6 +18,7 @@ func Enter():
 
 
 func Physics_update(_delta):
+	
 	attack_timer.start(attck_coldown)
 	
 	if single_target:
