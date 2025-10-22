@@ -1,8 +1,8 @@
-[gd_scene load_steps=12 format=3 uid="uid://dkp4a0q8dwq6t"]
+[gd_scene load_steps=11 format=3 uid="uid://dkp4a0q8dwq6t"]
 
 [ext_resource type="Script" uid="uid://cyprxf4gmw8hy" path="res://Skripts/base_unit.gd" id="1_l4f50"]
 [ext_resource type="Script" uid="uid://caombhjx3w1vv" path="res://Skripts/push bodes away/puch_bodes_away.gd" id="2_lx4x6"]
-[ext_resource type="Texture2D" uid="uid://dnka2dxuq6f01" path="res://Assets/units/healer.png" id="3_ff3is"]
+[ext_resource type="Texture2D" uid="uid://blyu6lo16p6le" path="res://Assets/units/assasin.png" id="3_hxbk7"]
 [ext_resource type="Script" uid="uid://p64qmyacpa4a" path="res://Skripts/state machine/State_Machine.gd" id="4_hxbk7"]
 [ext_resource type="Script" uid="uid://c7tkmavigwj07" path="res://Skripts/unit/states/idle.gd" id="5_xjqdp"]
 [ext_resource type="Script" uid="uid://chum2ktf3br45" path="res://Skripts/unit/states/move.gd" id="6_1csaq"]
@@ -15,10 +15,6 @@ radius = 37.0135
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_pegs0"]
 radius = 12.0416
-
-[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_pegs0"]
-blend_mode = 1
-light_mode = 1
 
 [node name="assasin" type="CharacterBody2D"]
 collision_mask = 0
@@ -44,12 +40,11 @@ shape = SubResource("CircleShape2D_ff3is")
 shape = SubResource("CircleShape2D_pegs0")
 debug_color = Color(0.984323, 0, 0.344669, 0.42)
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite" type="Sprite2D" parent="."]
 z_as_relative = false
 y_sort_enabled = true
-material = SubResource("CanvasItemMaterial_pegs0")
 position = Vector2(0, -10)
-texture = ExtResource("3_ff3is")
+texture = ExtResource("3_hxbk7")
 
 [node name="StateMashine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
 script = ExtResource("4_hxbk7")

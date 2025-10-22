@@ -35,7 +35,7 @@ debug_enabled = true
 shape = SubResource("CircleShape2D_pinif")
 debug_color = Color(0.984323, 0, 0.344669, 0.42)
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite" type="Sprite2D" parent="."]
 z_as_relative = false
 y_sort_enabled = true
 position = Vector2(0, -10)
