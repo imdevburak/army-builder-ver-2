@@ -3,6 +3,7 @@ extends State
 
 @export var unit : unit_base
 @export var nav_agent : NavigationAgent2D
+@export var attack_hitbox : Area2D
 
 @export var speed : int = 100
 @export var axel : float = 0.05
@@ -25,3 +26,6 @@ func Physics_update(_delta):
 	
 	if unit.selected == false:
 		change_state.emit(self,"unit_idle")
+	
+	if attack_hitbox.get_overlapping_bodies().size() != 0:
+		change_state.emit(self,"unit_attack")

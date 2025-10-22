@@ -18,3 +18,4 @@ func Physics_update(_delta):
 	
 	if unit.selected:
 		change_state.emit(self,"unit_wait")
+	

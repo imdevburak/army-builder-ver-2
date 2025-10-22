@@ -2,9 +2,12 @@ class_name unit_base
 extends CharacterBody2D
 
 
+@export var health : int = 100
+
 var selected :bool = false
 var mouse_position : Vector2
 var target : Sprite2D
+
 
 
 func _process(delta: float) -> void:

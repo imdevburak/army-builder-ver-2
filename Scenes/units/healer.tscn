@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://x1weeub25hk3"]
+[gd_scene load_steps=13 format=3 uid="uid://x1weeub25hk3"]
 
 [ext_resource type="Script" uid="uid://cyprxf4gmw8hy" path="res://Skripts/base_unit.gd" id="1_k1nd0"]
 [ext_resource type="Texture2D" uid="uid://dnka2dxuq6f01" path="res://Assets/units/healer.png" id="2_k7bkv"]
@@ -7,9 +7,14 @@
 [ext_resource type="Script" uid="uid://c81x64hx8sfwy" path="res://Skripts/unit/states/wait.gd" id="5_ao3qh"]
 [ext_resource type="Script" uid="uid://chum2ktf3br45" path="res://Skripts/unit/states/move.gd" id="5_llvpn"]
 [ext_resource type="Script" uid="uid://caombhjx3w1vv" path="res://Skripts/push bodes away/puch_bodes_away.gd" id="7_8u560"]
+[ext_resource type="Script" uid="uid://dvwyf8tjmffav" path="res://Skripts/unit/states/unit_attack.gd" id="8_5x5mb"]
+[ext_resource type="Script" uid="uid://ds0xan0v3ps3v" path="res://Skripts/attack hitbox/attack_hitbox.gd" id="9_7xogc"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ao5sm"]
 radius = 32.0156
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0lt1e"]
+radius = 45.5412
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_pinif"]
 radius = 12.0416
@@ -29,7 +34,21 @@ body = NodePath("..")
 shape = SubResource("CircleShape2D_ao5sm")
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+path_desired_distance = 100.0
+target_desired_distance = 100.0
 debug_enabled = true
+
+[node name="Attack_hitbox" type="Area2D" parent="." node_paths=PackedStringArray("unit")]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("9_7xogc")
+unit = NodePath("..")
+metadata/_custom_type_script = "uid://ds0xan0v3ps3v"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Attack_hitbox"]
+position = Vector2(91, 0)
+shape = SubResource("CircleShape2D_0lt1e")
+debug_color = Color(0, 0.641761, 0.329063, 0.42)
 
 [node name="hitbox" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_pinif")
@@ -52,15 +71,29 @@ unit = NodePath("../..")
 nav_agent = NodePath("../../NavigationAgent2D")
 metadata/_custom_type_script = "uid://dvdan2nufoyq6"
 
-[node name="unit_wait" type="Node" parent="StateMashine" node_paths=PackedStringArray("unit", "nav_agent")]
+[node name="unit_wait" type="Node" parent="StateMashine" node_paths=PackedStringArray("unit", "nav_agent", "attack_hitbox")]
 script = ExtResource("5_ao3qh")
 unit = NodePath("../..")
 nav_agent = NodePath("../../NavigationAgent2D")
+attack_hitbox = NodePath("../../Attack_hitbox")
 metadata/_custom_type_script = "uid://dvdan2nufoyq6"
 
-[node name="unit_move" type="Node" parent="StateMashine" node_paths=PackedStringArray("unit", "nav_agent")]
+[node name="unit_move" type="Node" parent="StateMashine" node_paths=PackedStringArray("unit", "nav_agent", "attack_hitbox")]
 script = ExtResource("5_llvpn")
 unit = NodePath("../..")
 nav_agent = NodePath("../../NavigationAgent2D")
+attack_hitbox = NodePath("../../Attack_hitbox")
 speed = 70
 metadata/_custom_type_script = "uid://dvdan2nufoyq6"
+
+[node name="unit_attack" type="Node" parent="StateMashine" node_paths=PackedStringArray("unit", "attack_timer", "attack_hitbox")]
+script = ExtResource("8_5x5mb")
+unit = NodePath("../..")
+attack_timer = NodePath("Timer")
+attack_hitbox = NodePath("../../Attack_hitbox")
+attck_coldown = 1.0
+single_target = true
+metadata/_custom_type_script = "uid://dvdan2nufoyq6"
+
+[node name="Timer" type="Timer" parent="StateMashine/unit_attack"]
+one_shot = true

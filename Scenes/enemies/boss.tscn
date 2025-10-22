@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://bvg1b88eko3px"]
+
+[ext_resource type="Texture2D" uid="uid://blyu6lo16p6le" path="res://Assets/units/assasin.png" id="1_2bqxd"]
+[ext_resource type="Script" uid="uid://cls24uikdfogr" path="res://Skripts/enemies/bosses/boss_tutorial.gd" id="1_34b3p"]
+[ext_resource type="Script" uid="uid://p64qmyacpa4a" path="res://Skripts/state machine/State_Machine.gd" id="2_5xldm"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_5xldm"]
+radius = 20.0
+
+[node name="boss" type="CharacterBody2D"]
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("1_34b3p")
+metadata/_custom_type_script = "uid://cls24uikdfogr"
+
+[node name="hitbox" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_5xldm")
+debug_color = Color(0.997169, 0, 0.171803, 0.42)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(1, -28)
+scale = Vector2(2, 2)
+texture = ExtResource("1_2bqxd")
+
+[node name="StateMashine" type="Node" parent="."]
+script = ExtResource("2_5xldm")
+metadata/_custom_type_script = "uid://p64qmyacpa4a"
