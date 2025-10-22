@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://dkp4a0q8dwq6t"]
+[gd_scene load_steps=14 format=3 uid="uid://dkp4a0q8dwq6t"]
 
 [ext_resource type="Script" uid="uid://cyprxf4gmw8hy" path="res://Skripts/base_unit.gd" id="1_l4f50"]
 [ext_resource type="Script" uid="uid://caombhjx3w1vv" path="res://Skripts/push bodes away/puch_bodes_away.gd" id="2_lx4x6"]
@@ -8,10 +8,12 @@
 [ext_resource type="Script" uid="uid://c7tkmavigwj07" path="res://Skripts/unit/states/idle.gd" id="5_xjqdp"]
 [ext_resource type="Script" uid="uid://chum2ktf3br45" path="res://Skripts/unit/states/move.gd" id="6_1csaq"]
 [ext_resource type="Script" uid="uid://c81x64hx8sfwy" path="res://Skripts/unit/states/wait.gd" id="7_fyb7g"]
+[ext_resource type="Script" uid="uid://dvwyf8tjmffav" path="res://Skripts/unit/states/unit_attack.gd" id="9_1csaq"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_lx4x6"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_1csaq"]
+radius = 33.0606
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ff3is"]
 radius = 37.0135
@@ -22,6 +24,7 @@ radius = 12.0416
 [node name="assasin" type="CharacterBody2D"]
 collision_mask = 0
 script = ExtResource("1_l4f50")
+friction = 0.5
 metadata/_custom_type_script = "uid://cyprxf4gmw8hy"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -35,12 +38,10 @@ unit = NodePath("..")
 metadata/_custom_type_script = "uid://ds0xan0v3ps3v"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Attack_hitbox"]
-position = Vector2(26, 0)
 shape = SubResource("CircleShape2D_1csaq")
 debug_color = Color(2.86378e-06, 0.648144, 0.19022, 0.42)
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
-target_desired_distance = 50.0
 debug_enabled = true
 
 [node name="push_bodes" type="Area2D" parent="." node_paths=PackedStringArray("body")]
@@ -73,19 +74,33 @@ unit = NodePath("../..")
 nav_agent = NodePath("../../NavigationAgent2D")
 metadata/_custom_type_script = "uid://c7tkmavigwj07"
 
-[node name="unit_move" type="Node" parent="StateMashine" node_paths=PackedStringArray("unit", "nav_agent", "attack_hitbox")]
+[node name="unit_move" type="Node" parent="StateMashine" node_paths=PackedStringArray("unit", "nav_agent", "attack_hitbox", "attack_timer")]
 script = ExtResource("6_1csaq")
 unit = NodePath("../..")
 nav_agent = NodePath("../../NavigationAgent2D")
 attack_hitbox = NodePath("../../Attack_hitbox")
-speed = 150
-axel = 0.1
+attack_timer = NodePath("../unit_attack/Timer")
+speed = 300
 metadata/_custom_type_script = "uid://chum2ktf3br45"
 
-[node name="unit_wait" type="Node" parent="StateMashine" node_paths=PackedStringArray("unit", "nav_agent", "attack_hitbox")]
+[node name="unit_wait" type="Node" parent="StateMashine" node_paths=PackedStringArray("unit", "nav_agent", "attack_hitbox", "attack_timer")]
 script = ExtResource("7_fyb7g")
 unit = NodePath("../..")
 nav_agent = NodePath("../../NavigationAgent2D")
 attack_hitbox = NodePath("../../Attack_hitbox")
-friction = 0.1
+attack_timer = NodePath("../unit_attack/Timer")
 metadata/_custom_type_script = "uid://c81x64hx8sfwy"
+
+[node name="unit_attack" type="Node" parent="StateMashine" node_paths=PackedStringArray("unit", "attack_timer", "attack_hitbox")]
+script = ExtResource("9_1csaq")
+unit = NodePath("../..")
+attack_timer = NodePath("Timer")
+attack_hitbox = NodePath("../../Attack_hitbox")
+attck_coldown = 1.0
+single_target = true
+damage = 5
+knockback = -100
+metadata/_custom_type_script = "uid://dvwyf8tjmffav"
+
+[node name="Timer" type="Timer" parent="StateMashine/unit_attack"]
+one_shot = true

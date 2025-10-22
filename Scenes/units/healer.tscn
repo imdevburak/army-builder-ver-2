@@ -24,6 +24,7 @@ z_as_relative = false
 y_sort_enabled = true
 collision_mask = 0
 script = ExtResource("1_k1nd0")
+friction = 0.5
 metadata/_custom_type_script = "uid://cyprxf4gmw8hy"
 
 [node name="puch bodes away" type="Area2D" parent="." node_paths=PackedStringArray("body")]
@@ -34,8 +35,6 @@ body = NodePath("..")
 shape = SubResource("CircleShape2D_ao5sm")
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
-path_desired_distance = 100.0
-target_desired_distance = 100.0
 debug_enabled = true
 
 [node name="Attack_hitbox" type="Area2D" parent="." node_paths=PackedStringArray("unit")]
@@ -71,18 +70,20 @@ unit = NodePath("../..")
 nav_agent = NodePath("../../NavigationAgent2D")
 metadata/_custom_type_script = "uid://dvdan2nufoyq6"
 
-[node name="unit_wait" type="Node" parent="StateMashine" node_paths=PackedStringArray("unit", "nav_agent", "attack_hitbox")]
+[node name="unit_wait" type="Node" parent="StateMashine" node_paths=PackedStringArray("unit", "nav_agent", "attack_hitbox", "attack_timer")]
 script = ExtResource("5_ao3qh")
 unit = NodePath("../..")
 nav_agent = NodePath("../../NavigationAgent2D")
 attack_hitbox = NodePath("../../Attack_hitbox")
+attack_timer = NodePath("../unit_attack/Timer")
 metadata/_custom_type_script = "uid://dvdan2nufoyq6"
 
-[node name="unit_move" type="Node" parent="StateMashine" node_paths=PackedStringArray("unit", "nav_agent", "attack_hitbox")]
+[node name="unit_move" type="Node" parent="StateMashine" node_paths=PackedStringArray("unit", "nav_agent", "attack_hitbox", "attack_timer")]
 script = ExtResource("5_llvpn")
 unit = NodePath("../..")
 nav_agent = NodePath("../../NavigationAgent2D")
 attack_hitbox = NodePath("../../Attack_hitbox")
+attack_timer = NodePath("../unit_attack/Timer")
 speed = 70
 metadata/_custom_type_script = "uid://dvdan2nufoyq6"
 
@@ -91,8 +92,9 @@ script = ExtResource("8_5x5mb")
 unit = NodePath("../..")
 attack_timer = NodePath("Timer")
 attack_hitbox = NodePath("../../Attack_hitbox")
-attck_coldown = 1.0
+attck_coldown = 0.5
 single_target = true
+knockback = -150
 metadata/_custom_type_script = "uid://dvdan2nufoyq6"
 
 [node name="Timer" type="Timer" parent="StateMashine/unit_attack"]
