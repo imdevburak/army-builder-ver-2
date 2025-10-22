@@ -1,0 +1,70 @@
+[gd_scene load_steps=10 format=3 uid="uid://x1weeub25hk3"]
+
+[ext_resource type="Script" uid="uid://cyprxf4gmw8hy" path="res://Skripts/base_unit.gd" id="1_k1nd0"]
+[ext_resource type="Texture2D" uid="uid://dnka2dxuq6f01" path="res://Assets/units/healer.png" id="2_k7bkv"]
+[ext_resource type="Script" uid="uid://p64qmyacpa4a" path="res://Skripts/state machine/State_Machine.gd" id="3_k7bkv"]
+[ext_resource type="Script" uid="uid://c7tkmavigwj07" path="res://Skripts/unit/states/idle.gd" id="4_pinif"]
+[ext_resource type="Script" uid="uid://c81x64hx8sfwy" path="res://Skripts/unit/states/wait.gd" id="5_ao3qh"]
+[ext_resource type="Script" uid="uid://chum2ktf3br45" path="res://Skripts/unit/states/move.gd" id="5_llvpn"]
+[ext_resource type="Script" uid="uid://caombhjx3w1vv" path="res://Skripts/push bodes away/puch_bodes_away.gd" id="7_8u560"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ao5sm"]
+radius = 32.0156
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_pinif"]
+radius = 12.0416
+
+[node name="healer" type="CharacterBody2D"]
+z_as_relative = false
+y_sort_enabled = true
+collision_mask = 0
+script = ExtResource("1_k1nd0")
+metadata/_custom_type_script = "uid://cyprxf4gmw8hy"
+
+[node name="puch bodes away" type="Area2D" parent="." node_paths=PackedStringArray("body")]
+script = ExtResource("7_8u560")
+body = NodePath("..")
+forse = 20.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="puch bodes away"]
+shape = SubResource("CircleShape2D_ao5sm")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+debug_enabled = true
+
+[node name="hitbox" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_pinif")
+debug_color = Color(0.984323, 0, 0.344669, 0.42)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_as_relative = false
+y_sort_enabled = true
+position = Vector2(0, -10)
+texture = ExtResource("2_k7bkv")
+
+[node name="StateMashine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
+script = ExtResource("3_k7bkv")
+initial_state = NodePath("idle")
+metadata/_custom_type_script = "uid://p64qmyacpa4a"
+
+[node name="idle" type="Node" parent="StateMashine" node_paths=PackedStringArray("unit", "nav_agent")]
+script = ExtResource("4_pinif")
+unit = NodePath("../..")
+nav_agent = NodePath("../../NavigationAgent2D")
+friction = 0.5
+metadata/_custom_type_script = "uid://dvdan2nufoyq6"
+
+[node name="wait" type="Node" parent="StateMashine" node_paths=PackedStringArray("unit", "nav_agent")]
+script = ExtResource("5_ao3qh")
+unit = NodePath("../..")
+nav_agent = NodePath("../../NavigationAgent2D")
+friction = 0.5
+metadata/_custom_type_script = "uid://dvdan2nufoyq6"
+
+[node name="move" type="Node" parent="StateMashine" node_paths=PackedStringArray("unit", "nav_agent")]
+script = ExtResource("5_llvpn")
+unit = NodePath("../..")
+nav_agent = NodePath("../../NavigationAgent2D")
+speed = 70
+axel = 0.05
+metadata/_custom_type_script = "uid://dvdan2nufoyq6"
