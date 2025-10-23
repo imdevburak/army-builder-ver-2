@@ -1,7 +1,8 @@
-[gd_scene load_steps=13 format=3 uid="uid://x1weeub25hk3"]
+[gd_scene load_steps=17 format=3 uid="uid://x1weeub25hk3"]
 
 [ext_resource type="Script" uid="uid://cyprxf4gmw8hy" path="res://Skripts/base_unit.gd" id="1_k1nd0"]
 [ext_resource type="Texture2D" uid="uid://dnka2dxuq6f01" path="res://Assets/units/healer.png" id="2_k7bkv"]
+[ext_resource type="Script" uid="uid://n0xi2gv4me3b" path="res://Skripts/attack hitbox/feld_of_veiw.gd" id="3_0lt1e"]
 [ext_resource type="Script" uid="uid://p64qmyacpa4a" path="res://Skripts/state machine/State_Machine.gd" id="3_k7bkv"]
 [ext_resource type="Script" uid="uid://c7tkmavigwj07" path="res://Skripts/unit/states/idle.gd" id="4_pinif"]
 [ext_resource type="Script" uid="uid://c81x64hx8sfwy" path="res://Skripts/unit/states/wait.gd" id="5_ao3qh"]
@@ -10,22 +11,42 @@
 [ext_resource type="Script" uid="uid://dvwyf8tjmffav" path="res://Skripts/unit/states/unit_attack.gd" id="8_5x5mb"]
 [ext_resource type="Script" uid="uid://ds0xan0v3ps3v" path="res://Skripts/attack hitbox/attack_hitbox.gd" id="9_7xogc"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0lt1e"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4ag63"]
+bg_color = Color(1, 0, 0, 1)
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_ao5sm"]
 radius = 32.0156
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_0lt1e"]
 radius = 45.5412
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_4ag63"]
+radius = 251.676
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_pinif"]
 radius = 12.0416
 
-[node name="healer" type="CharacterBody2D"]
+[node name="healer" type="CharacterBody2D" node_paths=PackedStringArray("hp_bar")]
 z_as_relative = false
 y_sort_enabled = true
 collision_mask = 0
 script = ExtResource("1_k1nd0")
+hp_bar = NodePath("hp bar")
 friction = 0.5
 metadata/_custom_type_script = "uid://cyprxf4gmw8hy"
+
+[node name="hp bar" type="ProgressBar" parent="."]
+offset_left = -16.0
+offset_top = -40.0
+offset_right = 16.0
+offset_bottom = -33.0
+theme_override_styles/background = SubResource("StyleBoxFlat_0lt1e")
+theme_override_styles/fill = SubResource("StyleBoxFlat_4ag63")
+value = 50.0
+show_percentage = false
 
 [node name="puch bodes away" type="Area2D" parent="." node_paths=PackedStringArray("body")]
 script = ExtResource("7_8u560")
@@ -34,14 +55,12 @@ body = NodePath("..")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="puch bodes away"]
 shape = SubResource("CircleShape2D_ao5sm")
 
-[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
-debug_enabled = true
-
-[node name="Attack_hitbox" type="Area2D" parent="." node_paths=PackedStringArray("unit")]
+[node name="Attack_hitbox" type="Area2D" parent="." node_paths=PackedStringArray("unit", "feld_of_veiw")]
 collision_layer = 0
 collision_mask = 2
 script = ExtResource("9_7xogc")
 unit = NodePath("..")
+feld_of_veiw = NodePath("../feld of veiw")
 lock_on_closest_enemy = true
 lerp_strengh = 0.2
 metadata/_custom_type_script = "uid://ds0xan0v3ps3v"
@@ -50,6 +69,19 @@ metadata/_custom_type_script = "uid://ds0xan0v3ps3v"
 position = Vector2(91, 0)
 shape = SubResource("CircleShape2D_0lt1e")
 debug_color = Color(0, 0.641761, 0.329063, 0.42)
+
+[node name="feld of veiw" type="Area2D" parent="."]
+visible = false
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("3_0lt1e")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="feld of veiw"]
+shape = SubResource("CircleShape2D_4ag63")
+debug_color = Color(1, 0, 0, 0)
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+debug_enabled = true
 
 [node name="hitbox" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_pinif")

@@ -12,13 +12,9 @@ func _physics_process(delta: float) -> void:
 		if child is unit_base:
 			units.push_back(child)
 		
-		if child is Enemy:
-			enemies.push_back(child)
 	
 	for i in units.size():
 		units[i].target = target
-		for b in enemies.size():
-			units[i].enemies.append(enemies[b])
 	
 	
 	enemies.clear()

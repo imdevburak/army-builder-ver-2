@@ -1,6 +1,7 @@
 class_name unit_base
 extends CharacterBody2D
 
+@export var hp_bar : ProgressBar
 
 @export var health : int = 100
 @export var friction : float
@@ -14,6 +15,9 @@ var enemies : Array
 var closest_enemy : Enemy
 
 func _process(delta: float) -> void:
+	
+	hp_bar.value = health
+	
 	#selects or deselects enemy
 	if Input.is_action_just_pressed("ui_up"):
 		selected = !selected
@@ -23,9 +27,13 @@ func _process(delta: float) -> void:
 	#calculates the closest enemy
 	var closest_enemy_distanse = INF
 	for i in enemies.size():
+		if !is_instance_valid(enemies[i]):
+			return
+		
 		var distanse = global_position.distance_to(enemies[i].global_position)
 		if distanse < closest_enemy_distanse:
 			closest_enemy = enemies[i]
+			
 			closest_enemy_distanse = distanse
 			
 	
