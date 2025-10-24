@@ -1,9 +1,10 @@
-[gd_scene load_steps=17 format=3 uid="uid://x1weeub25hk3"]
+[gd_scene load_steps=18 format=3 uid="uid://x1weeub25hk3"]
 
 [ext_resource type="Script" uid="uid://cyprxf4gmw8hy" path="res://Skripts/base_unit.gd" id="1_k1nd0"]
 [ext_resource type="Texture2D" uid="uid://dnka2dxuq6f01" path="res://Assets/units/healer.png" id="2_k7bkv"]
 [ext_resource type="Script" uid="uid://n0xi2gv4me3b" path="res://Skripts/attack hitbox/feld_of_veiw.gd" id="3_0lt1e"]
 [ext_resource type="Script" uid="uid://p64qmyacpa4a" path="res://Skripts/state machine/State_Machine.gd" id="3_k7bkv"]
+[ext_resource type="Texture2D" uid="uid://dpehkh7qs6hn7" path="res://Assets/icon.svg" id="4_4ag63"]
 [ext_resource type="Script" uid="uid://c7tkmavigwj07" path="res://Skripts/unit/states/idle.gd" id="4_pinif"]
 [ext_resource type="Script" uid="uid://c81x64hx8sfwy" path="res://Skripts/unit/states/wait.gd" id="5_ao3qh"]
 [ext_resource type="Script" uid="uid://chum2ktf3br45" path="res://Skripts/unit/states/move.gd" id="5_llvpn"]
@@ -18,7 +19,7 @@ bg_color = Color(0, 0, 0, 1)
 bg_color = Color(1, 0, 0, 1)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ao5sm"]
-radius = 32.0156
+radius = 19.105
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_0lt1e"]
 radius = 45.5412
@@ -35,7 +36,7 @@ y_sort_enabled = true
 collision_mask = 0
 script = ExtResource("1_k1nd0")
 hp_bar = NodePath("hp bar")
-friction = 0.5
+friction = 0.95
 metadata/_custom_type_script = "uid://cyprxf4gmw8hy"
 
 [node name="hp bar" type="ProgressBar" parent="."]
@@ -69,6 +70,13 @@ metadata/_custom_type_script = "uid://ds0xan0v3ps3v"
 position = Vector2(91, 0)
 shape = SubResource("CircleShape2D_0lt1e")
 debug_color = Color(0, 0.641761, 0.329063, 0.42)
+
+[node name="Sprite2D" type="Sprite2D" parent="Attack_hitbox"]
+visible = false
+z_index = -1
+position = Vector2(91, 0)
+scale = Vector2(0.5625, 0.5625)
+texture = ExtResource("4_4ag63")
 
 [node name="feld of veiw" type="Area2D" parent="."]
 visible = false
@@ -118,7 +126,7 @@ unit = NodePath("../..")
 nav_agent = NodePath("../../NavigationAgent2D")
 attack_hitbox = NodePath("../../Attack_hitbox")
 attack_timer = NodePath("../unit_attack/Timer")
-speed = 70
+speed = 200
 metadata/_custom_type_script = "uid://dvdan2nufoyq6"
 
 [node name="unit_attack" type="Node" parent="StateMashine" node_paths=PackedStringArray("unit", "attack_timer", "attack_hitbox")]
@@ -128,7 +136,7 @@ attack_timer = NodePath("Timer")
 attack_hitbox = NodePath("../../Attack_hitbox")
 attck_coldown = 2.0
 single_target = true
-knockback = 150
+knockback = 50
 metadata/_custom_type_script = "uid://dvdan2nufoyq6"
 
 [node name="Timer" type="Timer" parent="StateMashine/unit_attack"]

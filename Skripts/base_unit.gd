@@ -14,6 +14,10 @@ var target_velocity : Vector2
 var enemies : Array
 var closest_enemy : Enemy
 
+
+func _ready() -> void:
+	hp_bar.max_value = health
+
 func _process(delta: float) -> void:
 	
 	hp_bar.value = health

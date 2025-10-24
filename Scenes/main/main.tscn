@@ -1,15 +1,15 @@
 [gd_scene load_steps=7 format=3 uid="uid://bbfuxwc4ojay8"]
 
-[ext_resource type="PackedScene" uid="uid://x1weeub25hk3" path="res://Scenes/units/healer.tscn" id="1_b20jg"]
-[ext_resource type="Script" uid="uid://buvpmjdq62mxv" path="res://Skripts/navigation manager/base_unit.gd" id="2_4etoo"]
+[ext_resource type="Script" uid="uid://buvpmjdq62mxv" path="res://Skripts/navigation manager/nav_manager.gd" id="2_4etoo"]
 [ext_resource type="PackedScene" uid="uid://ys0qqts4phrr" path="res://Scenes/target/target.tscn" id="2_w1fgp"]
 [ext_resource type="PackedScene" uid="uid://bvg1b88eko3px" path="res://Scenes/enemies/boss.tscn" id="3_4jhlv"]
+[ext_resource type="PackedScene" uid="uid://x1weeub25hk3" path="res://Scenes/units/healer.tscn" id="3_brlrh"]
 [ext_resource type="Script" uid="uid://dt30hat8kc2iv" path="res://Scenes/camera/camera.gd" id="4_wcurd"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_d5b0a"]
-vertices = PackedVector2Array(1306.98, 8.28906, 868.508, 496.023, 63.4922, 499.953, 41.2969, 70.5391, 369.078, -122.609)
+vertices = PackedVector2Array(1306.98, 8.28906, 868.508, 496.023, 60.0234, 499.969, -248.922, -86.9219, 366.602, -122.961)
 polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3, 4)])
-outlines = Array[PackedVector2Array]([PackedVector2Array(31, 65, 367, -133, 1327, 1, 873, 506, 54, 510)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-265, -96, 367, -133, 1327, 1, 873, 506, 54, 510)])
 
 [node name="main" type="Node2D"]
 
@@ -22,95 +22,11 @@ navigation_polygon = SubResource("NavigationPolygon_d5b0a")
 script = ExtResource("2_4etoo")
 target = NodePath("../target")
 
+[node name="healer" parent="navigation manger" instance=ExtResource("3_brlrh")]
+position = Vector2(187.403, 90.1856)
+
 [node name="boss" parent="navigation manger" instance=ExtResource("3_4jhlv")]
-position = Vector2(466, 276)
-
-[node name="healer" parent="navigation manger" instance=ExtResource("1_b20jg")]
-position = Vector2(1010, 73)
-
-[node name="healer2" parent="navigation manger" instance=ExtResource("1_b20jg")]
-position = Vector2(1010, 73)
-
-[node name="healer3" parent="navigation manger" instance=ExtResource("1_b20jg")]
-position = Vector2(1010, 73)
-
-[node name="healer4" parent="navigation manger" instance=ExtResource("1_b20jg")]
-position = Vector2(1010, 73)
-
-[node name="healer5" parent="navigation manger" instance=ExtResource("1_b20jg")]
-position = Vector2(1010, 73)
-
-[node name="healer6" parent="navigation manger" instance=ExtResource("1_b20jg")]
-position = Vector2(1010, 73)
-
-[node name="healer7" parent="navigation manger" instance=ExtResource("1_b20jg")]
-position = Vector2(1010, 73)
-
-[node name="healer8" parent="navigation manger" instance=ExtResource("1_b20jg")]
-position = Vector2(1010, 73)
-
-[node name="healer9" parent="navigation manger" instance=ExtResource("1_b20jg")]
-position = Vector2(1010, 73)
-
-[node name="healer10" parent="navigation manger" instance=ExtResource("1_b20jg")]
-position = Vector2(1010, 73)
-
-[node name="healer11" parent="navigation manger" instance=ExtResource("1_b20jg")]
-position = Vector2(1010, 73)
-
-[node name="healer12" parent="navigation manger" instance=ExtResource("1_b20jg")]
-position = Vector2(1010, 73)
-
-[node name="healer13" parent="navigation manger" instance=ExtResource("1_b20jg")]
-position = Vector2(1010, 73)
-
-[node name="healer14" parent="navigation manger" instance=ExtResource("1_b20jg")]
-position = Vector2(1010, 73)
-
-[node name="healer15" parent="navigation manger" instance=ExtResource("1_b20jg")]
-position = Vector2(1010, 73)
-
-[node name="healer16" parent="navigation manger" instance=ExtResource("1_b20jg")]
-position = Vector2(1010, 73)
-
-[node name="healer17" parent="navigation manger" instance=ExtResource("1_b20jg")]
-position = Vector2(1010, 73)
-
-[node name="healer18" parent="navigation manger" instance=ExtResource("1_b20jg")]
-position = Vector2(1010, 73)
-
-[node name="healer19" parent="navigation manger" instance=ExtResource("1_b20jg")]
-position = Vector2(1010, 73)
-
-[node name="healer20" parent="navigation manger" instance=ExtResource("1_b20jg")]
-position = Vector2(1010, 73)
-
-[node name="healer21" parent="navigation manger" instance=ExtResource("1_b20jg")]
-position = Vector2(1010, 73)
-
-[node name="healer22" parent="navigation manger" instance=ExtResource("1_b20jg")]
-position = Vector2(1010, 73)
-
-[node name="healer23" parent="navigation manger" instance=ExtResource("1_b20jg")]
-position = Vector2(1010, 73)
-
-[node name="healer24" parent="navigation manger" instance=ExtResource("1_b20jg")]
-position = Vector2(1010, 73)
-
-[node name="healer25" parent="navigation manger" instance=ExtResource("1_b20jg")]
-position = Vector2(1010, 73)
-
-[node name="healer26" parent="navigation manger" instance=ExtResource("1_b20jg")]
-position = Vector2(1010, 73)
-
-[node name="healer27" parent="navigation manger" instance=ExtResource("1_b20jg")]
-position = Vector2(1010, 73)
-
-[node name="healer28" parent="navigation manger" instance=ExtResource("1_b20jg")]
-position = Vector2(1010, 73)
-
-[node name="healer29" parent="navigation manger" instance=ExtResource("1_b20jg")]
-position = Vector2(1010, 73)
+position = Vector2(78, 10)
 
 [node name="Camera" type="Camera2D" parent="."]
 position = Vector2(457, 184)

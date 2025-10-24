@@ -27,7 +27,7 @@ func Physics_update(_delta):
 			rand_enemy.health -= damage
 	
 	#appies knockback
-	var direcrion = unit.velocity.normalized()
+	var direcrion = Vector2.RIGHT.rotated(attack_hitbox.rotation)
 	unit.velocity -= direcrion * knockback
 	
 	
