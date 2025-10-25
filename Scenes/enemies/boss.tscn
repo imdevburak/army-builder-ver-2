@@ -18,7 +18,7 @@ bg_color = Color(1, 0, 0, 1)
 
 [sub_resource type="Animation" id="Animation_vywne"]
 resource_name = "sircle attack"
-length = 0.5
+length = 3.0
 tracks/0/type = "method"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -26,10 +26,10 @@ tracks/0/path = NodePath("bullet spawner")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0.233333),
+"times": PackedFloat32Array(0.2),
 "transitions": PackedFloat32Array(1),
 "values": [{
-"args": [30, "1"],
+"args": [30, 20],
 "method": &"spawn_sircle_attack"
 }]
 }
@@ -47,13 +47,13 @@ tracks/0/keys = {
 "times": PackedFloat32Array(1.96667, 2.13333, 2.3),
 "transitions": PackedFloat32Array(1, 1, 1),
 "values": [{
-"args": ["2"],
+"args": [40],
 "method": &"spawn_target_attack"
 }, {
-"args": ["2"],
+"args": [40],
 "method": &"spawn_target_attack"
 }, {
-"args": ["2"],
+"args": [40],
 "method": &"spawn_target_attack"
 }]
 }

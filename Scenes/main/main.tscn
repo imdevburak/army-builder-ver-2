@@ -25,6 +25,18 @@ target = NodePath("../target")
 [node name="healer" parent="navigation manger" instance=ExtResource("3_brlrh")]
 position = Vector2(187.403, 90.1856)
 
+[node name="healer2" parent="navigation manger" instance=ExtResource("3_brlrh")]
+position = Vector2(203, 146)
+
+[node name="healer3" parent="navigation manger" instance=ExtResource("3_brlrh")]
+position = Vector2(279, -37)
+
+[node name="healer4" parent="navigation manger" instance=ExtResource("3_brlrh")]
+position = Vector2(249, 120)
+
+[node name="healer5" parent="navigation manger" instance=ExtResource("3_brlrh")]
+position = Vector2(251, 35)
+
 [node name="boss" parent="navigation manger" instance=ExtResource("3_4jhlv")]
 position = Vector2(78, 10)
 

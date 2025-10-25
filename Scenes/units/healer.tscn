@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://x1weeub25hk3"]
+[gd_scene load_steps=19 format=3 uid="uid://x1weeub25hk3"]
 
 [ext_resource type="Script" uid="uid://cyprxf4gmw8hy" path="res://Skripts/base_unit.gd" id="1_k1nd0"]
 [ext_resource type="Texture2D" uid="uid://dnka2dxuq6f01" path="res://Assets/units/healer.png" id="2_k7bkv"]
@@ -11,6 +11,7 @@
 [ext_resource type="Script" uid="uid://caombhjx3w1vv" path="res://Skripts/push bodes away/puch_bodes_away.gd" id="7_8u560"]
 [ext_resource type="Script" uid="uid://dvwyf8tjmffav" path="res://Skripts/unit/states/unit_attack.gd" id="8_5x5mb"]
 [ext_resource type="Script" uid="uid://ds0xan0v3ps3v" path="res://Skripts/attack hitbox/attack_hitbox.gd" id="9_7xogc"]
+[ext_resource type="Script" uid="uid://lxhfrrd12ppd" path="res://Skripts/unit/states/unit_dead.gd" id="12_jwvl0"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0lt1e"]
 bg_color = Color(0, 0, 0, 1)
@@ -141,3 +142,8 @@ metadata/_custom_type_script = "uid://dvdan2nufoyq6"
 
 [node name="Timer" type="Timer" parent="StateMashine/unit_attack"]
 one_shot = true
+
+[node name="unit_dead" type="Node" parent="StateMashine" node_paths=PackedStringArray("unit")]
+script = ExtResource("12_jwvl0")
+unit = NodePath("../..")
+metadata/_custom_type_script = "uid://dvdan2nufoyq6"

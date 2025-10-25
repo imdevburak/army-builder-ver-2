@@ -6,7 +6,7 @@ extends Node2D
 
 
 
-func spawn_sircle_attack(number_of_bullets : int, speed : String):
+func spawn_sircle_attack(number_of_bullets : int, speed : int):
 	for i in number_of_bullets + 1:
 		var bullet_instanse = bullet.instantiate()
 		bullet_instanse.speed = speed
@@ -15,8 +15,11 @@ func spawn_sircle_attack(number_of_bullets : int, speed : String):
 	
 
 
-func spawn_target_attack(speed : String):
+func spawn_target_attack(speed : int):
 	var target = Autoload.units.pick_random()
+	if !is_instance_valid(target):
+		return
+	
 	var bullet_instanse = bullet.instantiate()
 	bullet_instanse.speed = speed
 	bullet_instanse.look_at(target.global_position - global_position)

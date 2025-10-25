@@ -28,3 +28,6 @@ func Physics_update(_delta):
 	
 	if attack_hitbox.get_overlapping_bodies().size() != 0 and attack_timer.is_stopped():
 		change_state.emit(self,"unit_attack")
+	
+	if unit.health <= 0:
+		change_state.emit(self,"unit_dead")
