@@ -1,22 +1,16 @@
 [gd_scene load_steps=21 format=3 uid="uid://x1weeub25hk3"]
 
-[ext_resource type="Script" uid="uid://cyprxf4gmw8hy" path="res://Skripts/base_unit.gd" id="1_k1nd0"]
+[ext_resource type="Script" uid="uid://cyprxf4gmw8hy" path="res://Skripts/main/base_unit.gd" id="1_k1nd0"]
 [ext_resource type="Texture2D" uid="uid://dnka2dxuq6f01" path="res://Assets/units/healer.png" id="2_k7bkv"]
-[ext_resource type="Script" uid="uid://n0xi2gv4me3b" path="res://Skripts/attack hitbox/feld_of_veiw.gd" id="3_0lt1e"]
-[ext_resource type="Script" uid="uid://p64qmyacpa4a" path="res://Skripts/state machine/State_Machine.gd" id="3_k7bkv"]
+[ext_resource type="Script" uid="uid://n0xi2gv4me3b" path="res://Skripts/main/attack hitbox/feld_of_veiw.gd" id="3_0lt1e"]
+[ext_resource type="Script" uid="uid://p64qmyacpa4a" path="res://Skripts/main/state machine/State_Machine.gd" id="3_k7bkv"]
 [ext_resource type="Texture2D" uid="uid://dpehkh7qs6hn7" path="res://Assets/icon.svg" id="4_4ag63"]
-[ext_resource type="Script" uid="uid://c81x64hx8sfwy" path="res://Skripts/unit/states/wait.gd" id="5_ao3qh"]
-[ext_resource type="Script" uid="uid://chum2ktf3br45" path="res://Skripts/unit/states/move.gd" id="5_llvpn"]
-[ext_resource type="Script" uid="uid://caombhjx3w1vv" path="res://Skripts/push bodes away/puch_bodes_away.gd" id="7_8u560"]
-[ext_resource type="Script" uid="uid://ds0xan0v3ps3v" path="res://Skripts/attack hitbox/attack_hitbox.gd" id="9_7xogc"]
-[ext_resource type="Script" uid="uid://bt2va5h7uq1ch" path="res://Scenes/units/unit_heal.gd" id="10_jwvl0"]
-[ext_resource type="Script" uid="uid://lxhfrrd12ppd" path="res://Skripts/unit/states/unit_dead.gd" id="12_jwvl0"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0lt1e"]
-bg_color = Color(0, 0, 0, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4ag63"]
-bg_color = Color(1, 0, 0, 1)
+[ext_resource type="Script" uid="uid://c81x64hx8sfwy" path="res://Skripts/main/unit/states/wait.gd" id="5_ao3qh"]
+[ext_resource type="Script" uid="uid://chum2ktf3br45" path="res://Skripts/main/unit/states/move.gd" id="5_llvpn"]
+[ext_resource type="Script" uid="uid://caombhjx3w1vv" path="res://Skripts/main/push bodes away/puch_bodes_away.gd" id="7_8u560"]
+[ext_resource type="Script" uid="uid://ds0xan0v3ps3v" path="res://Skripts/main/attack hitbox/attack_hitbox.gd" id="9_7xogc"]
+[ext_resource type="Script" uid="uid://bt2va5h7uq1ch" path="res://Scenes/main/units/unit_heal.gd" id="10_jwvl0"]
+[ext_resource type="Script" uid="uid://lxhfrrd12ppd" path="res://Skripts/main/unit/states/unit_dead.gd" id="12_jwvl0"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ao5sm"]
 radius = 13.0384
@@ -28,7 +22,7 @@ radius = 61.0328
 radius = 251.676
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_pinif"]
-radius = 12.0416
+radius = 7.0
 
 [sub_resource type="Animation" id="Animation_jwvl0"]
 resource_name = "attack"
@@ -42,6 +36,12 @@ _data = {
 &"heal": SubResource("Animation_kjsse")
 }
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0lt1e"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4ag63"]
+bg_color = Color(1, 0, 0, 1)
+
 [node name="healer" type="CharacterBody2D" node_paths=PackedStringArray("hp_bar", "select_button")]
 z_as_relative = false
 y_sort_enabled = true
@@ -50,18 +50,8 @@ script = ExtResource("1_k1nd0")
 hp_bar = NodePath("hp bar")
 select_button = NodePath("Button")
 health = 200
-friction = 1.0
+friction = 0.1
 metadata/_custom_type_script = "uid://cyprxf4gmw8hy"
-
-[node name="hp bar" type="ProgressBar" parent="."]
-offset_left = -16.0
-offset_top = -40.0
-offset_right = 16.0
-offset_bottom = -33.0
-theme_override_styles/background = SubResource("StyleBoxFlat_0lt1e")
-theme_override_styles/fill = SubResource("StyleBoxFlat_4ag63")
-value = 50.0
-show_percentage = false
 
 [node name="puch bodes away" type="Area2D" parent="." node_paths=PackedStringArray("body")]
 script = ExtResource("7_8u560")
@@ -140,12 +130,12 @@ unit = NodePath("../..")
 nav_agent = NodePath("../../NavigationAgent2D")
 attack_hitbox = NodePath("../../Attack_hitbox")
 anim_player = NodePath("../../AnimationPlayer")
-speed = 200
+speed = 50
 metadata/_custom_type_script = "uid://dvdan2nufoyq6"
 
 [node name="unit_heal" type="Node" parent="StateMashine" node_paths=PackedStringArray("on_heal_finiched", "unit", "attack_hitbox", "anim_player")]
 script = ExtResource("10_jwvl0")
-on_heal_finiched = NodePath("../unit_move")
+on_heal_finiched = NodePath("../unit_wait")
 unit = NodePath("../..")
 attack_hitbox = NodePath("../../Attack_hitbox")
 anim_player = NodePath("../../AnimationPlayer")
@@ -162,6 +152,19 @@ libraries = {
 &"": SubResource("AnimationLibrary_kjsse")
 }
 
+[node name="hp bar" type="ProgressBar" parent="."]
+offset_left = -16.0
+offset_top = -40.0
+offset_right = 16.0
+offset_bottom = -33.0
+theme_override_styles/background = SubResource("StyleBoxFlat_0lt1e")
+theme_override_styles/fill = SubResource("StyleBoxFlat_4ag63")
+value = 50.0
+show_percentage = false
+
 [node name="Button" type="Button" parent="."]
-offset_right = 8.0
-offset_bottom = 8.0
+offset_left = -13.0
+offset_top = -13.0
+offset_right = 13.0
+offset_bottom = 13.0
+action_mode = 0

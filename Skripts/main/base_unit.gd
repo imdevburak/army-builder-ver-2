@@ -5,9 +5,13 @@ extends CharacterBody2D
 
 
 @export var hp_bar : ProgressBar
+
 @export var select_button : Button
 
-@export var health : int = 100
+@export var health : int = 100:
+	set(new_health):
+		health = clampi(new_health,0,max_health)
+var max_health : int = health
 @export var friction : float
 
 
@@ -20,13 +24,17 @@ var target_velocity : Vector2
 var enemies : Array
 var closest_enemy : Enemy
 
-
 func _ready() -> void:
-	hp_bar.max_value = health
+	hp_bar.value = health
+	hp_bar.max_value = max_health
+
 
 func _process(delta: float) -> void:
 	
 	hp_bar.value = health
+	
+	if is_dead:
+		return
 	
 	#selects or deselects enemy
 	if select_button.is_hovered():
@@ -34,7 +42,7 @@ func _process(delta: float) -> void:
 		
 	if Input.is_action_just_pressed("ui_up"):
 		selected = false
-	print(selected)
+	
 	#calculates the closest enemy
 	var closest_enemy_distanse = INF
 	for i in enemies.size():
@@ -51,7 +59,7 @@ func _process(delta: float) -> void:
 	
 	mouse_position = get_global_mouse_position()
 	
-	velocity = lerp(velocity,target_velocity,0.01)
+	velocity = lerp(velocity,target_velocity,friction)
 	
 	enemies.clear()
 	

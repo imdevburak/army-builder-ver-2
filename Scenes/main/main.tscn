@@ -1,20 +1,26 @@
-[gd_scene load_steps=9 format=3 uid="uid://bbfuxwc4ojay8"]
+[gd_scene load_steps=10 format=3 uid="uid://bbfuxwc4ojay8"]
 
 [ext_resource type="Script" uid="uid://bochel1mb2ky3" path="res://Scenes/main/main.gd" id="1_4jhlv"]
-[ext_resource type="Script" uid="uid://buvpmjdq62mxv" path="res://Skripts/navigation manager/nav_manager.gd" id="2_4etoo"]
-[ext_resource type="PackedScene" uid="uid://ys0qqts4phrr" path="res://Scenes/target/target.tscn" id="2_w1fgp"]
-[ext_resource type="PackedScene" uid="uid://bvg1b88eko3px" path="res://Scenes/enemies/boss.tscn" id="3_4jhlv"]
-[ext_resource type="PackedScene" uid="uid://x1weeub25hk3" path="res://Scenes/units/healer.tscn" id="3_brlrh"]
-[ext_resource type="Script" uid="uid://dt30hat8kc2iv" path="res://Scenes/camera/camera.gd" id="4_wcurd"]
-[ext_resource type="PackedScene" uid="uid://dkp4a0q8dwq6t" path="res://Scenes/units/assasin.tscn" id="6_b3x3g"]
+[ext_resource type="Script" uid="uid://buvpmjdq62mxv" path="res://Skripts/main/navigation manager/nav_manager.gd" id="2_4etoo"]
+[ext_resource type="Texture2D" uid="uid://8x704vkwy6lg" path="res://Assets/maps/map_tutorial_boss.png" id="2_hgq70"]
+[ext_resource type="PackedScene" uid="uid://ys0qqts4phrr" path="res://Scenes/main/target/target.tscn" id="2_w1fgp"]
+[ext_resource type="PackedScene" uid="uid://bvg1b88eko3px" path="res://Scenes/main/enemies/boss.tscn" id="3_4jhlv"]
+[ext_resource type="PackedScene" uid="uid://x1weeub25hk3" path="res://Scenes/main/units/healer.tscn" id="3_brlrh"]
+[ext_resource type="Script" uid="uid://dt30hat8kc2iv" path="res://Scenes/main/camera/camera.gd" id="4_wcurd"]
+[ext_resource type="PackedScene" uid="uid://dkp4a0q8dwq6t" path="res://Scenes/main/units/assasin.tscn" id="6_b3x3g"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_d5b0a"]
-vertices = PackedVector2Array(-506.977, 1013.95, -684.867, -705.68, 327.789, -678, 2114.37, 1000.05, 2013.58, -652.141)
-polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(3, 2, 4)])
-outlines = Array[PackedVector2Array]([PackedVector2Array(-696, -716, 328, -688, 2023, -662, 2125, 1010, -516, 1024)])
+vertices = PackedVector2Array(686, 414, 274, -6, 686, -14, 778, -14, 778, 414, 778, -106, 822, -198, 822, 550, 778, 506, 82, 550, 686, 506, 266, 506, 166, 506, 82, 254, 166, 414, 74, -198, 686, -106, -101.461, 254, -94.5078, 122, 74, 122, 274, -98, 182, -98, 182, -6, 266, 414)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3, 4), PackedInt32Array(3, 5, 6, 7), PackedInt32Array(8, 7, 9, 10), PackedInt32Array(10, 9, 11, 0), PackedInt32Array(12, 11, 9), PackedInt32Array(12, 9, 13, 14), PackedInt32Array(15, 6, 5, 16), PackedInt32Array(13, 17, 18, 19), PackedInt32Array(2, 1, 20, 16), PackedInt32Array(15, 16, 20, 21), PackedInt32Array(19, 15, 21, 22), PackedInt32Array(0, 11, 23, 1), PackedInt32Array(1, 23, 14, 13, 19, 22), PackedInt32Array(4, 3, 7), PackedInt32Array(4, 7, 8)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-104, 112, 64, 112, 64, -208, 192, -208, 192, -88, 192, -16, 264, -16, 264, -88, 192, -88, 192, -208, 768, -208, 768, -96, 696, -96, 696, -24, 768, -24, 768, -96, 768, -208, 832, -208, 832, 560, 768, 560, 768, 496, 768, 424, 696, 424, 696, 496, 768, 496, 768, 560, 176, 560, 176, 496, 256, 496, 256, 424, 176, 424, 176, 496, 176, 560, 72, 560, 72, 264, -104, 264, -112, 264)])
 
 [node name="main" type="Node2D"]
 script = ExtResource("1_4jhlv")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(364, 165)
+scale = Vector2(3, 3)
+texture = ExtResource("2_hgq70")
 
 [node name="target" parent="." instance=ExtResource("2_w1fgp")]
 
@@ -29,10 +35,53 @@ target = NodePath("../target")
 position = Vector2(452, 187)
 
 [node name="assasin" parent="navigation manger" instance=ExtResource("6_b3x3g")]
+position = Vector2(-27, 186)
 
 [node name="healer" parent="navigation manger" instance=ExtResource("3_brlrh")]
-position = Vector2(187.403, 90.1856)
+position = Vector2(113, 201)
 
 [node name="Camera" type="Camera2D" parent="."]
 position = Vector2(457, 184)
 script = ExtResource("4_wcurd")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_layer = 8
+collision_mask = 7
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+polygon = PackedVector2Array(696, -24, 768, -24, 768, -96, 696, -96)
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="StaticBody2D"]
+position = Vector2(-504, 8)
+polygon = PackedVector2Array(696, -24, 768, -24, 768, -96, 696, -96)
+
+[node name="CollisionPolygon2D3" type="CollisionPolygon2D" parent="StaticBody2D"]
+position = Vector2(-512, 520)
+polygon = PackedVector2Array(688, -24, 768, -24, 768, -96, 688, -96)
+
+[node name="CollisionPolygon2D4" type="CollisionPolygon2D" parent="StaticBody2D"]
+position = Vector2(8, 520)
+polygon = PackedVector2Array(688, -24, 760, -24, 760, -96, 688, -96)
+
+[node name="CollisionPolygon2D5" type="CollisionPolygon2D" parent="StaticBody2D"]
+position = Vector2(8, 520)
+build_mode = 1
+polygon = PackedVector2Array(824, -728, 824, 40, 56, 40, 56, -256, -120, -256, -120, -416, 56, -416, 56, -728, 800, -728)
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.99
+one_shot = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 1
+text = "htyhfd"
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

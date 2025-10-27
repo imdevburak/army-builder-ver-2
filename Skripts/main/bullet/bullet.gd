@@ -21,9 +21,13 @@ func _process(delta: float) -> void:
 
 func _on_body_entered(body: Node2D) -> void:
 	if body is unit_base:
+		if body.is_dead:
+			return
+		
 		var direction = global_position.direction_to(body.global_position)
 		body.health -= damage
 		body.velocity = direction * -knockback
-		queue_free()
 	
+	
+	queue_free()
 	

@@ -32,7 +32,7 @@ func Physics_update(_delta):
 		for i in units.size():
 			if is_instance_valid(units[i]):
 				units[i].health += heal
-				
+	
 	
 	#appies knockback
 	var direcrion = Vector2.RIGHT.rotated(attack_hitbox.rotation)

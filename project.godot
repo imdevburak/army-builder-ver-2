@@ -11,13 +11,13 @@ config_version=5
 [application]
 
 config/name="army builder ver 2"
-run/main_scene="uid://bbfuxwc4ojay8"
+run/main_scene="uid://duni2mkkfjbl"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://Assets/icon.svg"
 
 [autoload]
 
-Autoload="*res://Skripts/autoload.gd"
+Autoload="*res://Skripts/main/autoload.gd"
 
 [display]
 
@@ -38,6 +38,9 @@ L_klick={
 
 2d_physics/layer_1="unit"
 2d_physics/layer_2="enemy"
+2d_physics/layer_3="bullet"
+2d_physics/layer_4="wall"
+2d_physics/main_scene="uid://duni2mkkfjbl"
 
 [rendering]
 

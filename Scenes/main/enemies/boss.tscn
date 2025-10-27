@@ -1,11 +1,11 @@
 [gd_scene load_steps=13 format=3 uid="uid://bvg1b88eko3px"]
 
 [ext_resource type="Texture2D" uid="uid://blyu6lo16p6le" path="res://Assets/units/assasin.png" id="1_2bqxd"]
-[ext_resource type="Script" uid="uid://cls24uikdfogr" path="res://Skripts/enemies/bosses/boss_tutorial.gd" id="1_34b3p"]
-[ext_resource type="Script" uid="uid://p64qmyacpa4a" path="res://Skripts/state machine/State_Machine.gd" id="2_5xldm"]
-[ext_resource type="Script" uid="uid://b0x8y2i13wvsf" path="res://Skripts/enemies/states/attack.gd" id="4_yr2ip"]
-[ext_resource type="Script" uid="uid://biw7s04g4phcu" path="res://Skripts/enemies/states/idle.gd" id="5_vywne"]
-[ext_resource type="PackedScene" uid="uid://rs1dap8s7wbv" path="res://Scenes/bullets/bullet_spawner.tscn" id="5_yr2ip"]
+[ext_resource type="Script" uid="uid://cls24uikdfogr" path="res://Skripts/main/enemies/bosses/boss_tutorial.gd" id="1_34b3p"]
+[ext_resource type="Script" uid="uid://p64qmyacpa4a" path="res://Skripts/main/state machine/State_Machine.gd" id="2_5xldm"]
+[ext_resource type="Script" uid="uid://b0x8y2i13wvsf" path="res://Skripts/main/enemies/states/attack.gd" id="4_yr2ip"]
+[ext_resource type="Script" uid="uid://biw7s04g4phcu" path="res://Skripts/main/enemies/states/idle.gd" id="5_vywne"]
+[ext_resource type="PackedScene" uid="uid://rs1dap8s7wbv" path="res://Scenes/main/bullets/bullet_spawner.tscn" id="5_yr2ip"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_5xldm"]
 radius = 20.0
