@@ -1,16 +1,15 @@
-[gd_scene load_steps=19 format=3 uid="uid://x1weeub25hk3"]
+[gd_scene load_steps=21 format=3 uid="uid://x1weeub25hk3"]
 
 [ext_resource type="Script" uid="uid://cyprxf4gmw8hy" path="res://Skripts/base_unit.gd" id="1_k1nd0"]
 [ext_resource type="Texture2D" uid="uid://dnka2dxuq6f01" path="res://Assets/units/healer.png" id="2_k7bkv"]
 [ext_resource type="Script" uid="uid://n0xi2gv4me3b" path="res://Skripts/attack hitbox/feld_of_veiw.gd" id="3_0lt1e"]
 [ext_resource type="Script" uid="uid://p64qmyacpa4a" path="res://Skripts/state machine/State_Machine.gd" id="3_k7bkv"]
 [ext_resource type="Texture2D" uid="uid://dpehkh7qs6hn7" path="res://Assets/icon.svg" id="4_4ag63"]
-[ext_resource type="Script" uid="uid://c7tkmavigwj07" path="res://Skripts/unit/states/idle.gd" id="4_pinif"]
 [ext_resource type="Script" uid="uid://c81x64hx8sfwy" path="res://Skripts/unit/states/wait.gd" id="5_ao3qh"]
 [ext_resource type="Script" uid="uid://chum2ktf3br45" path="res://Skripts/unit/states/move.gd" id="5_llvpn"]
 [ext_resource type="Script" uid="uid://caombhjx3w1vv" path="res://Skripts/push bodes away/puch_bodes_away.gd" id="7_8u560"]
-[ext_resource type="Script" uid="uid://dvwyf8tjmffav" path="res://Skripts/unit/states/unit_attack.gd" id="8_5x5mb"]
 [ext_resource type="Script" uid="uid://ds0xan0v3ps3v" path="res://Skripts/attack hitbox/attack_hitbox.gd" id="9_7xogc"]
+[ext_resource type="Script" uid="uid://bt2va5h7uq1ch" path="res://Scenes/units/unit_heal.gd" id="10_jwvl0"]
 [ext_resource type="Script" uid="uid://lxhfrrd12ppd" path="res://Skripts/unit/states/unit_dead.gd" id="12_jwvl0"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0lt1e"]
@@ -20,10 +19,10 @@ bg_color = Color(0, 0, 0, 1)
 bg_color = Color(1, 0, 0, 1)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ao5sm"]
-radius = 19.105
+radius = 13.0384
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_0lt1e"]
-radius = 45.5412
+[sub_resource type="CircleShape2D" id="CircleShape2D_jwvl0"]
+radius = 61.0328
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4ag63"]
 radius = 251.676
@@ -31,13 +30,27 @@ radius = 251.676
 [sub_resource type="CircleShape2D" id="CircleShape2D_pinif"]
 radius = 12.0416
 
-[node name="healer" type="CharacterBody2D" node_paths=PackedStringArray("hp_bar")]
+[sub_resource type="Animation" id="Animation_jwvl0"]
+resource_name = "attack"
+
+[sub_resource type="Animation" id="Animation_kjsse"]
+resource_name = "heal"
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_kjsse"]
+_data = {
+&"attack": SubResource("Animation_jwvl0"),
+&"heal": SubResource("Animation_kjsse")
+}
+
+[node name="healer" type="CharacterBody2D" node_paths=PackedStringArray("hp_bar", "select_button")]
 z_as_relative = false
 y_sort_enabled = true
 collision_mask = 0
 script = ExtResource("1_k1nd0")
 hp_bar = NodePath("hp bar")
-friction = 0.95
+select_button = NodePath("Button")
+health = 200
+friction = 1.0
 metadata/_custom_type_script = "uid://cyprxf4gmw8hy"
 
 [node name="hp bar" type="ProgressBar" parent="."]
@@ -53,23 +66,21 @@ show_percentage = false
 [node name="puch bodes away" type="Area2D" parent="." node_paths=PackedStringArray("body")]
 script = ExtResource("7_8u560")
 body = NodePath("..")
+forse = 10
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="puch bodes away"]
 shape = SubResource("CircleShape2D_ao5sm")
 
 [node name="Attack_hitbox" type="Area2D" parent="." node_paths=PackedStringArray("unit", "feld_of_veiw")]
 collision_layer = 0
-collision_mask = 2
 script = ExtResource("9_7xogc")
 unit = NodePath("..")
 feld_of_veiw = NodePath("../feld of veiw")
-lock_on_closest_enemy = true
-lerp_strengh = 0.2
+lerp_strengh = 1.0
 metadata/_custom_type_script = "uid://ds0xan0v3ps3v"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Attack_hitbox"]
-position = Vector2(91, 0)
-shape = SubResource("CircleShape2D_0lt1e")
+shape = SubResource("CircleShape2D_jwvl0")
 debug_color = Color(0, 0.641761, 0.329063, 0.42)
 
 [node name="Sprite2D" type="Sprite2D" parent="Attack_hitbox"]
@@ -90,6 +101,8 @@ shape = SubResource("CircleShape2D_4ag63")
 debug_color = Color(1, 0, 0, 0)
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+path_desired_distance = 10.0
+target_desired_distance = 2.0
 debug_enabled = true
 
 [node name="hitbox" type="CollisionShape2D" parent="."]
@@ -104,46 +117,51 @@ texture = ExtResource("2_k7bkv")
 
 [node name="StateMashine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
 script = ExtResource("3_k7bkv")
-initial_state = NodePath("unit_idle")
+initial_state = NodePath("unit_wait")
 metadata/_custom_type_script = "uid://p64qmyacpa4a"
 
-[node name="unit_idle" type="Node" parent="StateMashine" node_paths=PackedStringArray("unit", "nav_agent")]
-script = ExtResource("4_pinif")
-unit = NodePath("../..")
-nav_agent = NodePath("../../NavigationAgent2D")
-metadata/_custom_type_script = "uid://dvdan2nufoyq6"
-
-[node name="unit_wait" type="Node" parent="StateMashine" node_paths=PackedStringArray("unit", "nav_agent", "attack_hitbox", "attack_timer")]
+[node name="unit_wait" type="Node" parent="StateMashine" node_paths=PackedStringArray("on_attack_hitbox_entered", "on_death", "on_navigation_not_finished", "unit", "nav_agent", "attack_hitbox", "anim_player")]
 script = ExtResource("5_ao3qh")
+on_attack_hitbox_entered = NodePath("../unit_heal")
+on_death = NodePath("../unit_dead")
+on_navigation_not_finished = NodePath("../unit_move")
 unit = NodePath("../..")
 nav_agent = NodePath("../../NavigationAgent2D")
 attack_hitbox = NodePath("../../Attack_hitbox")
-attack_timer = NodePath("../unit_attack/Timer")
+anim_player = NodePath("../../AnimationPlayer")
 metadata/_custom_type_script = "uid://dvdan2nufoyq6"
 
-[node name="unit_move" type="Node" parent="StateMashine" node_paths=PackedStringArray("unit", "nav_agent", "attack_hitbox", "attack_timer")]
+[node name="unit_move" type="Node" parent="StateMashine" node_paths=PackedStringArray("on_attack_hitbox_entered", "on_death", "on_navigation_finished", "unit", "nav_agent", "attack_hitbox", "anim_player")]
 script = ExtResource("5_llvpn")
+on_attack_hitbox_entered = NodePath("../unit_heal")
+on_death = NodePath("../unit_dead")
+on_navigation_finished = NodePath("../unit_wait")
 unit = NodePath("../..")
 nav_agent = NodePath("../../NavigationAgent2D")
 attack_hitbox = NodePath("../../Attack_hitbox")
-attack_timer = NodePath("../unit_attack/Timer")
+anim_player = NodePath("../../AnimationPlayer")
 speed = 200
 metadata/_custom_type_script = "uid://dvdan2nufoyq6"
 
-[node name="unit_attack" type="Node" parent="StateMashine" node_paths=PackedStringArray("unit", "attack_timer", "attack_hitbox")]
-script = ExtResource("8_5x5mb")
+[node name="unit_heal" type="Node" parent="StateMashine" node_paths=PackedStringArray("on_heal_finiched", "unit", "attack_hitbox", "anim_player")]
+script = ExtResource("10_jwvl0")
+on_heal_finiched = NodePath("../unit_move")
 unit = NodePath("../..")
-attack_timer = NodePath("Timer")
 attack_hitbox = NodePath("../../Attack_hitbox")
-attck_coldown = 2.0
-single_target = true
-knockback = 50
+anim_player = NodePath("../../AnimationPlayer")
+knockback = 0
 metadata/_custom_type_script = "uid://dvdan2nufoyq6"
-
-[node name="Timer" type="Timer" parent="StateMashine/unit_attack"]
-one_shot = true
 
 [node name="unit_dead" type="Node" parent="StateMashine" node_paths=PackedStringArray("unit")]
 script = ExtResource("12_jwvl0")
 unit = NodePath("../..")
 metadata/_custom_type_script = "uid://dvdan2nufoyq6"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_kjsse")
+}
+
+[node name="Button" type="Button" parent="."]
+offset_right = 8.0
+offset_bottom = 8.0

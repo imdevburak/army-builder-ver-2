@@ -2,21 +2,10 @@ class_name unit_idle
 extends State
 
 
+@export_group("state conections")
+@export var on_selected : State
+@export var on_death : State
+
+@export_category("")
 @export var unit : unit_base
 @export var nav_agent : NavigationAgent2D
-
-
-func Enter():
-	print("unit_idle")
-
-
-func Physics_update(_delta):
-	nav_agent.target_position = unit.target.global_position
-	unit.target_velocity = Vector2.ZERO
-	
-	if unit.selected:
-		change_state.emit(self,"unit_wait")
-	
-	if unit.health <= 0:
-		change_state.emit(self,"unit_dead")
-	

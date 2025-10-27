@@ -18,5 +18,5 @@ func _process(delta: float) -> void:
 		var puch_direction = (body.global_position - overping_bodies[i].global_position).normalized()
 		var distanse_multiplyer = clamp(abs(200 / body.global_position.distance_to(overping_bodies[i].global_position)),0.0,100.0)
 		body.velocity += puch_direction * distanse_multiplyer * forse * delta
-		print()
+		
 		

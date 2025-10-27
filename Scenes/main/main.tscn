@@ -1,17 +1,20 @@
-[gd_scene load_steps=7 format=3 uid="uid://bbfuxwc4ojay8"]
+[gd_scene load_steps=9 format=3 uid="uid://bbfuxwc4ojay8"]
 
+[ext_resource type="Script" uid="uid://bochel1mb2ky3" path="res://Scenes/main/main.gd" id="1_4jhlv"]
 [ext_resource type="Script" uid="uid://buvpmjdq62mxv" path="res://Skripts/navigation manager/nav_manager.gd" id="2_4etoo"]
 [ext_resource type="PackedScene" uid="uid://ys0qqts4phrr" path="res://Scenes/target/target.tscn" id="2_w1fgp"]
 [ext_resource type="PackedScene" uid="uid://bvg1b88eko3px" path="res://Scenes/enemies/boss.tscn" id="3_4jhlv"]
 [ext_resource type="PackedScene" uid="uid://x1weeub25hk3" path="res://Scenes/units/healer.tscn" id="3_brlrh"]
 [ext_resource type="Script" uid="uid://dt30hat8kc2iv" path="res://Scenes/camera/camera.gd" id="4_wcurd"]
+[ext_resource type="PackedScene" uid="uid://dkp4a0q8dwq6t" path="res://Scenes/units/assasin.tscn" id="6_b3x3g"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_d5b0a"]
-vertices = PackedVector2Array(1306.98, 8.28906, 868.508, 496.023, 60.0234, 499.969, -248.922, -86.9219, 366.602, -122.961)
-polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3, 4)])
-outlines = Array[PackedVector2Array]([PackedVector2Array(-265, -96, 367, -133, 1327, 1, 873, 506, 54, 510)])
+vertices = PackedVector2Array(-506.977, 1013.95, -684.867, -705.68, 327.789, -678, 2114.37, 1000.05, 2013.58, -652.141)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(3, 2, 4)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-696, -716, 328, -688, 2023, -662, 2125, 1010, -516, 1024)])
 
 [node name="main" type="Node2D"]
+script = ExtResource("1_4jhlv")
 
 [node name="target" parent="." instance=ExtResource("2_w1fgp")]
 
@@ -22,23 +25,13 @@ navigation_polygon = SubResource("NavigationPolygon_d5b0a")
 script = ExtResource("2_4etoo")
 target = NodePath("../target")
 
+[node name="boss" parent="navigation manger" instance=ExtResource("3_4jhlv")]
+position = Vector2(452, 187)
+
+[node name="assasin" parent="navigation manger" instance=ExtResource("6_b3x3g")]
+
 [node name="healer" parent="navigation manger" instance=ExtResource("3_brlrh")]
 position = Vector2(187.403, 90.1856)
-
-[node name="healer2" parent="navigation manger" instance=ExtResource("3_brlrh")]
-position = Vector2(203, 146)
-
-[node name="healer3" parent="navigation manger" instance=ExtResource("3_brlrh")]
-position = Vector2(279, -37)
-
-[node name="healer4" parent="navigation manger" instance=ExtResource("3_brlrh")]
-position = Vector2(249, 120)
-
-[node name="healer5" parent="navigation manger" instance=ExtResource("3_brlrh")]
-position = Vector2(251, 35)
-
-[node name="boss" parent="navigation manger" instance=ExtResource("3_4jhlv")]
-position = Vector2(78, 10)
 
 [node name="Camera" type="Camera2D" parent="."]
 position = Vector2(457, 184)
