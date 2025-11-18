@@ -30,7 +30,7 @@ func Physics_update(_delta):
 	else:
 		var units = attack_hitbox.get_overlapping_bodies()
 		for i in units.size():
-			if is_instance_valid(units[i]):
+			if is_instance_valid(units[i]) and units[i] is unit_base:
 				units[i].health += heal
 	
 	

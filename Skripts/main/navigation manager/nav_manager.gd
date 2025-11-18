@@ -6,7 +6,7 @@ extends NavigationRegion2D
 var units :Array = []
 var enemies : Array = []
 
-func _ready() -> void:
+func _process(delta: float) -> void:
 	
 	for child in get_children():
 		if child is unit_base:
@@ -20,8 +20,6 @@ func _ready() -> void:
 			Autoload.enemies.push_back(child)
 		
 	
-	for i in units.size():
-		units[i].target = target
 	
 	
 	

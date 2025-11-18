@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://cqhhcsxuhechc" path="res://Skripts/main/target/target.gd" id="2_nh45j"]
 
 [node name="target" type="Sprite2D"]
+top_level = true
 scale = Vector2(0.15625, 0.15625)
 texture = ExtResource("1_5s2ap")
 script = ExtResource("2_nh45j")

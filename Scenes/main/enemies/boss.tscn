@@ -16,9 +16,9 @@ bg_color = Color(0, 0, 0, 1)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0q7ov"]
 bg_color = Color(1, 0, 0, 1)
 
-[sub_resource type="Animation" id="Animation_vywne"]
-resource_name = "sircle attack"
-length = 1.5
+[sub_resource type="Animation" id="Animation_lxdig"]
+resource_name = "target attack"
+length = 6.0
 tracks/0/type = "method"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -26,50 +26,141 @@ tracks/0/path = NodePath("bullet spawner")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0.133333),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(1.5, 1.5666667, 1.6333334, 1.7, 1.7666667, 1.8333334, 1.9000001, 1.9666668, 2.0333335, 2.1000001, 2.1666667, 2.2333333, 2.3000002, 2.3666668, 2.4333334, 2.5000002, 2.566667, 2.6333337, 2.7000003, 2.766667, 2.8333335, 2.9000003, 2.9666672, 3.0333338, 3.1000004, 3.166667, 3.2333336, 3.3000004, 3.366667, 3.4333336, 3.9666667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "values": [{
-"args": [5, 20, 45],
-"method": &"spawn_sircle_attack"
+"args": ["fire bullet", 0],
+"method": &"spawn_target_attack"
+}, {
+"args": ["fire bullet", 0],
+"method": &"spawn_target_attack"
+}, {
+"args": ["fire bullet", 0],
+"method": &"spawn_target_attack"
+}, {
+"args": ["fire bullet", 0],
+"method": &"spawn_target_attack"
+}, {
+"args": ["fire bullet", 0],
+"method": &"spawn_target_attack"
+}, {
+"args": ["fire bullet", 0],
+"method": &"spawn_target_attack"
+}, {
+"args": ["fire bullet", 0],
+"method": &"spawn_target_attack"
+}, {
+"args": ["fire bullet", 0],
+"method": &"spawn_target_attack"
+}, {
+"args": ["fire bullet", 0],
+"method": &"spawn_target_attack"
+}, {
+"args": ["fire bullet", 0],
+"method": &"spawn_target_attack"
+}, {
+"args": ["fire bullet", 0],
+"method": &"spawn_target_attack"
+}, {
+"args": ["fire bullet", 0],
+"method": &"spawn_target_attack"
+}, {
+"args": ["fire bullet", 0],
+"method": &"spawn_target_attack"
+}, {
+"args": ["fire bullet", 0],
+"method": &"spawn_target_attack"
+}, {
+"args": ["fire bullet", 0],
+"method": &"spawn_target_attack"
+}, {
+"args": ["fire bullet", 0],
+"method": &"spawn_target_attack"
+}, {
+"args": ["fire bullet", 0],
+"method": &"spawn_target_attack"
+}, {
+"args": ["fire bullet", 0],
+"method": &"spawn_target_attack"
+}, {
+"args": ["fire bullet", 0],
+"method": &"spawn_target_attack"
+}, {
+"args": ["fire bullet", 0],
+"method": &"spawn_target_attack"
+}, {
+"args": ["fire bullet", 0],
+"method": &"spawn_target_attack"
+}, {
+"args": ["fire bullet", 0],
+"method": &"spawn_target_attack"
+}, {
+"args": ["fire bullet", 0],
+"method": &"spawn_target_attack"
+}, {
+"args": ["fire bullet", 0],
+"method": &"spawn_target_attack"
+}, {
+"args": ["fire bullet", 0],
+"method": &"spawn_target_attack"
+}, {
+"args": ["fire bullet", 0],
+"method": &"spawn_target_attack"
+}, {
+"args": ["fire bullet", 0],
+"method": &"spawn_target_attack"
+}, {
+"args": ["fire bullet", 0],
+"method": &"spawn_target_attack"
+}, {
+"args": ["fire bullet", 0],
+"method": &"spawn_target_attack"
+}, {
+"args": ["fire bullet", 0],
+"method": &"spawn_target_attack"
+}, {
+"args": ["helmet bullet", 0],
+"method": &"spawn_target_attack"
 }]
 }
 
-[sub_resource type="Animation" id="Animation_lxdig"]
-resource_name = "target attack"
-length = 3.0
+[sub_resource type="Animation" id="Animation_f2uhx"]
+resource_name = "dash"
 tracks/0/type = "method"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("bullet spawner")
+tracks/0/path = NodePath(".")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(1.96667, 2.1, 2.23333, 2.33333),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
+"times": PackedFloat32Array(0.53333336),
+"transitions": PackedFloat32Array(1),
 "values": [{
-"args": [40, 10],
-"method": &"spawn_target_attack"
-}, {
-"args": [40, 10],
-"method": &"spawn_target_attack"
-}, {
-"args": [40, 10],
-"method": &"spawn_target_attack"
-}, {
-"args": [40, 10],
-"method": &"spawn_target_attack"
+"args": [500],
+"method": &"dash"
 }]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("bullet spawner")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"values": []
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_lxdig"]
 _data = {
-&"sircle attack": SubResource("Animation_vywne"),
+&"dash": SubResource("Animation_f2uhx"),
 &"target attack": SubResource("Animation_lxdig")
 }
 
 [node name="boss" type="CharacterBody2D" node_paths=PackedStringArray("hp_bar")]
 collision_layer = 2
-collision_mask = 0
+collision_mask = 40
 script = ExtResource("1_34b3p")
 hp_bar = NodePath("hp bar")
 health = 300
@@ -92,7 +183,7 @@ metadata/_custom_type_script = "uid://p64qmyacpa4a"
 [node name="attack" type="Node" parent="StateMashine" node_paths=PackedStringArray("AnimPlayer")]
 script = ExtResource("4_yr2ip")
 AnimPlayer = NodePath("../../AnimationPlayer")
-attacks = Array[String](["sircle attack", "target attack"])
+attacks = Array[String](["target attack", "dash"])
 metadata/_custom_type_script = "uid://dvdan2nufoyq6"
 
 [node name="idle" type="Node" parent="StateMashine" node_paths=PackedStringArray("AnimPlayer")]

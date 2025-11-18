@@ -1,0 +1,5 @@
+[gd_scene format=3 uid="uid://dp40a3mq4c1a3"]
+
+[node name="waiter" type="TextureRect"]
+offset_right = 40.0
+offset_bottom = 40.0

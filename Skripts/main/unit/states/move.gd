@@ -22,7 +22,7 @@ func Enter():
 
 func Physics_update(_delta):
 	nav_agent.target_position = unit.target.global_position
-	if nav_agent.is_navigation_finished() or unit.selected == false:
+	if nav_agent.is_navigation_finished() and abs(unit.velocity) <= Vector2(speed/3,speed/3):
 		change_state.emit(self,on_navigation_finished.name)
 		
 	else:
@@ -35,3 +35,5 @@ func Physics_update(_delta):
 	
 	if unit.health <= 0:
 		change_state.emit(self,on_death.name)
+		
+	

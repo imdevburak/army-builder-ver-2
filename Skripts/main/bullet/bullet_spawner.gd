@@ -1,21 +1,29 @@
 extends Node2D
 
-@onready var bullet = preload("res://Scenes/main/bullets/bullet.tscn")
+@onready var bullet :Dictionary[PackedScene,String] = {
+	preload("res://Scenes/main/bullets/bullet.tscn"):"",
+	preload("res://Scenes/main/bullets/fire_bullet.tscn"):"fire bullet",
+	preload("res://Scenes/main/bullets/helmet_bullet.tscn"):"helmet bullet"
+	}
 
 
 
 
-func spawn_sircle_attack(number_of_bullets : int, speed : int, randomise_rotation : int):
+func spawn_sircle_attack(bullet_type : String, number_of_bullets : int, randomise_rotation : int):
 	var random_rotation_offset = randi_range(-randomise_rotation,randomise_rotation) 
 	for i in number_of_bullets:
-		var bullet_instanse = bullet.instantiate()
-		bullet_instanse.speed = speed
+		var bullet_instanse = bullet.find_key(bullet_type).instantiate()
+		
 		bullet_instanse.rotation_degrees = (360.0 / number_of_bullets) * i + random_rotation_offset
+		
+		bullet_instanse.top_level = true
+		bullet_instanse.global_position = global_position
+		
 		add_child(bullet_instanse)
 	
 
 
-func spawn_target_attack(speed : int, randomise_rotation : int):
+func spawn_target_attack(bullet_type : String, randomise_rotation : int):
 	var target = Autoload.units.pick_random()
 	
 	if !is_instance_valid(target):
@@ -24,9 +32,13 @@ func spawn_target_attack(speed : int, randomise_rotation : int):
 	elif target.is_dead:
 		return
 	
-	var bullet_instanse = bullet.instantiate()
-	print(target)
-	bullet_instanse.speed = speed
+	var bullet_instanse = bullet.find_key(bullet_type).instantiate()
+	
+	
 	bullet_instanse.look_at(target.global_position - global_position)
 	bullet_instanse.rotation_degrees += 180 + randi_range(-randomise_rotation,randomise_rotation) 
+	
+	bullet_instanse.top_level = true
+	bullet_instanse.global_position = global_position
+	
 	add_child(bullet_instanse)

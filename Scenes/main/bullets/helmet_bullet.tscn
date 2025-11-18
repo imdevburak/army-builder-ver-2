@@ -1,0 +1,68 @@
+[gd_scene load_steps=9 format=3 uid="uid://cywp20r2c4jtx"]
+
+[ext_resource type="Script" uid="uid://vgmljld5s7vh" path="res://Skripts/main/bullet/helmet_bullet.gd" id="1_kg4j6"]
+[ext_resource type="Texture2D" uid="uid://bowb28hlg06b4" path="res://Assets/bullets/helmet_bullet.png" id="2_s7m4h"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_op5gk"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w4m2u"]
+atlas = ExtResource("2_s7m4h")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bgqfe"]
+atlas = ExtResource("2_s7m4h")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m85yl"]
+atlas = ExtResource("2_s7m4h")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tfj1o"]
+atlas = ExtResource("2_s7m4h")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_82qk2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w4m2u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bgqfe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m85yl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tfj1o")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[node name="HelmetBullet" type="Area2D" node_paths=PackedStringArray("texture", "lifeTimeTimer")]
+collision_layer = 4
+collision_mask = 41
+script = ExtResource("1_kg4j6")
+knockback = 300
+speed = 100
+texture = NodePath("AnimatedSprite2D")
+lifeTimeTimer = NodePath("Timer")
+metadata/_custom_type_script = "uid://b0rty6wcqje5f"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_op5gk")
+debug_color = Color(1, 0, 0, 0.41960785)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_82qk2")
+autoplay = "default"
+frame_progress = 0.26044166
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 999.0
+one_shot = true
+autostart = true
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

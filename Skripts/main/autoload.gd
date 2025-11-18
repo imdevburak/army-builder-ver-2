@@ -4,7 +4,11 @@ extends Node
 var units : Array[unit_base]
 var enemies : Array[Enemy]
 
-func _process(delta: float) -> void:
+var resurses : int = 10
+
+
+func _physics_process(delta: float) -> void:
+	units.clear()
 	var not_previusly_freed_units = []
 	for i in units.size():
 		if is_instance_valid(units[i]):

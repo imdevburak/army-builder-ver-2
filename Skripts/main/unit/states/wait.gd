@@ -19,17 +19,13 @@ func Enter():
 
 func Physics_update(_delta):
 	
+	var nav_point_direction = unit.to_local(nav_agent.get_next_path_position()).normalized()
 	unit.target_velocity = Vector2.ZERO
+
 	
 	
 	if attack_hitbox.get_overlapping_bodies().size() != 0 and !anim_player.is_playing():
 		change_state.emit(self,on_attack_hitbox_entered.name)
-	
-	if !unit.selected:
-		return
-	
-	nav_agent.target_position = unit.target.global_position
-	
 	
 	
 	
