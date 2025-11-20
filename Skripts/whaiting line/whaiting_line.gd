@@ -24,7 +24,7 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	
 	if mouse_inside_area and Input.is_action_just_pressed("L_klick"):
-		var basic_unit = preload("res://Scenes/main/units/unit_no_upgrades.tscn")
+		var basic_unit = load(unit_type)
 		var unit_instanse = basic_unit.instantiate()
 		if can_upgrade:
 			for body in upgrade_area.get_overlapping_bodies():
