@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://rs1dap8s7wbv" path="res://Scenes/main/bullets/bullet_spawner.tscn" id="5_yr2ip"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_5xldm"]
-radius = 20.0
+radius = 80.0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i7lbb"]
 bg_color = Color(0, 0, 0, 1)
@@ -16,9 +16,37 @@ bg_color = Color(0, 0, 0, 1)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0q7ov"]
 bg_color = Color(1, 0, 0, 1)
 
+[sub_resource type="Animation" id="Animation_f2uhx"]
+resource_name = "dash"
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.53333336),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [500],
+"method": &"dash"
+}]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("bullet spawner")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"values": []
+}
+
 [sub_resource type="Animation" id="Animation_lxdig"]
 resource_name = "target attack"
-length = 6.0
+length = 5.0
 tracks/0/type = "method"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -26,7 +54,7 @@ tracks/0/path = NodePath("bullet spawner")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(1.5, 1.5666667, 1.6333334, 1.7, 1.7666667, 1.8333334, 1.9000001, 1.9666668, 2.0333335, 2.1000001, 2.1666667, 2.2333333, 2.3000002, 2.3666668, 2.4333334, 2.5000002, 2.566667, 2.6333337, 2.7000003, 2.766667, 2.8333335, 2.9000003, 2.9666672, 3.0333338, 3.1000004, 3.166667, 3.2333336, 3.3000004, 3.366667, 3.4333336, 3.9666667),
+"times": PackedFloat32Array(0, 0.06666672, 0.13333344, 0.20000005, 0.26666665, 0.33333337, 0.4000001, 0.46666682, 0.53333354, 0.60000014, 0.66666675, 0.73333335, 0.8000002, 0.8666668, 0.9333334, 1.0000002, 1.0666671, 1.1333337, 1.2000003, 1.2666669, 1.3333335, 1.4000003, 1.4666672, 1.5333338, 1.6000004, 1.666667, 1.7333336, 1.8000004, 1.866667, 1.9333336, 2.4666667),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "values": [{
 "args": ["fire bullet", 0],
@@ -124,34 +152,6 @@ tracks/0/keys = {
 }]
 }
 
-[sub_resource type="Animation" id="Animation_f2uhx"]
-resource_name = "dash"
-tracks/0/type = "method"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0.53333336),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [500],
-"method": &"dash"
-}]
-}
-tracks/1/type = "method"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("bullet spawner")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(),
-"transitions": PackedFloat32Array(),
-"values": []
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_lxdig"]
 _data = {
 &"dash": SubResource("Animation_f2uhx"),
@@ -171,8 +171,8 @@ shape = SubResource("CircleShape2D_5xldm")
 debug_color = Color(0.997169, 0, 0.171803, 0.42)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(1, -28)
-scale = Vector2(2, 2)
+position = Vector2(1.8189894e-12, -72)
+scale = Vector2(7, 7)
 texture = ExtResource("1_2bqxd")
 
 [node name="StateMashine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
@@ -192,10 +192,10 @@ AnimPlayer = NodePath("../../AnimationPlayer")
 metadata/_custom_type_script = "uid://dvdan2nufoyq6"
 
 [node name="hp bar" type="ProgressBar" parent="."]
-offset_left = -32.0
-offset_top = -66.0
-offset_right = 32.0
-offset_bottom = -59.0
+offset_left = -80.0
+offset_top = 48.0
+offset_right = 80.0
+offset_bottom = 55.0
 theme_override_styles/background = SubResource("StyleBoxFlat_i7lbb")
 theme_override_styles/fill = SubResource("StyleBoxFlat_0q7ov")
 value = 50.0

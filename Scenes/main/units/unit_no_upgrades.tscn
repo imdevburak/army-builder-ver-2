@@ -1,52 +1,41 @@
-[gd_scene load_steps=29 format=3 uid="uid://dkp4a0q8dwq6t"]
+[gd_scene load_steps=29 format=3 uid="uid://v64308ap3hus"]
 
-[ext_resource type="Script" uid="uid://cyprxf4gmw8hy" path="res://Skripts/main/base_unit.gd" id="1_l4f50"]
-[ext_resource type="Script" uid="uid://caombhjx3w1vv" path="res://Skripts/main/push bodes away/puch_bodes_away.gd" id="2_lx4x6"]
-[ext_resource type="Script" uid="uid://ds0xan0v3ps3v" path="res://Skripts/main/attack hitbox/attack_hitbox.gd" id="2_xjqdp"]
-[ext_resource type="Script" uid="uid://p64qmyacpa4a" path="res://Skripts/main/state machine/State_Machine.gd" id="4_hxbk7"]
-[ext_resource type="Texture2D" uid="uid://bl3p2gpwa7wfu" path="res://Assets/units/spritesheet(1).png" id="4_qml8c"]
-[ext_resource type="Script" uid="uid://ss6u6yn12htk" path="res://Skripts/main/animation_manager.gd" id="5_ah7a6"]
-[ext_resource type="Script" uid="uid://chum2ktf3br45" path="res://Skripts/main/unit/states/move.gd" id="6_1csaq"]
-[ext_resource type="Script" uid="uid://c81x64hx8sfwy" path="res://Skripts/main/unit/states/wait.gd" id="7_fyb7g"]
-[ext_resource type="Script" uid="uid://dvwyf8tjmffav" path="res://Skripts/main/unit/states/unit_attack.gd" id="9_1csaq"]
-[ext_resource type="Texture2D" uid="uid://dpehkh7qs6hn7" path="res://Assets/icon.svg" id="10_4mg11"]
-[ext_resource type="Script" uid="uid://lxhfrrd12ppd" path="res://Skripts/main/unit/states/unit_dead.gd" id="10_fyb7g"]
-[ext_resource type="Script" uid="uid://cqhhcsxuhechc" path="res://Skripts/main/target/target.gd" id="11_qml8c"]
-[ext_resource type="Texture2D" uid="uid://bowb28hlg06b4" path="res://Assets/bullets/helmet_bullet.png" id="13_1cffw"]
-[ext_resource type="Script" uid="uid://78wd6s8pfd33" path="res://Skripts/main/plaseholder_holding_resourse.gd" id="14_ju6x6"]
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_lx4x6"]
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_1csaq"]
-radius = 33.0606
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_ff3is"]
-radius = 13.1529
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_pegs0"]
-radius = 12.0416
+[ext_resource type="Script" uid="uid://cyprxf4gmw8hy" path="res://Skripts/main/base_unit.gd" id="1_raefp"]
+[ext_resource type="Script" uid="uid://ds0xan0v3ps3v" path="res://Skripts/main/attack hitbox/attack_hitbox.gd" id="2_w22ff"]
+[ext_resource type="Script" uid="uid://caombhjx3w1vv" path="res://Skripts/main/push bodes away/puch_bodes_away.gd" id="3_3irlc"]
+[ext_resource type="Texture2D" uid="uid://bl3p2gpwa7wfu" path="res://Assets/units/spritesheet(1).png" id="4_6yilx"]
+[ext_resource type="Script" uid="uid://ss6u6yn12htk" path="res://Skripts/main/animation_manager.gd" id="5_43dth"]
+[ext_resource type="Script" uid="uid://p64qmyacpa4a" path="res://Skripts/main/state machine/State_Machine.gd" id="6_uvbcy"]
+[ext_resource type="Script" uid="uid://c81x64hx8sfwy" path="res://Skripts/main/unit/states/wait.gd" id="7_6hs26"]
+[ext_resource type="Script" uid="uid://chum2ktf3br45" path="res://Skripts/main/unit/states/move.gd" id="8_3hcc8"]
+[ext_resource type="Script" uid="uid://dvwyf8tjmffav" path="res://Skripts/main/unit/states/unit_attack.gd" id="9_toja3"]
+[ext_resource type="Script" uid="uid://lxhfrrd12ppd" path="res://Skripts/main/unit/states/unit_dead.gd" id="10_yrjo1"]
+[ext_resource type="Texture2D" uid="uid://dpehkh7qs6hn7" path="res://Assets/icon.svg" id="11_xmak2"]
+[ext_resource type="Script" uid="uid://cqhhcsxuhechc" path="res://Skripts/main/target/target.gd" id="12_3rauc"]
+[ext_resource type="Texture2D" uid="uid://bowb28hlg06b4" path="res://Assets/bullets/helmet_bullet.png" id="13_3irlc"]
+[ext_resource type="Script" uid="uid://78wd6s8pfd33" path="res://Skripts/main/plaseholder_holding_resourse.gd" id="14_6yilx"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1cffw"]
-atlas = ExtResource("4_qml8c")
+atlas = ExtResource("4_6yilx")
 region = Rect2(0, 0, 1024, 1024)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ju6x6"]
-atlas = ExtResource("4_qml8c")
+atlas = ExtResource("4_6yilx")
 region = Rect2(1024, 0, 1024, 1024)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_y0wva"]
-atlas = ExtResource("4_qml8c")
+atlas = ExtResource("4_6yilx")
 region = Rect2(2048, 0, 1024, 1024)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2vvse"]
-atlas = ExtResource("4_qml8c")
+atlas = ExtResource("4_6yilx")
 region = Rect2(3072, 0, 1024, 1024)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qml8c"]
-atlas = ExtResource("4_qml8c")
+atlas = ExtResource("4_6yilx")
 region = Rect2(0, 0, 1024, 1024)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_ajp2o"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_kl5hy"]
 animations = [{
 "frames": [{
 "duration": 1.0,
@@ -74,6 +63,17 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_jsclr"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_w22ff"]
+size = Vector2(64, 16)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0o8rb"]
+radius = 16.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_i7opm"]
+radius = 12.0416
+
 [sub_resource type="Animation" id="Animation_fyb7g"]
 resource_name = "attack"
 
@@ -82,73 +82,81 @@ _data = {
 &"attack": SubResource("Animation_fyb7g")
 }
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1csaq"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jigjj"]
 bg_color = Color(0, 0, 0, 1)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fyb7g"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cmgsc"]
 bg_color = Color(1, 0, 0, 1)
 
-[node name="assasin" type="CharacterBody2D" node_paths=PackedStringArray("hp_bar", "target", "select_button")]
-z_index = 1
-y_sort_enabled = true
+[node name="unit_no_upgrades" type="CharacterBody2D" node_paths=PackedStringArray("hp_bar", "target", "select_button")]
 collision_mask = 8
-script = ExtResource("1_l4f50")
+script = ExtResource("1_raefp")
 hp_bar = NodePath("hp bar")
 target = NodePath("move_target")
 select_button = NodePath("Button")
-is_dead = true
+friction = 0.1
 metadata/_custom_type_script = "uid://cyprxf4gmw8hy"
 
-[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
-debug_enabled = true
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_lx4x6")
-
-[node name="Attack_hitbox" type="Area2D" parent="." node_paths=PackedStringArray("unit")]
-collision_layer = 0
-collision_mask = 2
-script = ExtResource("2_xjqdp")
+[node name="move_target" type="Sprite2D" parent="." node_paths=PackedStringArray("unit", "nav_agent")]
+top_level = true
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("11_xmak2")
+script = ExtResource("12_3rauc")
 unit = NodePath("..")
-metadata/_custom_type_script = "uid://ds0xan0v3ps3v"
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Attack_hitbox"]
-shape = SubResource("CircleShape2D_1csaq")
-debug_color = Color(2.86378e-06, 0.648144, 0.19022, 0.42)
-
-[node name="push_bodes" type="Area2D" parent="." node_paths=PackedStringArray("unit")]
-collision_layer = 64
-collision_mask = 64
-script = ExtResource("2_lx4x6")
-unit = NodePath("..")
-forse = 1
-metadata/_custom_type_script = "uid://caombhjx3w1vv"
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="push_bodes"]
-shape = SubResource("CircleShape2D_ff3is")
-
-[node name="hitbox" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_pegs0")
-debug_color = Color(0.984323, 0, 0.344669, 0.42)
+nav_agent = NodePath("../NavigationAgent2D")
+metadata/_custom_type_script = "uid://cqhhcsxuhechc"
 
 [node name="Sprite" type="AnimatedSprite2D" parent="." node_paths=PackedStringArray("unit")]
 z_index = 12
 y_sort_enabled = true
 position = Vector2(1.9073486e-06, -7.999999)
 scale = Vector2(0.033812504, 0.033812504)
-sprite_frames = SubResource("SpriteFrames_ajp2o")
+sprite_frames = SubResource("SpriteFrames_kl5hy")
 animation = &"idle"
-script = ExtResource("5_ah7a6")
+script = ExtResource("5_43dth")
 unit = NodePath("..")
 metadata/_custom_type_script = "uid://ss6u6yn12htk"
 
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+debug_enabled = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_jsclr")
+
+[node name="Attack_hitbox" type="Area2D" parent="." node_paths=PackedStringArray("unit")]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("2_w22ff")
+unit = NodePath("..")
+metadata/_custom_type_script = "uid://ds0xan0v3ps3v"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Attack_hitbox"]
+position = Vector2(32, 0)
+shape = SubResource("RectangleShape2D_w22ff")
+debug_color = Color(2.86378e-06, 0.648144, 0.19022, 0.42)
+
+[node name="push_bodes" type="Area2D" parent="." node_paths=PackedStringArray("unit")]
+collision_layer = 64
+collision_mask = 64
+script = ExtResource("3_3irlc")
+unit = NodePath("..")
+forse = 1
+metadata/_custom_type_script = "uid://caombhjx3w1vv"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="push_bodes"]
+shape = SubResource("CircleShape2D_0o8rb")
+
+[node name="hitbox" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_i7opm")
+debug_color = Color(0.984323, 0, 0.344669, 0.42)
+
 [node name="StateMashine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
-script = ExtResource("4_hxbk7")
+script = ExtResource("6_uvbcy")
 initial_state = NodePath("unit_wait")
 metadata/_custom_type_script = "uid://p64qmyacpa4a"
 
 [node name="unit_wait" type="Node" parent="StateMashine" node_paths=PackedStringArray("on_attack_hitbox_entered", "on_death", "on_navigation_not_finished", "unit", "nav_agent", "attack_hitbox", "anim_player")]
-script = ExtResource("7_fyb7g")
+script = ExtResource("7_6hs26")
 on_attack_hitbox_entered = NodePath("../unit_attack")
 on_death = NodePath("../unit_dead")
 on_navigation_not_finished = NodePath("../unit_move")
@@ -159,7 +167,7 @@ anim_player = NodePath("../../AnimationPlayer")
 metadata/_custom_type_script = "uid://c81x64hx8sfwy"
 
 [node name="unit_move" type="Node" parent="StateMashine" node_paths=PackedStringArray("on_attack_hitbox_entered", "on_death", "on_navigation_finished", "unit", "nav_agent", "attack_hitbox", "anim_player")]
-script = ExtResource("6_1csaq")
+script = ExtResource("8_3hcc8")
 on_attack_hitbox_entered = NodePath("../unit_attack")
 on_death = NodePath("../unit_dead")
 on_navigation_finished = NodePath("../unit_wait")
@@ -167,22 +175,21 @@ unit = NodePath("../..")
 nav_agent = NodePath("../../NavigationAgent2D")
 attack_hitbox = NodePath("../../Attack_hitbox")
 anim_player = NodePath("../../AnimationPlayer")
-speed = 300
 metadata/_custom_type_script = "uid://chum2ktf3br45"
 
 [node name="unit_attack" type="Node" parent="StateMashine" node_paths=PackedStringArray("on_attack_finiched", "unit", "attack_hitbox", "anim_player")]
-script = ExtResource("9_1csaq")
+script = ExtResource("9_toja3")
 on_attack_finiched = NodePath("../unit_move")
 unit = NodePath("../..")
 attack_hitbox = NodePath("../../Attack_hitbox")
 anim_player = NodePath("../../AnimationPlayer")
 single_target = true
-damage = 20
-knockback = -400
+damage = 0
+knockback = 0
 metadata/_custom_type_script = "uid://dvwyf8tjmffav"
 
 [node name="unit_dead" type="Node" parent="StateMashine" node_paths=PackedStringArray("unit")]
-script = ExtResource("10_fyb7g")
+script = ExtResource("10_yrjo1")
 unit = NodePath("../..")
 metadata/_custom_type_script = "uid://lxhfrrd12ppd"
 
@@ -196,8 +203,8 @@ offset_left = -16.0
 offset_top = -40.0
 offset_right = 16.0
 offset_bottom = -33.0
-theme_override_styles/background = SubResource("StyleBoxFlat_1csaq")
-theme_override_styles/fill = SubResource("StyleBoxFlat_fyb7g")
+theme_override_styles/background = SubResource("StyleBoxFlat_jigjj")
+theme_override_styles/fill = SubResource("StyleBoxFlat_cmgsc")
 value = 50.0
 show_percentage = false
 
@@ -207,20 +214,11 @@ offset_top = -13.0
 offset_right = 13.0
 offset_bottom = 13.0
 
-[node name="move_target" type="Sprite2D" parent="." node_paths=PackedStringArray("unit", "nav_agent")]
-top_level = true
-scale = Vector2(0.2, 0.2)
-texture = ExtResource("10_4mg11")
-script = ExtResource("11_qml8c")
-unit = NodePath("..")
-nav_agent = NodePath("../NavigationAgent2D")
-metadata/_custom_type_script = "uid://cqhhcsxuhechc"
-
 [node name="Sprite2D" type="Sprite2D" parent="." node_paths=PackedStringArray("unit")]
 z_index = 2
 position = Vector2(0, -32)
-texture = ExtResource("13_1cffw")
+texture = ExtResource("13_3irlc")
 hframes = 2
 vframes = 2
-script = ExtResource("14_ju6x6")
+script = ExtResource("14_6yilx")
 unit = NodePath("..")

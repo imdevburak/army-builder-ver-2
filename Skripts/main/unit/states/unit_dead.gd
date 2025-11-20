@@ -5,8 +5,10 @@ extends State
 
 func Enter():
 	unit.is_dead = true
+	Autoload.units.erase(unit)
 
 
 func Physics_update(_delta):
+	
 	unit.target_velocity = Vector2.ZERO
 	unit.health = 0

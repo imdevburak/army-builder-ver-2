@@ -1,17 +1,20 @@
-[gd_scene load_steps=22 format=3 uid="uid://x1weeub25hk3"]
+[gd_scene load_steps=31 format=3 uid="uid://x1weeub25hk3"]
 
 [ext_resource type="Script" uid="uid://cyprxf4gmw8hy" path="res://Skripts/main/base_unit.gd" id="1_k1nd0"]
-[ext_resource type="Texture2D" uid="uid://dnka2dxuq6f01" path="res://Assets/units/healer.png" id="2_k7bkv"]
 [ext_resource type="Script" uid="uid://n0xi2gv4me3b" path="res://Skripts/main/attack hitbox/feld_of_veiw.gd" id="3_0lt1e"]
 [ext_resource type="Script" uid="uid://p64qmyacpa4a" path="res://Skripts/main/state machine/State_Machine.gd" id="3_k7bkv"]
 [ext_resource type="Texture2D" uid="uid://dpehkh7qs6hn7" path="res://Assets/icon.svg" id="4_4ag63"]
 [ext_resource type="Script" uid="uid://c81x64hx8sfwy" path="res://Skripts/main/unit/states/wait.gd" id="5_ao3qh"]
 [ext_resource type="Script" uid="uid://chum2ktf3br45" path="res://Skripts/main/unit/states/move.gd" id="5_llvpn"]
+[ext_resource type="Texture2D" uid="uid://cf7qcm56il3wr" path="res://Assets/units/spritesheet.png" id="6_2o60t"]
 [ext_resource type="Script" uid="uid://caombhjx3w1vv" path="res://Skripts/main/push bodes away/puch_bodes_away.gd" id="7_8u560"]
+[ext_resource type="Script" uid="uid://ss6u6yn12htk" path="res://Skripts/main/animation_manager.gd" id="7_mw5kt"]
 [ext_resource type="Script" uid="uid://ds0xan0v3ps3v" path="res://Skripts/main/attack hitbox/attack_hitbox.gd" id="9_7xogc"]
-[ext_resource type="Script" uid="uid://bt2va5h7uq1ch" path="res://Scenes/main/units/unit_heal.gd" id="10_jwvl0"]
+[ext_resource type="Script" uid="uid://bt2va5h7uq1ch" path="res://Skripts/main/unit/states/unit_heal.gd" id="10_jwvl0"]
 [ext_resource type="Script" uid="uid://cqhhcsxuhechc" path="res://Skripts/main/target/target.gd" id="12_2o60t"]
 [ext_resource type="Script" uid="uid://lxhfrrd12ppd" path="res://Skripts/main/unit/states/unit_dead.gd" id="12_jwvl0"]
+[ext_resource type="Texture2D" uid="uid://bowb28hlg06b4" path="res://Assets/bullets/helmet_bullet.png" id="14_4ppbf"]
+[ext_resource type="Script" uid="uid://78wd6s8pfd33" path="res://Skripts/main/plaseholder_holding_resourse.gd" id="15_61dnj"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ao5sm"]
 radius = 13.0384
@@ -24,6 +27,54 @@ radius = 251.676
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_pinif"]
 radius = 7.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mw5kt"]
+atlas = ExtResource("6_2o60t")
+region = Rect2(0, 0, 1024, 1024)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_urrdp"]
+atlas = ExtResource("6_2o60t")
+region = Rect2(1024, 0, 1024, 1024)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4ppbf"]
+atlas = ExtResource("6_2o60t")
+region = Rect2(2048, 0, 1024, 1024)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_61dnj"]
+atlas = ExtResource("6_2o60t")
+region = Rect2(3072, 0, 1024, 1024)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_me37b"]
+atlas = ExtResource("6_2o60t")
+region = Rect2(0, 0, 1024, 1024)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_me37b"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mw5kt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_urrdp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4ppbf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_61dnj")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_me37b")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
 
 [sub_resource type="Animation" id="Animation_jwvl0"]
 resource_name = "attack"
@@ -44,7 +95,7 @@ bg_color = Color(0, 0, 0, 1)
 bg_color = Color(1, 0, 0, 1)
 
 [node name="healer" type="CharacterBody2D" node_paths=PackedStringArray("hp_bar", "target", "select_button")]
-z_as_relative = false
+z_index = 1
 y_sort_enabled = true
 collision_mask = 8
 script = ExtResource("1_k1nd0")
@@ -55,9 +106,9 @@ health = 200
 friction = 0.1
 metadata/_custom_type_script = "uid://cyprxf4gmw8hy"
 
-[node name="puch bodes away" type="Area2D" parent="." node_paths=PackedStringArray("body")]
+[node name="puch bodes away" type="Area2D" parent="." node_paths=PackedStringArray("unit")]
 script = ExtResource("7_8u560")
-body = NodePath("..")
+unit = NodePath("..")
 forse = 10
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="puch bodes away"]
@@ -101,11 +152,14 @@ debug_enabled = true
 shape = SubResource("CircleShape2D_pinif")
 debug_color = Color(0.984323, 0, 0.344669, 0.42)
 
-[node name="Sprite" type="Sprite2D" parent="."]
-z_as_relative = false
-y_sort_enabled = true
-position = Vector2(0, -10)
-texture = ExtResource("2_k7bkv")
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." node_paths=PackedStringArray("unit")]
+position = Vector2(9.536743e-07, -16)
+scale = Vector2(0.05175781, 0.051757813)
+sprite_frames = SubResource("SpriteFrames_me37b")
+animation = &"idle"
+autoplay = "default"
+script = ExtResource("7_mw5kt")
+unit = NodePath("..")
 
 [node name="StateMashine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
 script = ExtResource("3_k7bkv")
@@ -179,3 +233,12 @@ script = ExtResource("12_2o60t")
 unit = NodePath("..")
 nav_agent = NodePath("../NavigationAgent2D")
 metadata/_custom_type_script = "uid://cqhhcsxuhechc"
+
+[node name="Sprite2D" type="Sprite2D" parent="." node_paths=PackedStringArray("unit")]
+z_index = 2
+position = Vector2(0, -32)
+texture = ExtResource("14_4ppbf")
+hframes = 2
+vframes = 2
+script = ExtResource("15_61dnj")
+unit = NodePath("..")

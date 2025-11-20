@@ -1,28 +1,57 @@
 class_name unit_spawner
 extends Node2D
 
-@export var puch_dir_deg : int = 90
+@export var puch_dir_x : float = 50
+@export var puch_dir_y : float = 0
 @export var line_size : int = 10
 @export var cost : int
-
-@export var label : Label
-@export var button : Button
-
 @export var unit_type : String 
 
-@onready var basic_unit = load(unit_type)
+@export_category("upgrade")
+@export var can_upgrade : bool
+
+@export_category("referenses")
+@export var text_label : Label
+@export var upgrade_area : Area2D
+
+var mouse_inside_area : bool = false
+
+
+func _ready() -> void:
+	if !can_upgrade:
+		text_label.text = str(line_size)
 
 func _process(delta: float) -> void:
-	label.text = str(line_size)
 	
-	if button.is_hovered() and Input.is_action_just_pressed("L_klick"):
-		if Autoload.resurses < cost:
-			return
-		line_size -= 1
-		
-		Autoload.resurses -= cost
-		var basic_unit_instanse = basic_unit.instantiate()
-		basic_unit_instanse.global_position = global_position
-		basic_unit_instanse.velocity += Vector2.UP.rotated(deg_to_rad(puch_dir_deg))
-		add_sibling(basic_unit_instanse)
-	
+	if mouse_inside_area and Input.is_action_just_pressed("L_klick"):
+		var basic_unit = preload("res://Scenes/main/units/unit_no_upgrades.tscn")
+		var unit_instanse = basic_unit.instantiate()
+		if can_upgrade:
+			for body in upgrade_area.get_overlapping_bodies():
+				if body is not unit_base:
+					return
+				if !body.holding_recourse:
+					return
+				unit_instanse.global_position = body.global_position
+				unit_instanse.velocity = body.velocity
+				add_sibling(unit_instanse)
+				body.queue_free()
+			
+		elif line_size > 0:
+			
+			
+			line_size -= 1
+			text_label.text = str(line_size)
+			unit_instanse.global_position = global_position
+			unit_instanse.velocity = Vector2(puch_dir_x,puch_dir_y)
+			add_sibling(unit_instanse)
+
+
+func _on_area_2d_mouse_entered() -> void:
+	mouse_inside_area = true
+	print(mouse_inside_area)
+
+
+func _on_area_2d_mouse_exited() -> void:
+	mouse_inside_area = false
+	print(mouse_inside_area)

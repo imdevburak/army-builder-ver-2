@@ -1,22 +1,21 @@
 class_name push_bodes
 extends Area2D
 
-@export var body : CharacterBody2D
+@export var unit : CharacterBody2D
 
 @export var forse : int = 20
 
 
 func _process(delta: float) -> void:
-	var overping_bodies = get_overlapping_bodies()
+	var overping_bodies = get_overlapping_areas()
 	
-	if overping_bodies.size() == 1: 
-		return
 	
-	for i in overping_bodies.size():
-		if overping_bodies[i] is not unit_base:
-			return
-		var puch_direction = (body.global_position - overping_bodies[i].global_position).normalized()
-		var distanse_multiplyer = clamp(abs(200 / body.global_position.distance_to(overping_bodies[i].global_position)),0.0,100.0)
-		body.velocity += puch_direction * distanse_multiplyer * forse * delta
+	for body in overping_bodies:
+		
+		var puch_direction = (global_position - body.global_position).normalized()
+		var distanse_multiplyer = clamp(abs(200 / global_position.distance_to(body.global_position)),0.0,1000.0)
+		
+		unit.velocity += puch_direction * distanse_multiplyer * forse
+		print(puch_direction * forse)
 		
 		

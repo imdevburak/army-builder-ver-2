@@ -12,11 +12,12 @@ extends CharacterBody2D
 	set(new_health):
 		health = clampi(new_health,0,max_health)
 var max_health : int = health
-@export var friction : float
+@export var friction : float = 0.05
 
 
-var selected :bool = false
-var is_dead : bool = false
+var selected :bool = true
+var holding_recourse : bool = false
+@export var is_dead : bool = false
 
 var mouse_position : Vector2
 
@@ -27,19 +28,22 @@ var closest_enemy : Enemy
 func _ready() -> void:
 	hp_bar.value = health
 	hp_bar.max_value = max_health
+	target.global_position = global_position
+	Autoload.units.append(self)
 
 
 func _process(delta: float) -> void:
-	 
+	
 	hp_bar.value = health
 	
 	if is_dead:
 		return
 	
 	#selects or deselects enemy
-	if select_button.is_hovered() and Input.is_action_pressed("L_klick") or Input.is_action_just_pressed("ui_up"):
+	if select_button.is_hovered() and Input.is_action_pressed("L_klick") or Input.is_action_just_pressed("mid_klick"):
 		selected = true
 		target.global_position = global_position
+	
 	
 	#calculates the closest enemy
 	var closest_enemy_distanse = INF

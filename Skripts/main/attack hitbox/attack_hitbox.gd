@@ -9,7 +9,7 @@ extends Area2D
 
 var target_look_pos : Vector2 = Vector2.ZERO
 
-func _process(delta: float) -> void:
+func _physics_process(delta: float) -> void:
 	
 	if lock_on_closest_enemy:
 		if feld_of_veiw.closest_enemy != null:

@@ -8,4 +8,5 @@ y_sort_enabled = true
 script = ExtResource("1_ud4mc")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
 texture = ExtResource("2_nr0l2")

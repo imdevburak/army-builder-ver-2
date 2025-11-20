@@ -7,13 +7,9 @@ var units :Array = []
 var enemies : Array = []
 
 func _process(delta: float) -> void:
-	
+
+	Autoload.enemies.clear()
 	for child in get_children():
-		if child is unit_base:
-			if child.is_dead == true:
-				return
-			units.push_back(child)
-			Autoload.units.push_back(child)
 		
 		if child is Enemy:
 			enemies.push_back(child)

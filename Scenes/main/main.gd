@@ -9,14 +9,8 @@ func _ready() -> void:
 	
 
 func _process(delta: float) -> void:
-	var alive_units := []
-	for unit in Autoload.units:
-		if !is_instance_valid(unit):
-			return
-		if !unit.is_dead:
-			alive_units.append(unit)
 	
-	if Input.is_action_just_pressed("ui_down"):
+	if Input.is_action_just_pressed("esc"):
 		if $Timer.is_stopped():
 			$Timer.start()
 		
@@ -30,7 +24,7 @@ func _process(delta: float) -> void:
 	
 	
 	$CanvasLayer/Label2.text = "resurses: " + str(Autoload.resurses)
-	alive_units.clear()
+	
 
 
 func _on_timer_timeout() -> void:

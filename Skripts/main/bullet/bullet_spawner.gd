@@ -24,12 +24,12 @@ func spawn_sircle_attack(bullet_type : String, number_of_bullets : int, randomis
 
 
 func spawn_target_attack(bullet_type : String, randomise_rotation : int):
-	var target = Autoload.units.pick_random()
-	
-	if !is_instance_valid(target):
+	if Autoload.units.is_empty():
 		return
 	
-	elif target.is_dead:
+	var target = Autoload.units.pick_random()
+	
+	if !is_instance_valid(target) or target.is_dead:
 		return
 	
 	var bullet_instanse = bullet.find_key(bullet_type).instantiate()
