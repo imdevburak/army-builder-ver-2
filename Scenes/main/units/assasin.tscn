@@ -96,7 +96,6 @@ script = ExtResource("1_l4f50")
 hp_bar = NodePath("hp bar")
 target = NodePath("move_target")
 select_button = NodePath("Button")
-is_dead = true
 metadata/_custom_type_script = "uid://cyprxf4gmw8hy"
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]

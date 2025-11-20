@@ -8,6 +8,18 @@ extends Node2D
 
 
 
+func closest_unit():
+	var units = Autoload.units
+	var closest_enemy_distanse = 999999999999
+	
+	if units.is_empty():
+		return null
+	
+	for unit in units:
+		if unit.global_position.distance_to(global_position) < closest_enemy_distanse:
+			closest_enemy_distanse = unit.global_position.distance_to(global_position)
+			return unit
+
 
 func spawn_sircle_attack(bullet_type : String, number_of_bullets : int, randomise_rotation : int):
 	var random_rotation_offset = randi_range(-randomise_rotation,randomise_rotation) 
@@ -27,7 +39,7 @@ func spawn_target_attack(bullet_type : String, randomise_rotation : int):
 	if Autoload.units.is_empty():
 		return
 	
-	var target = Autoload.units.pick_random()
+	var target = closest_unit()
 	
 	if !is_instance_valid(target) or target.is_dead:
 		return

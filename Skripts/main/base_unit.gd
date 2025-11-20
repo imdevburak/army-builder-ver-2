@@ -17,7 +17,7 @@ var max_health : int = health
 
 var selected :bool = true
 var holding_recourse : bool = false
-@export var is_dead : bool = false
+var is_dead : bool = false
 
 var mouse_position : Vector2
 
@@ -36,8 +36,11 @@ func _process(delta: float) -> void:
 	
 	hp_bar.value = health
 	
+	velocity = lerp(velocity,target_velocity,friction)
+	move_and_slide()
 	if is_dead:
 		return
+	
 	
 	#selects or deselects enemy
 	if select_button.is_hovered() and Input.is_action_pressed("L_klick") or Input.is_action_just_pressed("mid_klick"):
@@ -61,9 +64,7 @@ func _process(delta: float) -> void:
 	
 	mouse_position = get_global_mouse_position()
 	
-	velocity = lerp(velocity,target_velocity,friction)
+	
 	
 	enemies.clear()
-	
-	move_and_slide()
 	

@@ -9,6 +9,5 @@ func Enter():
 
 
 func Physics_update(_delta):
-	
 	unit.target_velocity = Vector2.ZERO
 	unit.health = 0

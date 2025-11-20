@@ -34,7 +34,10 @@ func _process(delta: float) -> void:
 					return
 				unit_instanse.global_position = body.global_position
 				unit_instanse.velocity = body.velocity
+				unit_instanse.health = body.health
 				add_sibling(unit_instanse)
+				
+				Autoload.units.erase(body)
 				body.queue_free()
 			
 		elif line_size > 0:

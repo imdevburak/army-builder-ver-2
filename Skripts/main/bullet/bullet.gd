@@ -16,13 +16,10 @@ func _process(delta: float) -> void:
 	
 	texture.global_rotation = 0.0
 	global_position += Vector2.LEFT.rotated(global_rotation) * speed * delta
-	if get_overlapping_bodies().size() > 0:
+	if !get_overlapping_bodies().is_empty():
 		for body in get_overlapping_bodies():
 			if body is unit_base:
-				if body.is_dead:
-					return
-				
 				var direction = global_position.direction_to(body.global_position)
 				body.health -= damage
-				body.velocity = direction * -knockback
+				body.target_velocity += direction * -knockback
 		queue_free()
