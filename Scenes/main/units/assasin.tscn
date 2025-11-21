@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://dkp4a0q8dwq6t"]
+[gd_scene load_steps=34 format=3 uid="uid://dkp4a0q8dwq6t"]
 
 [ext_resource type="Script" uid="uid://cyprxf4gmw8hy" path="res://Skripts/main/base_unit.gd" id="1_l4f50"]
 [ext_resource type="Script" uid="uid://caombhjx3w1vv" path="res://Skripts/main/push bodes away/puch_bodes_away.gd" id="2_lx4x6"]
@@ -9,8 +9,8 @@
 [ext_resource type="Script" uid="uid://chum2ktf3br45" path="res://Skripts/main/unit/states/move.gd" id="6_1csaq"]
 [ext_resource type="Script" uid="uid://c81x64hx8sfwy" path="res://Skripts/main/unit/states/wait.gd" id="7_fyb7g"]
 [ext_resource type="Script" uid="uid://dvwyf8tjmffav" path="res://Skripts/main/unit/states/unit_attack.gd" id="9_1csaq"]
-[ext_resource type="Texture2D" uid="uid://dpehkh7qs6hn7" path="res://Assets/icon.svg" id="10_4mg11"]
 [ext_resource type="Script" uid="uid://lxhfrrd12ppd" path="res://Skripts/main/unit/states/unit_dead.gd" id="10_fyb7g"]
+[ext_resource type="Texture2D" uid="uid://bb6bwmcwc6gas" path="res://Assets/units/spritesheet(3).png" id="11_1cffw"]
 [ext_resource type="Script" uid="uid://cqhhcsxuhechc" path="res://Skripts/main/target/target.gd" id="11_qml8c"]
 [ext_resource type="Texture2D" uid="uid://bowb28hlg06b4" path="res://Assets/bullets/helmet_bullet.png" id="13_1cffw"]
 [ext_resource type="Script" uid="uid://78wd6s8pfd33" path="res://Skripts/main/plaseholder_holding_resourse.gd" id="14_ju6x6"]
@@ -87,6 +87,42 @@ bg_color = Color(0, 0, 0, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fyb7g"]
 bg_color = Color(1, 0, 0, 1)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ajp2o"]
+atlas = ExtResource("11_1cffw")
+region = Rect2(0, 0, 1024, 1024)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pkh0v"]
+atlas = ExtResource("11_1cffw")
+region = Rect2(1024, 0, 1024, 1024)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nps1x"]
+atlas = ExtResource("11_1cffw")
+region = Rect2(2048, 0, 1024, 1024)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6hq0w"]
+atlas = ExtResource("11_1cffw")
+region = Rect2(3072, 0, 1024, 1024)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xij3t"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ajp2o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pkh0v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nps1x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6hq0w")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="assasin" type="CharacterBody2D" node_paths=PackedStringArray("hp_bar", "target", "select_button")]
 z_index = 1
@@ -206,10 +242,10 @@ offset_top = -13.0
 offset_right = 13.0
 offset_bottom = 13.0
 
-[node name="move_target" type="Sprite2D" parent="." node_paths=PackedStringArray("unit", "nav_agent")]
+[node name="move_target" type="AnimatedSprite2D" parent="." node_paths=PackedStringArray("unit", "nav_agent")]
 top_level = true
-scale = Vector2(0.2, 0.2)
-texture = ExtResource("10_4mg11")
+scale = Vector2(0.054687496, 0.0546875)
+sprite_frames = SubResource("SpriteFrames_xij3t")
 script = ExtResource("11_qml8c")
 unit = NodePath("..")
 nav_agent = NodePath("../NavigationAgent2D")

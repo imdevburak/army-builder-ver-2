@@ -15,7 +15,7 @@ var max_health : int = health
 @export var friction : float = 0.05
 
 
-var selected :bool = true
+var selected :bool = false
 var holding_recourse : bool = false
 var is_dead : bool = false
 

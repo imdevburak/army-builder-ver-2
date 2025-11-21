@@ -21,5 +21,5 @@ func _process(delta: float) -> void:
 			if body is unit_base:
 				var direction = global_position.direction_to(body.global_position)
 				body.health -= damage
-				body.target_velocity += direction * -knockback
+				body.velocity += direction * knockback
 		queue_free()

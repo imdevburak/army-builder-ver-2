@@ -1,0 +1,134 @@
+[gd_scene load_steps=13 format=3 uid="uid://b4iqdiqwll2e4"]
+
+[ext_resource type="Script" uid="uid://buvpmjdq62mxv" path="res://Skripts/main/navigation manager/nav_manager.gd" id="1_2boa3"]
+[ext_resource type="Script" uid="uid://c1prnoaj5g3yw" path="res://Skripts/tutorial/tutorial_room_1.gd" id="1_4opw6"]
+[ext_resource type="PackedScene" uid="uid://v64308ap3hus" path="res://Scenes/main/units/unit_no_upgrades.tscn" id="2_2boa3"]
+[ext_resource type="Texture2D" uid="uid://pesnujcsu0i8" path="res://Assets/tutorial/spritesheet(2).png" id="3_h6qxy"]
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_4opw6"]
+vertices = PackedVector2Array(606, 326, 34, 326, 34, 34, 606, 34)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(24, 24, 24, 336, 616, 336, 616, 24)])
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4opw6"]
+atlas = ExtResource("3_h6qxy")
+region = Rect2(0, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vtpua"]
+atlas = ExtResource("3_h6qxy")
+region = Rect2(256, 0, 256, 256)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_k0v7i"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4opw6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vtpua")
+}],
+"loop": true,
+"name": &"default",
+"speed": 1.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4opw6"]
+size = Vector2(34, 106)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k0v7i"]
+atlas = ExtResource("3_h6qxy")
+region = Rect2(0, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5id6x"]
+atlas = ExtResource("3_h6qxy")
+region = Rect2(512, 0, 256, 256)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_yqcky"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k0v7i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5id6x")
+}],
+"loop": true,
+"name": &"default",
+"speed": 1.0
+}]
+
+[node name="tutorial_room_1" type="Node2D"]
+script = ExtResource("1_4opw6")
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+color = Color(8.663535e-07, 0.7479128, 0.32224953, 1)
+polygon = PackedVector2Array(32, 32, 32, 328, 608, 328, 608, 32)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(320, 180)
+
+[node name="navigation manger" type="NavigationRegion2D" parent="."]
+z_as_relative = false
+y_sort_enabled = true
+navigation_polygon = SubResource("NavigationPolygon_4opw6")
+script = ExtResource("1_2boa3")
+
+[node name="unit_no_upgrades" parent="navigation manger" instance=ExtResource("2_2boa3")]
+position = Vector2(88, 192)
+
+[node name="Label" type="Label" parent="."]
+offset_left = 101.0
+offset_top = 128.0
+offset_right = 158.0
+offset_bottom = 216.0
+rotation = 1.5707964
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+text = "->"
+
+[node name="how to select" type="AnimatedSprite2D" parent="."]
+position = Vector2(88, 96)
+scale = Vector2(0.1875, 0.1875)
+sprite_frames = SubResource("SpriteFrames_k0v7i")
+autoplay = "default"
+frame_progress = 0.76105684
+
+[node name="Polygon2D2" type="Polygon2D" parent="."]
+position = Vector2(552, 120)
+color = Color(0.92421633, 0, 0.29216275, 1)
+polygon = PackedVector2Array(-8, 0, 24, 0, 24, 104, -8, 104)
+
+[node name="goal" type="Label" parent="Polygon2D2"]
+offset_right = 40.0
+offset_bottom = 101.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+text = "G
+O
+A
+L"
+
+[node name="Area2D" type="Area2D" parent="Polygon2D2"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Polygon2D2/Area2D"]
+position = Vector2(7, 51)
+shape = SubResource("RectangleShape2D_4opw6")
+
+[node name="gogogo" type="Label" parent="."]
+visible = false
+offset_left = 264.0
+offset_top = 167.0
+offset_right = 423.0
+offset_bottom = 190.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+text = "----------------------------->"
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="gogogo"]
+position = Vector2(72, -23)
+scale = Vector2(0.1875, 0.18749999)
+sprite_frames = SubResource("SpriteFrames_yqcky")
+autoplay = "default"
+frame_progress = 0.2644237
+
+[connection signal="body_entered" from="Polygon2D2/Area2D" to="." method="_on_area_2d_body_entered"]

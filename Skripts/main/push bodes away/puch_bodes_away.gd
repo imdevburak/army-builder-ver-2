@@ -11,7 +11,8 @@ func _process(delta: float) -> void:
 	
 	
 	for body in overping_bodies:
-		
+		if body is not push_bodes:
+			return
 		var puch_direction = (global_position - body.global_position).normalized()
 		var distanse_multiplyer = clamp(abs(200 / global_position.distance_to(body.global_position)),0.0,1000.0)
 		

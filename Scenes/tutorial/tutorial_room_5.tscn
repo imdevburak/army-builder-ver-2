@@ -1,0 +1,65 @@
+[gd_scene load_steps=6 format=3 uid="uid://duv42mcd3onk3"]
+
+[ext_resource type="Script" uid="uid://buvpmjdq62mxv" path="res://Skripts/main/navigation manager/nav_manager.gd" id="1_4k5ke"]
+[ext_resource type="Script" uid="uid://dtu1kkt2rdig6" path="res://Skripts/tutorial/tutorial_room_5.gd" id="1_5i2gy"]
+[ext_resource type="PackedScene" uid="uid://v64308ap3hus" path="res://Scenes/main/units/unit_no_upgrades.tscn" id="2_5i2gy"]
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_bdl20"]
+vertices = PackedVector2Array(606, 326, 34, 326, 34, 34, 606, 34)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(24, 24, 24, 336, 616, 336, 616, 24)])
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_s0hfc"]
+size = Vector2(34, 106)
+
+[node name="tutorial_room_5" type="Node2D"]
+script = ExtResource("1_5i2gy")
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+color = Color(8.663535e-07, 0.7479128, 0.32224953, 1)
+polygon = PackedVector2Array(32, 32, 32, 328, 608, 328, 608, 32)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(320, 180)
+
+[node name="navigation manger" type="NavigationRegion2D" parent="."]
+z_as_relative = false
+y_sort_enabled = true
+navigation_polygon = SubResource("NavigationPolygon_bdl20")
+script = ExtResource("1_4k5ke")
+
+[node name="unit_no_upgrades" parent="navigation manger" instance=ExtResource("2_5i2gy")]
+position = Vector2(88, 192)
+
+[node name="Polygon2D2" type="Polygon2D" parent="."]
+position = Vector2(552, 120)
+color = Color(0.92421633, 0, 0.29216275, 1)
+polygon = PackedVector2Array(-8, 0, 24, 0, 24, 104, -8, 104)
+
+[node name="goal" type="Label" parent="Polygon2D2"]
+offset_right = 40.0
+offset_bottom = 101.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+text = "G
+O
+A
+L"
+metadata/_edit_use_anchors_ = true
+
+[node name="Area2D" type="Area2D" parent="Polygon2D2"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Polygon2D2/Area2D"]
+position = Vector2(7, 51)
+shape = SubResource("RectangleShape2D_s0hfc")
+
+[node name="Label" type="Label" parent="."]
+offset_left = 240.0
+offset_top = 167.0
+offset_right = 389.0
+offset_bottom = 190.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+text = "now kill bos maboy"
+
+[connection signal="body_entered" from="Polygon2D2/Area2D" to="." method="_on_area_2d_body_entered"]

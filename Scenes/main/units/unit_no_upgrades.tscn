@@ -1,6 +1,7 @@
-[gd_scene load_steps=29 format=3 uid="uid://v64308ap3hus"]
+[gd_scene load_steps=34 format=3 uid="uid://v64308ap3hus"]
 
 [ext_resource type="Script" uid="uid://cyprxf4gmw8hy" path="res://Skripts/main/base_unit.gd" id="1_raefp"]
+[ext_resource type="Texture2D" uid="uid://bb6bwmcwc6gas" path="res://Assets/units/spritesheet(3).png" id="2_3irlc"]
 [ext_resource type="Script" uid="uid://ds0xan0v3ps3v" path="res://Skripts/main/attack hitbox/attack_hitbox.gd" id="2_w22ff"]
 [ext_resource type="Script" uid="uid://caombhjx3w1vv" path="res://Skripts/main/push bodes away/puch_bodes_away.gd" id="3_3irlc"]
 [ext_resource type="Texture2D" uid="uid://bl3p2gpwa7wfu" path="res://Assets/units/spritesheet(1).png" id="4_6yilx"]
@@ -10,10 +11,45 @@
 [ext_resource type="Script" uid="uid://chum2ktf3br45" path="res://Skripts/main/unit/states/move.gd" id="8_3hcc8"]
 [ext_resource type="Script" uid="uid://dvwyf8tjmffav" path="res://Skripts/main/unit/states/unit_attack.gd" id="9_toja3"]
 [ext_resource type="Script" uid="uid://lxhfrrd12ppd" path="res://Skripts/main/unit/states/unit_dead.gd" id="10_yrjo1"]
-[ext_resource type="Texture2D" uid="uid://dpehkh7qs6hn7" path="res://Assets/icon.svg" id="11_xmak2"]
 [ext_resource type="Script" uid="uid://cqhhcsxuhechc" path="res://Skripts/main/target/target.gd" id="12_3rauc"]
 [ext_resource type="Texture2D" uid="uid://bowb28hlg06b4" path="res://Assets/bullets/helmet_bullet.png" id="13_3irlc"]
 [ext_resource type="Script" uid="uid://78wd6s8pfd33" path="res://Skripts/main/plaseholder_holding_resourse.gd" id="14_6yilx"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6yilx"]
+atlas = ExtResource("2_3irlc")
+region = Rect2(0, 0, 1024, 1024)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_43dth"]
+atlas = ExtResource("2_3irlc")
+region = Rect2(1024, 0, 1024, 1024)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uvbcy"]
+atlas = ExtResource("2_3irlc")
+region = Rect2(2048, 0, 1024, 1024)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6hs26"]
+atlas = ExtResource("2_3irlc")
+region = Rect2(3072, 0, 1024, 1024)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3hcc8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6yilx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_43dth")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uvbcy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6hs26")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1cffw"]
 atlas = ExtResource("4_6yilx")
@@ -97,10 +133,10 @@ select_button = NodePath("Button")
 friction = 0.1
 metadata/_custom_type_script = "uid://cyprxf4gmw8hy"
 
-[node name="move_target" type="Sprite2D" parent="." node_paths=PackedStringArray("unit", "nav_agent")]
+[node name="move_target" type="AnimatedSprite2D" parent="." node_paths=PackedStringArray("unit", "nav_agent")]
 top_level = true
-scale = Vector2(0.2, 0.2)
-texture = ExtResource("11_xmak2")
+scale = Vector2(0.054687504, 0.054687493)
+sprite_frames = SubResource("SpriteFrames_3hcc8")
 script = ExtResource("12_3rauc")
 unit = NodePath("..")
 nav_agent = NodePath("../NavigationAgent2D")

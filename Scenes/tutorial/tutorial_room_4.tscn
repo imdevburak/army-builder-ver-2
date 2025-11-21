@@ -1,0 +1,150 @@
+[gd_scene load_steps=14 format=3 uid="uid://bo2lutsyrofe1"]
+
+[ext_resource type="Script" uid="uid://buvpmjdq62mxv" path="res://Skripts/main/navigation manager/nav_manager.gd" id="1_12g8g"]
+[ext_resource type="Script" uid="uid://qgoi6ryuawtm" path="res://Skripts/tutorial/tutorial_room_4.gd" id="1_v523l"]
+[ext_resource type="PackedScene" uid="uid://v64308ap3hus" path="res://Scenes/main/units/unit_no_upgrades.tscn" id="2_v523l"]
+[ext_resource type="Texture2D" uid="uid://pesnujcsu0i8" path="res://Assets/tutorial/spritesheet(2).png" id="3_rhewu"]
+[ext_resource type="PackedScene" uid="uid://bnik3t52h101u" path="res://Scenes/main/whaiting line/unit_spawner.tscn" id="4_rhewu"]
+[ext_resource type="PackedScene" uid="uid://dkp4a0q8dwq6t" path="res://Scenes/main/units/assasin.tscn" id="5_fan61"]
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_fan61"]
+vertices = PackedVector2Array(606, 326, 34, 326, 34, 34, 606, 34)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(24, 24, 24, 336, 616, 336, 616, 24)])
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4opw6"]
+atlas = ExtResource("3_rhewu")
+region = Rect2(0, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vtpua"]
+atlas = ExtResource("3_rhewu")
+region = Rect2(256, 0, 256, 256)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_nljht"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4opw6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vtpua")
+}],
+"loop": true,
+"name": &"default",
+"speed": 1.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ovjxf"]
+size = Vector2(34, 106)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fan61"]
+size = Vector2(48, 58)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nljht"]
+size = Vector2(20, 378)
+
+[node name="tutorial_room_4" type="Node2D"]
+script = ExtResource("1_v523l")
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+color = Color(8.663535e-07, 0.7479128, 0.32224953, 1)
+polygon = PackedVector2Array(32, 32, 32, 328, 608, 328, 608, 32)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(320, 180)
+
+[node name="navigation manger" type="NavigationRegion2D" parent="."]
+z_as_relative = false
+y_sort_enabled = true
+navigation_polygon = SubResource("NavigationPolygon_fan61")
+script = ExtResource("1_12g8g")
+
+[node name="unit_no_upgrades" parent="navigation manger" instance=ExtResource("2_v523l")]
+position = Vector2(88, 192)
+
+[node name="unit_spawner" parent="navigation manger" instance=ExtResource("4_rhewu")]
+position = Vector2(320, 180)
+unit_type = "res://Scenes/main/units/healer.tscn"
+can_upgrade = true
+
+[node name="assasin" parent="navigation manger" instance=ExtResource("5_fan61")]
+visible = false
+position = Vector2(448, 273)
+
+[node name="Label" type="Label" parent="."]
+visible = false
+offset_left = 336.0
+offset_top = 128.0
+offset_right = 393.0
+offset_bottom = 216.0
+rotation = 1.5707964
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+text = "->"
+
+[node name="how to select" type="AnimatedSprite2D" parent="."]
+visible = false
+position = Vector2(323, 96)
+scale = Vector2(0.1875, 0.1875)
+sprite_frames = SubResource("SpriteFrames_nljht")
+autoplay = "default"
+
+[node name="Polygon2D2" type="Polygon2D" parent="."]
+position = Vector2(552, 120)
+color = Color(0.92421633, 0, 0.29216275, 1)
+polygon = PackedVector2Array(-8, 0, 24, 0, 24, 104, -8, 104)
+
+[node name="goal" type="Label" parent="Polygon2D2"]
+offset_right = 40.0
+offset_bottom = 101.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+text = "G
+O
+A
+L"
+metadata/_edit_use_anchors_ = true
+
+[node name="goalarea" type="Area2D" parent="Polygon2D2"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Polygon2D2/goalarea"]
+position = Vector2(7, 51)
+shape = SubResource("RectangleShape2D_ovjxf")
+
+[node name="Label2" type="Label" parent="."]
+offset_left = 144.0
+offset_top = 168.0
+offset_right = 227.0
+offset_bottom = 191.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+text = "---------------->"
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(320, 179)
+shape = SubResource("RectangleShape2D_fan61")
+debug_color = Color(0.96238405, 9.62615e-08, 0.5076863, 0.41960785)
+
+[node name="heal_tutorial" type="Area2D" parent="."]
+position = Vector2(128, 0)
+
+[node name="Label" type="Label" parent="heal_tutorial"]
+visible = false
+offset_left = 248.0
+offset_top = 260.0
+offset_right = 300.0
+offset_bottom = 283.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+text = "heal ->"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="heal_tutorial"]
+position = Vector2(256, 179)
+shape = SubResource("RectangleShape2D_nljht")
+debug_color = Color(0.99736255, 0, 0.17739785, 0.41960785)
+
+[connection signal="body_entered" from="Polygon2D2/goalarea" to="." method="_on_goalarea_body_entered"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_entered" from="heal_tutorial" to="." method="_on_heal_tutorial_body_entered"]

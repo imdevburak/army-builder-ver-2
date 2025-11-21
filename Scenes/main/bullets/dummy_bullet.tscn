@@ -1,0 +1,45 @@
+[gd_scene load_steps=5 format=3 uid="uid://ds7mvifrd6sqa"]
+
+[ext_resource type="Script" uid="uid://b0rty6wcqje5f" path="res://Skripts/main/bullet/bullet.gd" id="1_ne3ic"]
+[ext_resource type="Texture2D" uid="uid://b7lambrfp1vhd" path="res://Assets/bullets/big_bullet.png" id="2_1ixyk"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ouh3l"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_1ixyk")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"new_animation",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2ge0s"]
+radius = 6.08276
+
+[node name="Bullet" type="Area2D" node_paths=PackedStringArray("texture", "lifeTimeTimer")]
+script = ExtResource("1_ne3ic")
+damage = 0
+knockback = 999
+speed = 100
+texture = NodePath("Sprite2D")
+lifeTimeTimer = NodePath("Timer")
+metadata/_custom_type_script = "uid://b0rty6wcqje5f"
+
+[node name="Sprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_ouh3l")
+autoplay = "default"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_2ge0s")
+debug_color = Color(1, 0, 0, 0.41960785)
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 10.0
+one_shot = true
+autostart = true

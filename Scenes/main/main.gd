@@ -6,7 +6,8 @@ extends Node2D
 
 func _ready() -> void:
 	Autoload.resurses = 3
-	
+	Autoload.units.clear()
+	Autoload.enemies.clear()
 
 func _process(delta: float) -> void:
 	

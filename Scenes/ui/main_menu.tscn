@@ -28,10 +28,16 @@ layout_mode = 2
 text = "start
 "
 
+[node name="Button2" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "tutorial
+"
+
 [node name="exit" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 text = "exit
 "
 
 [connection signal="pressed" from="VBoxContainer/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/Button2" to="." method="_on_button_2_pressed"]
 [connection signal="pressed" from="VBoxContainer/exit" to="." method="_on_exit_pressed"]
