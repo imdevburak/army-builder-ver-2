@@ -4,7 +4,9 @@ extends AnimatedSprite2D
 @export var unit : unit_base
 @export var nav_agent : NavigationAgent2D
 
+
 func _unhandled_input(event: InputEvent) -> void:
+	
 	if !unit.selected:
 		visible = false
 		return

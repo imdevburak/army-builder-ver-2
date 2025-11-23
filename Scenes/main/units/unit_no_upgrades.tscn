@@ -142,7 +142,7 @@ unit = NodePath("..")
 nav_agent = NodePath("../NavigationAgent2D")
 metadata/_custom_type_script = "uid://cqhhcsxuhechc"
 
-[node name="Sprite" type="AnimatedSprite2D" parent="." node_paths=PackedStringArray("unit")]
+[node name="AnimationManager" type="AnimatedSprite2D" parent="." node_paths=PackedStringArray("unit")]
 z_index = 12
 y_sort_enabled = true
 position = Vector2(1.9073486e-06, -7.999999)

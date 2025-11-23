@@ -29,7 +29,6 @@ func _ready() -> void:
 	hp_bar.value = health
 	hp_bar.max_value = max_health
 	target.global_position = global_position
-	Autoload.units.append(self)
 
 
 func _process(delta: float) -> void:

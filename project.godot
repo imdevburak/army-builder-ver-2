@@ -58,6 +58,7 @@ esc={
 2d_physics/layer_5="resurse"
 2d_physics/layer_6="no bullet zone"
 2d_physics/layer_7="push bodies"
+2d_physics/layer_8="attack zone"
 2d_physics/main_scene="uid://duni2mkkfjbl"
 
 [rendering]

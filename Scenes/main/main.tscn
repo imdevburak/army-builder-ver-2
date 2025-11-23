@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://bbfuxwc4ojay8"]
+[gd_scene load_steps=12 format=3 uid="uid://bbfuxwc4ojay8"]
 
 [ext_resource type="Script" uid="uid://bochel1mb2ky3" path="res://Scenes/main/main.gd" id="1_4jhlv"]
 [ext_resource type="Script" uid="uid://buvpmjdq62mxv" path="res://Skripts/main/navigation manager/nav_manager.gd" id="2_4etoo"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://bnik3t52h101u" path="res://Scenes/main/whaiting line/unit_spawner.tscn" id="5_b3x3g"]
 [ext_resource type="Texture2D" uid="uid://8x704vkwy6lg" path="res://Assets/maps/map_tutorial_boss.png" id="7_b3x3g"]
 [ext_resource type="Script" uid="uid://drb06ksxnof7f" path="res://Skripts/main/wall.gd" id="7_hgq70"]
+[ext_resource type="Script" uid="uid://c3f53duw48628" path="res://Skripts/main/navigation manager/boss_attack_zone.gd" id="8_hgq70"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_d5b0a"]
 vertices = PackedVector2Array(686, 414, 274, -6, 686, -14, 778, -14, 778, 414, 778, -106, 822, -198, 822, 550, 778, 506, 82, 550, 686, 506, 266, 506, 166, 506, 82, 254, 166, 414, 74, -198, 686, -106, -101.461, 254, -94.5078, 122, 74, 122, 274, -98, 182, -98, 182, -6, 266, 414)
@@ -15,6 +16,9 @@ outlines = Array[PackedVector2Array]([PackedVector2Array(-104, 112, 64, 112, 64,
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_b3x3g"]
 size = Vector2(24, 152)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8lqer"]
+size = Vector2(761, 768)
 
 [node name="main" type="Node2D"]
 script = ExtResource("1_4jhlv")
@@ -138,4 +142,15 @@ and upgrade them here --->
 
 also press Esc to restart "
 
+[node name="boss_attack_zone" type="Area2D" parent="."]
+collision_layer = 128
+script = ExtResource("8_hgq70")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="boss_attack_zone"]
+position = Vector2(451.5, 176)
+shape = SubResource("RectangleShape2D_8lqer")
+debug_color = Color(0.7821834, 0, 0.16344151, 0.41960785)
+
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="body_entered" from="boss_attack_zone" to="boss_attack_zone" method="_on_body_entered"]
+[connection signal="body_exited" from="boss_attack_zone" to="boss_attack_zone" method="_on_body_exited"]
