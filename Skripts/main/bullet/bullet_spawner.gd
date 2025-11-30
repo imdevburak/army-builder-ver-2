@@ -1,5 +1,5 @@
-class_name BulletSpawner
-extends Node2D
+class_name Attack
+extends AttackManager
 
 @onready var bullet :Dictionary[PackedScene,String] = {
 	preload("res://Scenes/main/bullets/bullet.tscn"):"",
@@ -8,27 +8,10 @@ extends Node2D
 	preload("res://Scenes/main/bullets/dummy_bullet.tscn"):"dummy bullet"
 	}
 
-
-
-func closest_unit():
-	var units = Autoload.units
-	var closest_enemy_distanse = 999999999999
-	
-	if units.is_empty():
-		return null
-	
-	for unit in units:
-		if unit.global_position.distance_to(global_position) < closest_enemy_distanse:
-			closest_enemy_distanse = unit.global_position.distance_to(global_position)
-			return unit
-
-
-
-func spawn_attack(bullet_type : String, rot_deg : float):
+func spawn_angle_attack(bullet_type : String ,rot_deg : float):
 	var bullet_instanse = bullet.find_key(bullet_type).instantiate()
-	bullet_instanse.top_level = true
-	bullet_instanse.global_position = global_position
-	bullet_instanse.rotation_degrees = rot_deg
+
+	bullet_instanse.global_rotation_degrees = rot_deg
 	
 	add_child(bullet_instanse)
 

@@ -1,7 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://bnik3t52h101u"]
+[gd_scene load_steps=3 format=3 uid="uid://bnik3t52h101u"]
 
 [ext_resource type="Script" uid="uid://bi6b1umw6pxew" path="res://Skripts/whaiting line/whaiting_line.gd" id="1_gaf6p"]
-[ext_resource type="Texture2D" uid="uid://dpehkh7qs6hn7" path="res://Assets/icon.svg" id="2_djd1a"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gaf6p"]
 size = Vector2(64, 64)
@@ -12,10 +11,6 @@ text_label = NodePath("Label")
 upgrade_area = NodePath("Area2D")
 metadata/_custom_type_script = "uid://bi6b1umw6pxew"
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("2_djd1a")
-
 [node name="Area2D" type="Area2D" parent="."]
 collision_layer = 32
 
@@ -23,6 +18,7 @@ collision_layer = 32
 shape = SubResource("RectangleShape2D_gaf6p")
 
 [node name="Label" type="Label" parent="."]
+z_index = 1
 offset_left = -32.0
 offset_top = -32.0
 offset_right = 32.0

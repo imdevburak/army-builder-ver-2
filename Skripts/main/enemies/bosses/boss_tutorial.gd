@@ -12,8 +12,9 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 	hp_bar.value = health
-	
 	if health <= 0:
+		Autoload.enemies.erase(self)
+		Autoload.game_win = true
 		queue_free()
 	
 	velocity = lerp(velocity,target_velocity,0.1)
@@ -22,8 +23,7 @@ func _physics_process(delta: float) -> void:
 
 
 func dash(speed : int):
-	if Autoload.units.is_empty():
-		return
+	
 	
 	var target = Autoload.units.pick_random()
 	if !is_instance_valid(target) or target.is_dead:

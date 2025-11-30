@@ -28,17 +28,15 @@ func _process(delta: float) -> void:
 		var unit_instanse = basic_unit.instantiate()
 		if can_upgrade:
 			for body in upgrade_area.get_overlapping_bodies():
-				if body is not unit_base:
-					return
-				if !body.holding_recourse:
-					return
-				unit_instanse.global_position = body.global_position
-				unit_instanse.velocity = body.velocity
-				unit_instanse.health = body.health
-				add_sibling(unit_instanse)
-				
-				Autoload.units.erase(body)
-				body.queue_free()
+				if body is unit_base and body.holding_recourse:
+					unit_instanse.global_position = body.global_position
+					unit_instanse.velocity = body.velocity
+					unit_instanse.health = body.health
+					Autoload.all_units.append(unit_instanse)
+					add_sibling(unit_instanse)
+					
+					Autoload.units.erase(body)
+					body.queue_free()
 			
 		elif line_size > 0:
 			
@@ -47,6 +45,7 @@ func _process(delta: float) -> void:
 			text_label.text = str(line_size)
 			unit_instanse.global_position = global_position
 			unit_instanse.velocity = Vector2(puch_dir_x,puch_dir_y)
+			Autoload.all_units.append(unit_instanse)
 			add_sibling(unit_instanse)
 
 

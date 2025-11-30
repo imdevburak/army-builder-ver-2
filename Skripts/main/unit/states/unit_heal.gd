@@ -12,15 +12,14 @@ extends State
 @export_category("variables")
 @export var single_target : bool
 @export var heal : int = 10
+@export var self_heal : int = heal
 @export var knockback : int = 100
-
-func Enter():
-	pass
 
 
 func Physics_update(_delta):
 	
 	anim_player.play("heal")
+	
 	
 	if single_target:
 		var rand_enemy = attack_hitbox.get_overlapping_bodies().pick_random()
@@ -28,10 +27,14 @@ func Physics_update(_delta):
 			rand_enemy.health += heal
 	
 	else:
-		var units = attack_hitbox.get_overlapping_bodies()
-		for i in units.size():
-			if is_instance_valid(units[i]) and units[i] is unit_base:
-				units[i].health += heal
+		var overlapping_bodies = attack_hitbox.get_overlapping_bodies()
+		for body in overlapping_bodies:
+			if body is unit_base and !body.is_dead:
+				if body == unit:
+					body.health += self_heal
+				else:
+					body.health += heal
+			print("is body dead = ",body.is_dead)
 	
 	
 	#appies knockback

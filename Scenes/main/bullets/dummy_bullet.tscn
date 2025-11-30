@@ -24,8 +24,8 @@ radius = 6.08276
 
 [node name="Bullet" type="Area2D" node_paths=PackedStringArray("texture", "lifeTimeTimer")]
 script = ExtResource("1_ne3ic")
-damage = 0
-knockback = 999
+damage = 999
+knockback = 500
 speed = 100
 texture = NodePath("Sprite2D")
 lifeTimeTimer = NodePath("Timer")

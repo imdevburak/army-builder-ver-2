@@ -1,10 +1,11 @@
-[gd_scene load_steps=34 format=3 uid="uid://dkp4a0q8dwq6t"]
+[gd_scene load_steps=36 format=3 uid="uid://dkp4a0q8dwq6t"]
 
 [ext_resource type="Script" uid="uid://cyprxf4gmw8hy" path="res://Skripts/main/base_unit.gd" id="1_l4f50"]
 [ext_resource type="Script" uid="uid://caombhjx3w1vv" path="res://Skripts/main/push bodes away/puch_bodes_away.gd" id="2_lx4x6"]
 [ext_resource type="Script" uid="uid://ds0xan0v3ps3v" path="res://Skripts/main/attack hitbox/attack_hitbox.gd" id="2_xjqdp"]
+[ext_resource type="Texture2D" uid="uid://dbnydjcby1cc1" path="res://Assets/units/assasin_run.png" id="4_1cffw"]
 [ext_resource type="Script" uid="uid://p64qmyacpa4a" path="res://Skripts/main/state machine/State_Machine.gd" id="4_hxbk7"]
-[ext_resource type="Texture2D" uid="uid://bl3p2gpwa7wfu" path="res://Assets/units/spritesheet(1).png" id="4_qml8c"]
+[ext_resource type="Texture2D" uid="uid://bgv402swn1bmq" path="res://Assets/units/assasin_dead.png" id="4_ju6x6"]
 [ext_resource type="Script" uid="uid://ss6u6yn12htk" path="res://Skripts/main/animation_manager.gd" id="5_ah7a6"]
 [ext_resource type="Script" uid="uid://chum2ktf3br45" path="res://Skripts/main/unit/states/move.gd" id="6_1csaq"]
 [ext_resource type="Script" uid="uid://c81x64hx8sfwy" path="res://Skripts/main/unit/states/wait.gd" id="7_fyb7g"]
@@ -26,32 +27,49 @@ radius = 13.1529
 [sub_resource type="CircleShape2D" id="CircleShape2D_pegs0"]
 radius = 12.0416
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_1cffw"]
-atlas = ExtResource("4_qml8c")
+[sub_resource type="AtlasTexture" id="AtlasTexture_x0fox"]
+atlas = ExtResource("4_ju6x6")
+region = Rect2(0, 0, 1024, 1024)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_klls4"]
+atlas = ExtResource("4_1cffw")
 region = Rect2(0, 0, 1024, 1024)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ju6x6"]
-atlas = ExtResource("4_qml8c")
-region = Rect2(1024, 0, 1024, 1024)
+atlas = ExtResource("4_1cffw")
+region = Rect2(0, 0, 1024, 1024)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_y0wva"]
-atlas = ExtResource("4_qml8c")
-region = Rect2(2048, 0, 1024, 1024)
+atlas = ExtResource("4_1cffw")
+region = Rect2(1024, 0, 1024, 1024)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2vvse"]
-atlas = ExtResource("4_qml8c")
-region = Rect2(3072, 0, 1024, 1024)
+atlas = ExtResource("4_1cffw")
+region = Rect2(2048, 0, 1024, 1024)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_qml8c"]
-atlas = ExtResource("4_qml8c")
-region = Rect2(0, 0, 1024, 1024)
+[sub_resource type="AtlasTexture" id="AtlasTexture_xij3t"]
+atlas = ExtResource("4_1cffw")
+region = Rect2(3072, 0, 1024, 1024)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ajp2o"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_1cffw")
+"texture": SubResource("AtlasTexture_x0fox")
+}],
+"loop": true,
+"name": &"dead",
+"speed": 5.0
 }, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_klls4")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_ju6x6")
 }, {
@@ -60,18 +78,13 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_2vvse")
-}],
-"loop": true,
-"name": &"default",
-"speed": 5.0
 }, {
-"frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_qml8c")
+"texture": SubResource("AtlasTexture_xij3t")
 }],
 "loop": true,
-"name": &"idle",
-"speed": 5.0
+"name": &"move",
+"speed": 2.0
 }]
 
 [sub_resource type="Animation" id="Animation_fyb7g"]
@@ -126,6 +139,7 @@ animations = [{
 
 [node name="assasin" type="CharacterBody2D" node_paths=PackedStringArray("hp_bar", "target", "select_button")]
 z_index = 1
+z_as_relative = false
 y_sort_enabled = true
 collision_mask = 8
 script = ExtResource("1_l4f50")
@@ -166,15 +180,18 @@ shape = SubResource("CircleShape2D_ff3is")
 shape = SubResource("CircleShape2D_pegs0")
 debug_color = Color(0.984323, 0, 0.344669, 0.42)
 
-[node name="Sprite" type="AnimatedSprite2D" parent="." node_paths=PackedStringArray("unit")]
-z_index = 12
+[node name="Sprite" type="AnimatedSprite2D" parent="."]
+z_index = 1
 y_sort_enabled = true
-position = Vector2(1.9073486e-06, -7.999999)
-scale = Vector2(0.033812504, 0.033812504)
+position = Vector2(-2.2737368e-13, -16)
+scale = Vector2(0.052, 0.052)
 sprite_frames = SubResource("SpriteFrames_ajp2o")
-animation = &"idle"
+animation = &"move"
+
+[node name="AnimationManager" type="Node2D" parent="Sprite" node_paths=PackedStringArray("parent", "anim_sprite")]
 script = ExtResource("5_ah7a6")
-unit = NodePath("..")
+parent = NodePath("../..")
+anim_sprite = NodePath("..")
 metadata/_custom_type_script = "uid://ss6u6yn12htk"
 
 [node name="StateMashine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
@@ -228,9 +245,9 @@ libraries = {
 
 [node name="hp bar" type="ProgressBar" parent="."]
 offset_left = -16.0
-offset_top = -40.0
+offset_top = 14.0
 offset_right = 16.0
-offset_bottom = -33.0
+offset_bottom = 21.0
 theme_override_styles/background = SubResource("StyleBoxFlat_1csaq")
 theme_override_styles/fill = SubResource("StyleBoxFlat_fyb7g")
 value = 50.0
@@ -241,6 +258,7 @@ offset_left = -13.0
 offset_top = -13.0
 offset_right = 13.0
 offset_bottom = 13.0
+flat = true
 
 [node name="move_target" type="AnimatedSprite2D" parent="." node_paths=PackedStringArray("unit", "nav_agent")]
 top_level = true
@@ -253,7 +271,7 @@ metadata/_custom_type_script = "uid://cqhhcsxuhechc"
 
 [node name="Sprite2D" type="Sprite2D" parent="." node_paths=PackedStringArray("unit")]
 z_index = 2
-position = Vector2(0, -32)
+position = Vector2(0, -48)
 texture = ExtResource("13_1cffw")
 hframes = 2
 vframes = 2

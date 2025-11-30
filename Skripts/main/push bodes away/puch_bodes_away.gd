@@ -17,6 +17,5 @@ func _process(delta: float) -> void:
 		var distanse_multiplyer = clamp(abs(200 / global_position.distance_to(body.global_position)),0.0,1000.0)
 		
 		unit.velocity += puch_direction * distanse_multiplyer * forse
-		print(puch_direction * forse)
 		
 		
