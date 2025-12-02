@@ -1,28 +1,14 @@
 [gd_scene load_steps=16 format=3 uid="uid://bvg1b88eko3px"]
 
+[ext_resource type="Texture2D" uid="uid://blyu6lo16p6le" path="res://Assets/units/assasin.png" id="1_2bqxd"]
 [ext_resource type="Script" uid="uid://cls24uikdfogr" path="res://Skripts/main/enemies/bosses/boss_tutorial.gd" id="1_34b3p"]
-[ext_resource type="Texture2D" uid="uid://mijaear2g042" path="res://Assets/enemies/dragon.png" id="2_f2uhx"]
-[ext_resource type="Script" uid="uid://cooi2iwaumg7a" path="res://Scenes/main/enemies/master_attack.gd" id="7_00nso"]
-[ext_resource type="Script" uid="uid://ss6u6yn12htk" path="res://Skripts/main/animation_manager.gd" id="7_2cggw"]
-[ext_resource type="Script" uid="uid://b6otl54ijygc7" path="res://Skripts/main/bullet/bullet_spawner.gd" id="8_00nso"]
+[ext_resource type="Script" uid="uid://p64qmyacpa4a" path="res://Skripts/main/state machine/State_Machine.gd" id="2_5xldm"]
+[ext_resource type="Script" uid="uid://b0x8y2i13wvsf" path="res://Skripts/main/enemies/states/attack.gd" id="4_yr2ip"]
+[ext_resource type="Script" uid="uid://biw7s04g4phcu" path="res://Skripts/main/enemies/states/idle.gd" id="5_vywne"]
+[ext_resource type="PackedScene" uid="uid://rs1dap8s7wbv" path="res://Scenes/main/bullets/bullet_spawner.tscn" id="5_yr2ip"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_5xldm"]
-radius = 64.49806
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_2cggw"]
-atlas = ExtResource("2_f2uhx")
-region = Rect2(0, 0, 1024, 1024)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_00nso"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_2cggw")
-}],
-"loop": true,
-"name": &"idle",
-"speed": 5.0
-}]
+radius = 80.0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i7lbb"]
 bg_color = Color(0, 0, 0, 1)
@@ -32,7 +18,10 @@ bg_color = Color(1, 0, 0, 1)
 
 [sub_resource type="Animation" id="Animation_f2uhx"]
 resource_name = "dash"
+<<<<<<< HEAD
 length = 3.0
+=======
+>>>>>>> parent of e6bc8b6 (added a buch of stuff)
 tracks/0/type = "method"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -40,9 +29,10 @@ tracks/0/path = NodePath(".")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0.03333333),
+"times": PackedFloat32Array(0.53333336),
 "transitions": PackedFloat32Array(1),
 "values": [{
+<<<<<<< HEAD
 "args": [600],
 "method": &"dash"
 }]
@@ -63,31 +53,153 @@ tracks/0/keys = {
 "update": 0,
 "values": [-72.0, -144.0, -144.0, -72.0]
 }
+=======
+"args": [500],
+"method": &"dash"
+}]
+}
+>>>>>>> parent of e6bc8b6 (added a buch of stuff)
 tracks/1/type = "method"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite2D/Attacks/SircleAttack")
+tracks/1/path = NodePath("bullet spawner")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
+<<<<<<< HEAD
 "times": PackedFloat32Array(2),
 "transitions": PackedFloat32Array(1),
+=======
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"values": []
+}
+
+[sub_resource type="Animation" id="Animation_lxdig"]
+resource_name = "target attack"
+length = 5.0
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("bullet spawner")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.06666672, 0.13333344, 0.20000005, 0.26666665, 0.33333337, 0.4000001, 0.46666682, 0.53333354, 0.60000014, 0.66666675, 0.73333335, 0.8000002, 0.8666668, 0.9333334, 1.0000002, 1.0666671, 1.1333337, 1.2000003, 1.2666669, 1.3333335, 1.4000003, 1.4666672, 1.5333338, 1.6000004, 1.666667, 1.7333336, 1.8000004, 1.866667, 1.9333336, 2.4666667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+>>>>>>> parent of e6bc8b6 (added a buch of stuff)
 "values": [{
-"args": ["fire bullet", 24, 30],
-"method": &"spawn_sircle_attack"
+"args": ["fire bullet", 0],
+"method": &"spawn_target_attack"
+}, {
+"args": ["fire bullet", 0],
+"method": &"spawn_target_attack"
+}, {
+"args": ["fire bullet", 0],
+"method": &"spawn_target_attack"
+}, {
+"args": ["fire bullet", 0],
+"method": &"spawn_target_attack"
+}, {
+"args": ["fire bullet", 0],
+"method": &"spawn_target_attack"
+}, {
+"args": ["fire bullet", 0],
+"method": &"spawn_target_attack"
+}, {
+"args": ["fire bullet", 0],
+"method": &"spawn_target_attack"
+}, {
+"args": ["fire bullet", 0],
+"method": &"spawn_target_attack"
+}, {
+"args": ["fire bullet", 0],
+"method": &"spawn_target_attack"
+}, {
+"args": ["fire bullet", 0],
+"method": &"spawn_target_attack"
+}, {
+"args": ["fire bullet", 0],
+"method": &"spawn_target_attack"
+}, {
+"args": ["fire bullet", 0],
+"method": &"spawn_target_attack"
+}, {
+"args": ["fire bullet", 0],
+"method": &"spawn_target_attack"
+}, {
+"args": ["fire bullet", 0],
+"method": &"spawn_target_attack"
+}, {
+"args": ["fire bullet", 0],
+"method": &"spawn_target_attack"
+}, {
+"args": ["fire bullet", 0],
+"method": &"spawn_target_attack"
+}, {
+"args": ["fire bullet", 0],
+"method": &"spawn_target_attack"
+}, {
+"args": ["fire bullet", 0],
+"method": &"spawn_target_attack"
+}, {
+"args": ["fire bullet", 0],
+"method": &"spawn_target_attack"
+}, {
+"args": ["fire bullet", 0],
+"method": &"spawn_target_attack"
+}, {
+"args": ["fire bullet", 0],
+"method": &"spawn_target_attack"
+}, {
+"args": ["fire bullet", 0],
+"method": &"spawn_target_attack"
+}, {
+"args": ["fire bullet", 0],
+"method": &"spawn_target_attack"
+}, {
+"args": ["fire bullet", 0],
+"method": &"spawn_target_attack"
+}, {
+"args": ["fire bullet", 0],
+"method": &"spawn_target_attack"
+}, {
+"args": ["fire bullet", 0],
+"method": &"spawn_target_attack"
+}, {
+"args": ["fire bullet", 0],
+"method": &"spawn_target_attack"
+}, {
+"args": ["fire bullet", 0],
+"method": &"spawn_target_attack"
+}, {
+"args": ["fire bullet", 0],
+"method": &"spawn_target_attack"
+}, {
+"args": ["fire bullet", 0],
+"method": &"spawn_target_attack"
+}, {
+"args": ["helmet bullet", 0],
+"method": &"spawn_target_attack"
 }]
 }
 
 [sub_resource type="Animation" id="Animation_2cggw"]
+<<<<<<< HEAD
 resource_name = "target attack"
 length = 4.0
+=======
+resource_name = "sircle attack"
+length = 2.0
+>>>>>>> parent of e6bc8b6 (added a buch of stuff)
 tracks/0/type = "method"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D/Attacks/TargetAttack")
+tracks/0/path = NodePath("bullet spawner")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
+<<<<<<< HEAD
 "times": PackedFloat32Array(0, 0.21, 0.42, 0.6666667, 0.89, 1.13, 1.35, 2.8666666),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
 "values": [{
@@ -142,20 +254,50 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [0.0]
+=======
+"times": PackedFloat32Array(0.93333334),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": ["fire bullet", 14, 30],
+"method": &"spawn_sircle_attack"
+}]
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:offset:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(2, 2, 2),
+"points": PackedFloat32Array(0, 0, 30, 0, -24.499998, -25.5, -0.083333336, 0, 0.072222225, 0, 0, 0, -30, 0, 0),
+"times": PackedFloat32Array(0, 0.56666666, 0.93333334)
+>>>>>>> parent of e6bc8b6 (added a buch of stuff)
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_2cggw"]
+[sub_resource type="Animation" id="Animation_00nso"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:offset:y")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_lxdig"]
 _data = {
 &"RESET": SubResource("Animation_00nso"),
 &"dash": SubResource("Animation_f2uhx"),
-&"sircle attack": SubResource("Animation_6oja3"),
-&"target attack": SubResource("Animation_2cggw")
+&"sircle attack": SubResource("Animation_2cggw"),
+&"target attack": SubResource("Animation_lxdig")
 }
 
 [node name="boss" type="CharacterBody2D" node_paths=PackedStringArray("hp_bar")]
-z_index = 1
-z_as_relative = false
-y_sort_enabled = true
 collision_layer = 2
 collision_mask = 40
 script = ExtResource("1_34b3p")
@@ -167,40 +309,26 @@ metadata/_custom_type_script = "uid://cls24uikdfogr"
 shape = SubResource("CircleShape2D_5xldm")
 debug_color = Color(0.997169, 0, 0.171803, 0.42)
 
-[node name="Sprite2D" type="AnimatedSprite2D" parent="."]
-z_index = 1
-z_as_relative = false
+[node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0, -72)
-scale = Vector2(0.219, 0.227)
-sprite_frames = SubResource("SpriteFrames_00nso")
-animation = &"idle"
+scale = Vector2(7, 7)
+texture = ExtResource("1_2bqxd")
 
-[node name="Attacks" type="Node2D" parent="Sprite2D" node_paths=PackedStringArray("AnimPlayer")]
-position = Vector2(0, 317.1806)
-scale = Vector2(4.5662103, 4.4052863)
-script = ExtResource("7_00nso")
+[node name="StateMashine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
+script = ExtResource("2_5xldm")
+initial_state = NodePath("idle")
+metadata/_custom_type_script = "uid://p64qmyacpa4a"
+
+[node name="attack" type="Node" parent="StateMashine" node_paths=PackedStringArray("AnimPlayer")]
+script = ExtResource("4_yr2ip")
 AnimPlayer = NodePath("../../AnimationPlayer")
-metadata/_custom_type_script = "uid://cooi2iwaumg7a"
+attacks = Array[String](["target attack", "dash", "sircle attack"])
+metadata/_custom_type_script = "uid://dvdan2nufoyq6"
 
-[node name="SircleAttack" type="Node2D" parent="Sprite2D/Attacks" node_paths=PackedStringArray("AnimPlayer")]
-position = Vector2(0, 32)
-script = ExtResource("8_00nso")
-AnimPlayer = NodePath("../../../AnimationPlayer")
-metadata/_custom_type_script = "uid://b6otl54ijygc7"
-
-[node name="TargetAttack" type="Node2D" parent="Sprite2D/Attacks" node_paths=PackedStringArray("AnimPlayer")]
-position = Vector2(-64, -96)
-script = ExtResource("8_00nso")
-AnimPlayer = NodePath("../../../AnimationPlayer")
-metadata/_custom_type_script = "uid://b6otl54ijygc7"
-
-[node name="AnimationManager" type="Node2D" parent="Sprite2D" node_paths=PackedStringArray("parent", "anim_sprite")]
-position = Vector2(17.655169, 317.79303)
-scale = Vector2(4.413792, 4.413792)
-script = ExtResource("7_2cggw")
-parent = NodePath("../..")
-anim_sprite = NodePath("..")
-metadata/_custom_type_script = "uid://ss6u6yn12htk"
+[node name="idle" type="Node" parent="StateMashine" node_paths=PackedStringArray("AnimPlayer")]
+script = ExtResource("5_vywne")
+AnimPlayer = NodePath("../../AnimationPlayer")
+metadata/_custom_type_script = "uid://dvdan2nufoyq6"
 
 [node name="hp bar" type="ProgressBar" parent="."]
 offset_left = -80.0
@@ -212,7 +340,9 @@ theme_override_styles/fill = SubResource("StyleBoxFlat_0q7ov")
 value = 50.0
 show_percentage = false
 
+[node name="bullet spawner" parent="." instance=ExtResource("5_yr2ip")]
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-&"": SubResource("AnimationLibrary_2cggw")
+&"": SubResource("AnimationLibrary_lxdig")
 }

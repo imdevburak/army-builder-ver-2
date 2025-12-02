@@ -1,49 +1,26 @@
-[gd_scene load_steps=14 format=3 uid="uid://c2b7hyuka1q57"]
+[gd_scene load_steps=10 format=3 uid="uid://c2b7hyuka1q57"]
 
 [ext_resource type="Script" uid="uid://buvpmjdq62mxv" path="res://Skripts/main/navigation manager/nav_manager.gd" id="1_7woxl"]
 [ext_resource type="Texture2D" uid="uid://pesnujcsu0i8" path="res://Assets/tutorial/spritesheet(2).png" id="1_8qfvp"]
 [ext_resource type="Script" uid="uid://b53ueds7qtdct" path="res://Skripts/tutorial/tutorial_room_3.gd" id="1_85xgs"]
 [ext_resource type="PackedScene" uid="uid://bnik3t52h101u" path="res://Scenes/main/whaiting line/unit_spawner.tscn" id="3_85xgs"]
-[ext_resource type="Texture2D" uid="uid://b7qjyfdisuwfq" path="res://Assets/enemies/spawner_no_upgrade.png" id="5_i18un"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_i18un"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_4opw6"]
 atlas = ExtResource("1_8qfvp")
-region = Rect2(512, 0, 256, 256)
+region = Rect2(0, 0, 256, 256)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_85xgs"]
 atlas = ExtResource("1_8qfvp")
-region = Rect2(0, 0, 256, 256)
+region = Rect2(768, 0, 256, 256)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_i18un"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_i18un")
+"texture": SubResource("AtlasTexture_4opw6")
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_85xgs")
-}],
-"loop": true,
-"name": &"default",
-"speed": 1.0
-}]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_kf5sd"]
-atlas = ExtResource("1_8qfvp")
-region = Rect2(0, 0, 256, 256)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_htfjw"]
-atlas = ExtResource("1_8qfvp")
-region = Rect2(768, 0, 256, 256)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_p1bf8"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_kf5sd")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_htfjw")
 }],
 "loop": true,
 "name": &"default",
@@ -84,12 +61,6 @@ scale = Vector2(0.1875, 0.1875)
 sprite_frames = SubResource("SpriteFrames_i18un")
 autoplay = "default"
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(320, 168)
-scale = Vector2(0.188, 0.178)
-sprite_frames = SubResource("SpriteFrames_p1bf8")
-autoplay = "default"
-
 [node name="Label2" type="Label" parent="."]
 offset_left = 272.0
 offset_top = 192.0
@@ -98,6 +69,12 @@ offset_bottom = 280.0
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 10
 text = "TO SELECT ALL"
+
+[node name="how to select2" type="AnimatedSprite2D" parent="."]
+position = Vector2(320, 168)
+scale = Vector2(0.1875, 0.1875)
+sprite_frames = SubResource("SpriteFrames_i18un")
+autoplay = "default"
 
 [node name="navigation manger" type="NavigationRegion2D" parent="."]
 z_as_relative = false
@@ -108,11 +85,6 @@ script = ExtResource("1_7woxl")
 [node name="unit_spawner" parent="navigation manger" instance=ExtResource("3_85xgs")]
 position = Vector2(112, 180)
 unit_type = "res://Scenes/main/units/unit_no_upgrades.tscn"
-
-[node name="Sprite2D" type="Sprite2D" parent="navigation manger/unit_spawner"]
-position = Vector2(-6.67572e-06, -5)
-scale = Vector2(0.08203125, 0.07812499)
-texture = ExtResource("5_i18un")
 
 [node name="Polygon2D2" type="Polygon2D" parent="."]
 position = Vector2(552, 120)

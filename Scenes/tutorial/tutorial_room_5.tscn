@@ -1,9 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://duv42mcd3onk3"]
+[gd_scene load_steps=6 format=3 uid="uid://duv42mcd3onk3"]
 
 [ext_resource type="Script" uid="uid://buvpmjdq62mxv" path="res://Skripts/main/navigation manager/nav_manager.gd" id="1_4k5ke"]
 [ext_resource type="Script" uid="uid://dtu1kkt2rdig6" path="res://Skripts/tutorial/tutorial_room_5.gd" id="1_5i2gy"]
-[ext_resource type="PackedScene" uid="uid://dkp4a0q8dwq6t" path="res://Scenes/main/units/assasin.tscn" id="3_5i2gy"]
-[ext_resource type="PackedScene" uid="uid://cqjjpkbe1cbpq" path="res://Scenes/main/enemies/enemy.tscn" id="3_bdl20"]
+[ext_resource type="PackedScene" uid="uid://v64308ap3hus" path="res://Scenes/main/units/unit_no_upgrades.tscn" id="2_5i2gy"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_bdl20"]
 vertices = PackedVector2Array(606, 326, 34, 326, 34, 34, 606, 34)
@@ -29,11 +28,8 @@ y_sort_enabled = true
 navigation_polygon = SubResource("NavigationPolygon_bdl20")
 script = ExtResource("1_4k5ke")
 
-[node name="Enemy" parent="navigation manger" instance=ExtResource("3_bdl20")]
-position = Vector2(320, 192)
-
-[node name="assasin" parent="navigation manger" instance=ExtResource("3_5i2gy")]
-position = Vector2(120, 200)
+[node name="unit_no_upgrades" parent="navigation manger" instance=ExtResource("2_5i2gy")]
+position = Vector2(88, 192)
 
 [node name="Polygon2D2" type="Polygon2D" parent="."]
 position = Vector2(552, 120)
@@ -58,12 +54,16 @@ position = Vector2(7, 51)
 shape = SubResource("RectangleShape2D_s0hfc")
 
 [node name="Label" type="Label" parent="."]
-offset_left = 192.0
-offset_top = 128.0
-offset_right = 481.0
-offset_bottom = 151.0
+offset_left = 240.0
+offset_top = 167.0
+offset_right = 389.0
+offset_bottom = 190.0
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 10
+<<<<<<< HEAD
 text = "UPGRADED ASSASIN CAN ATTACK"
+=======
+text = "now kill bos maboy"
+>>>>>>> parent of e6bc8b6 (added a buch of stuff)
 
 [connection signal="body_entered" from="Polygon2D2/Area2D" to="." method="_on_area_2d_body_entered"]

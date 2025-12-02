@@ -42,8 +42,6 @@ animations = [{
 }]
 
 [node name="HelmetBullet" type="Area2D" node_paths=PackedStringArray("texture", "lifeTimeTimer")]
-z_index = 1
-z_as_relative = false
 collision_layer = 4
 collision_mask = 41
 script = ExtResource("1_kg4j6")
@@ -59,8 +57,6 @@ shape = SubResource("CircleShape2D_op5gk")
 debug_color = Color(1, 0, 0, 0.41960785)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-z_index = 1
-z_as_relative = false
 sprite_frames = SubResource("SpriteFrames_82qk2")
 autoplay = "default"
 frame_progress = 0.26044166

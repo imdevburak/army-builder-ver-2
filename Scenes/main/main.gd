@@ -5,13 +5,13 @@ extends Node2D
 @onready var random_taunt = taunts.pick_random()
 
 func _ready() -> void:
+	Autoload.resurses = 3
 	Autoload.units.clear()
 	Autoload.enemies.clear()
-	Autoload.game_win = false
 
-func _physics_process(delta: float) -> void:
+func _process(delta: float) -> void:
 	
-	if Input.is_action_just_pressed("esc") or Autoload.game_win or ($"navigation manger/unit_spawner".line_size == 0 and Autoload.all_units.is_empty()):
+	if Input.is_action_just_pressed("esc"):
 		if $Timer.is_stopped():
 			if Autoload.game_win:
 				$Timer.start(7)
@@ -19,15 +19,17 @@ func _physics_process(delta: float) -> void:
 				$Timer.start()
 		
 		$CanvasLayer/Label.visible = true
-	if Autoload.game_win:
-		$CanvasLayer/Label.text = "YOU WIN!"
-	elif $Timer.time_left >= 3:
+	
+	if $Timer.time_left >= 3:
 		$CanvasLayer/Label.text = random_taunt
 	else:
 		$CanvasLayer/Label.text = str(int($Timer.time_left)+1)
-		$CanvasLayer/Label.add_theme_font_size_override("font_size", 20 * (int($Timer.wait_time) - int($Timer.time_left+1)))
+	$CanvasLayer/Label.add_theme_font_size_override("font_size", 20 * (int($Timer.wait_time) - int($Timer.time_left+1)))
+	
+	
+	$CanvasLayer/Label2.text = "resurses: " + str(Autoload.resurses)
 	
 
 
 func _on_timer_timeout() -> void:
-	get_tree().change_scene_to_file("res://Scenes/ui/main_menu.tscn")
+	get_tree().change_scene_to_file("res://Scenes/main/main.tscn")

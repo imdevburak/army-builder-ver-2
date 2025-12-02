@@ -6,6 +6,7 @@ var resorse = preload("res://Scenes/main/resourse.tscn")
 func Enter():
 	unit.is_dead = true
 	Autoload.units.erase(unit)
+<<<<<<< HEAD
 	Autoload.all_units.erase(unit)
 	unit.hp_bar.visible = false
 	if unit.holding_recourse:
@@ -17,7 +18,10 @@ func Enter():
 		add_sibling(resorse_instanse)
 		
 		unit.holding_recourse = false
+=======
+>>>>>>> parent of e6bc8b6 (added a buch of stuff)
 
 
 func Physics_update(_delta):
 	unit.target_velocity = Vector2.ZERO
+	unit.health = 0

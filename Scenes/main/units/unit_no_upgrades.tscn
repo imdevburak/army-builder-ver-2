@@ -1,11 +1,14 @@
-[gd_scene load_steps=36 format=3 uid="uid://v64308ap3hus"]
+[gd_scene load_steps=34 format=3 uid="uid://v64308ap3hus"]
 
 [ext_resource type="Script" uid="uid://cyprxf4gmw8hy" path="res://Skripts/main/base_unit.gd" id="1_raefp"]
 [ext_resource type="Texture2D" uid="uid://bb6bwmcwc6gas" path="res://Assets/units/spritesheet(3).png" id="2_3irlc"]
 [ext_resource type="Script" uid="uid://ds0xan0v3ps3v" path="res://Skripts/main/attack hitbox/attack_hitbox.gd" id="2_w22ff"]
 [ext_resource type="Script" uid="uid://caombhjx3w1vv" path="res://Skripts/main/push bodes away/puch_bodes_away.gd" id="3_3irlc"]
 [ext_resource type="Texture2D" uid="uid://bl3p2gpwa7wfu" path="res://Assets/units/spritesheet(1).png" id="4_6yilx"]
+<<<<<<< HEAD
 [ext_resource type="Texture2D" uid="uid://cgaxiv3183tbv" path="res://Assets/units/dead0000.png" id="4_43dth"]
+=======
+>>>>>>> parent of e6bc8b6 (added a buch of stuff)
 [ext_resource type="Script" uid="uid://ss6u6yn12htk" path="res://Skripts/main/animation_manager.gd" id="5_43dth"]
 [ext_resource type="Script" uid="uid://p64qmyacpa4a" path="res://Skripts/main/state machine/State_Machine.gd" id="6_uvbcy"]
 [ext_resource type="Script" uid="uid://c81x64hx8sfwy" path="res://Skripts/main/unit/states/wait.gd" id="7_6hs26"]
@@ -52,14 +55,6 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_3hcc8"]
-atlas = ExtResource("4_43dth")
-region = Rect2(0, 0, 1024, 1024)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_qml8c"]
-atlas = ExtResource("4_6yilx")
-region = Rect2(0, 0, 1024, 1024)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_1cffw"]
 atlas = ExtResource("4_6yilx")
 region = Rect2(0, 0, 1024, 1024)
@@ -76,24 +71,12 @@ region = Rect2(2048, 0, 1024, 1024)
 atlas = ExtResource("4_6yilx")
 region = Rect2(3072, 0, 1024, 1024)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_qml8c"]
+atlas = ExtResource("4_6yilx")
+region = Rect2(0, 0, 1024, 1024)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_kl5hy"]
 animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_3hcc8")
-}],
-"loop": true,
-"name": &"dead",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_qml8c")
-}],
-"loop": true,
-"name": &"idle",
-"speed": 5.0
-}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_1cffw")
@@ -108,7 +91,15 @@ animations = [{
 "texture": SubResource("AtlasTexture_2vvse")
 }],
 "loop": true,
-"name": &"move",
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qml8c")
+}],
+"loop": true,
+"name": &"idle",
 "speed": 5.0
 }]
 
@@ -138,7 +129,6 @@ bg_color = Color(0, 0, 0, 1)
 bg_color = Color(1, 0, 0, 1)
 
 [node name="unit_no_upgrades" type="CharacterBody2D" node_paths=PackedStringArray("hp_bar", "target", "select_button")]
-z_index = 1
 collision_mask = 8
 script = ExtResource("1_raefp")
 hp_bar = NodePath("hp bar")
@@ -156,6 +146,7 @@ unit = NodePath("..")
 nav_agent = NodePath("../NavigationAgent2D")
 metadata/_custom_type_script = "uid://cqhhcsxuhechc"
 
+<<<<<<< HEAD
 [node name="sprite" type="AnimatedSprite2D" parent="."]
 z_index = 1
 position = Vector2(-3.2311743e-27, -8.000002)
@@ -165,9 +156,17 @@ animation = &"dead"
 autoplay = "move"
 
 [node name="AnimationManager" type="Node2D" parent="sprite" node_paths=PackedStringArray("parent", "anim_sprite")]
+=======
+[node name="AnimationManager" type="AnimatedSprite2D" parent="." node_paths=PackedStringArray("unit")]
+z_index = 12
+y_sort_enabled = true
+position = Vector2(1.9073486e-06, -7.999999)
+scale = Vector2(0.033812504, 0.033812504)
+sprite_frames = SubResource("SpriteFrames_kl5hy")
+animation = &"idle"
+>>>>>>> parent of e6bc8b6 (added a buch of stuff)
 script = ExtResource("5_43dth")
-parent = NodePath("../..")
-anim_sprite = NodePath("..")
+unit = NodePath("..")
 metadata/_custom_type_script = "uid://ss6u6yn12htk"
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
@@ -251,11 +250,10 @@ libraries = {
 }
 
 [node name="hp bar" type="ProgressBar" parent="."]
-z_index = 2
 offset_left = -16.0
-offset_top = 16.0
+offset_top = -40.0
 offset_right = 16.0
-offset_bottom = 23.0
+offset_bottom = -33.0
 theme_override_styles/background = SubResource("StyleBoxFlat_jigjj")
 theme_override_styles/fill = SubResource("StyleBoxFlat_cmgsc")
 value = 50.0
@@ -266,7 +264,6 @@ offset_left = -13.0
 offset_top = -13.0
 offset_right = 13.0
 offset_bottom = 13.0
-flat = true
 
 [node name="Sprite2D" type="Sprite2D" parent="." node_paths=PackedStringArray("unit")]
 z_index = 2

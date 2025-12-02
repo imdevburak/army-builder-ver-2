@@ -3,6 +3,7 @@ extends Node2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	$"navigation manger/unit_no_upgrades".holding_recourse = true
 	$"navigation manger/assasin".health = $"navigation manger/assasin".max_health / 2
 
 

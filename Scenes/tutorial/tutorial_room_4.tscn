@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://bo2lutsyrofe1"]
+[gd_scene load_steps=14 format=3 uid="uid://bo2lutsyrofe1"]
 
 [ext_resource type="Script" uid="uid://buvpmjdq62mxv" path="res://Skripts/main/navigation manager/nav_manager.gd" id="1_12g8g"]
 [ext_resource type="Script" uid="uid://qgoi6ryuawtm" path="res://Skripts/tutorial/tutorial_room_4.gd" id="1_v523l"]
@@ -6,9 +6,6 @@
 [ext_resource type="Texture2D" uid="uid://pesnujcsu0i8" path="res://Assets/tutorial/spritesheet(2).png" id="3_rhewu"]
 [ext_resource type="PackedScene" uid="uid://bnik3t52h101u" path="res://Scenes/main/whaiting line/unit_spawner.tscn" id="4_rhewu"]
 [ext_resource type="PackedScene" uid="uid://dkp4a0q8dwq6t" path="res://Scenes/main/units/assasin.tscn" id="5_fan61"]
-[ext_resource type="Texture2D" uid="uid://uyobmqqa241e" path="res://Assets/enemies/spawner_healer.png" id="5_ovjxf"]
-[ext_resource type="Script" uid="uid://x8i0o50y50y6" path="res://Skripts/tutorial/assasin.gd" id="7_67fyf"]
-[ext_resource type="PackedScene" uid="uid://c6nnxu3hha8v4" path="res://Scenes/main/resourse.tscn" id="7_nljht"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_fan61"]
 vertices = PackedVector2Array(606, 326, 34, 326, 34, 34, 606, 34)
@@ -70,15 +67,9 @@ position = Vector2(320, 180)
 unit_type = "res://Scenes/main/units/healer.tscn"
 can_upgrade = true
 
-[node name="Sprite2D" type="Sprite2D" parent="navigation manger/unit_spawner"]
-position = Vector2(-6.67572e-06, -5)
-scale = Vector2(0.08203125, 0.07812499)
-texture = ExtResource("5_ovjxf")
-
 [node name="assasin" parent="navigation manger" instance=ExtResource("5_fan61")]
 visible = false
 position = Vector2(448, 273)
-script = ExtResource("7_67fyf")
 
 [node name="Label" type="Label" parent="."]
 visible = false
@@ -121,14 +112,13 @@ position = Vector2(7, 51)
 shape = SubResource("RectangleShape2D_ovjxf")
 
 [node name="Label2" type="Label" parent="."]
-offset_left = 208.0
-offset_top = 148.0
-offset_right = 300.0
-offset_bottom = 171.0
-rotation = 1.5707964
+offset_left = 144.0
+offset_top = 168.0
+offset_right = 227.0
+offset_bottom = 191.0
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 10
-text = "-->"
+text = "---------------->"
 
 [node name="Area2D" type="Area2D" parent="."]
 
@@ -154,9 +144,6 @@ text = "HEAL ->"
 position = Vector2(256, 179)
 shape = SubResource("RectangleShape2D_nljht")
 debug_color = Color(0.99736255, 0, 0.17739785, 0.41960785)
-
-[node name="resourse" parent="." instance=ExtResource("7_nljht")]
-position = Vector2(192, 184)
 
 [connection signal="body_entered" from="Polygon2D2/goalarea" to="." method="_on_goalarea_body_entered"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

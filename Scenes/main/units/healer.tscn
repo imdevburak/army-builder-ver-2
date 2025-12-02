@@ -29,6 +29,7 @@ radius = 251.676
 [sub_resource type="CircleShape2D" id="CircleShape2D_pinif"]
 radius = 7.0
 
+<<<<<<< HEAD
 [sub_resource type="AtlasTexture" id="AtlasTexture_v6sit"]
 atlas = ExtResource("5_61dnj")
 region = Rect2(0, 0, 1024, 1024)
@@ -37,6 +38,8 @@ region = Rect2(0, 0, 1024, 1024)
 atlas = ExtResource("6_2o60t")
 region = Rect2(0, 0, 1024, 1024)
 
+=======
+>>>>>>> parent of e6bc8b6 (added a buch of stuff)
 [sub_resource type="AtlasTexture" id="AtlasTexture_mw5kt"]
 atlas = ExtResource("6_2o60t")
 region = Rect2(0, 0, 1024, 1024)
@@ -53,10 +56,15 @@ region = Rect2(2048, 0, 1024, 1024)
 atlas = ExtResource("6_2o60t")
 region = Rect2(3072, 0, 1024, 1024)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_me37b"]
+atlas = ExtResource("6_2o60t")
+region = Rect2(0, 0, 1024, 1024)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_me37b"]
 animations = [{
 "frames": [{
 "duration": 1.0,
+<<<<<<< HEAD
 "texture": SubResource("AtlasTexture_v6sit")
 }],
 "loop": true,
@@ -73,6 +81,8 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+=======
+>>>>>>> parent of e6bc8b6 (added a buch of stuff)
 "texture": SubResource("AtlasTexture_mw5kt")
 }, {
 "duration": 1.0,
@@ -85,24 +95,20 @@ animations = [{
 "texture": SubResource("AtlasTexture_61dnj")
 }],
 "loop": true,
-"name": &"move",
+"name": &"default",
 "speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_me37b")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
 }]
 
 [sub_resource type="Animation" id="Animation_jwvl0"]
 resource_name = "attack"
-length = 3.0
-tracks/0/type = "method"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("StateMashine/unit_heal")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(),
-"transitions": PackedFloat32Array(),
-"values": []
-}
 
 [sub_resource type="Animation" id="Animation_kjsse"]
 resource_name = "heal"
@@ -168,13 +174,9 @@ friction = 0.1
 metadata/_custom_type_script = "uid://cyprxf4gmw8hy"
 
 [node name="puch bodes away" type="Area2D" parent="." node_paths=PackedStringArray("unit")]
-z_index = 1
-collision_layer = 64
-collision_mask = 64
 script = ExtResource("7_8u560")
 unit = NodePath("..")
-forse = 1
-metadata/_custom_type_script = "uid://caombhjx3w1vv"
+forse = 10
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="puch bodes away"]
 shape = SubResource("CircleShape2D_ao5sm")
@@ -208,6 +210,7 @@ target_desired_distance = 2.0
 shape = SubResource("CircleShape2D_pinif")
 debug_color = Color(0.984323, 0, 0.344669, 0.42)
 
+<<<<<<< HEAD
 [node name="unitSprite" type="AnimatedSprite2D" parent="."]
 z_index = 1
 position = Vector2(0, -16)
@@ -219,10 +222,16 @@ autoplay = "idle"
 [node name="AnimationManager" type="Node2D" parent="unitSprite" node_paths=PackedStringArray("parent", "anim_sprite")]
 position = Vector2(-1.842571e-05, 309.13208)
 scale = Vector2(19.320757, 19.320755)
+=======
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." node_paths=PackedStringArray("unit")]
+position = Vector2(9.536743e-07, -16)
+scale = Vector2(0.05175781, 0.051757813)
+sprite_frames = SubResource("SpriteFrames_me37b")
+animation = &"idle"
+autoplay = "default"
+>>>>>>> parent of e6bc8b6 (added a buch of stuff)
 script = ExtResource("7_mw5kt")
-parent = NodePath("../..")
-anim_sprite = NodePath("..")
-metadata/_custom_type_script = "uid://ss6u6yn12htk"
+unit = NodePath("..")
 
 [node name="StateMashine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
 script = ExtResource("3_k7bkv")
@@ -249,7 +258,7 @@ unit = NodePath("../..")
 nav_agent = NodePath("../../NavigationAgent2D")
 attack_hitbox = NodePath("../../Attack_hitbox")
 anim_player = NodePath("../../AnimationPlayer")
-speed = 70
+speed = 50
 metadata/_custom_type_script = "uid://dvdan2nufoyq6"
 
 [node name="unit_heal" type="Node" parent="StateMashine" node_paths=PackedStringArray("on_heal_finiched", "unit", "attack_hitbox", "anim_player")]
@@ -258,8 +267,11 @@ on_heal_finiched = NodePath("../unit_wait")
 unit = NodePath("../..")
 attack_hitbox = NodePath("../../Attack_hitbox")
 anim_player = NodePath("../../AnimationPlayer")
+<<<<<<< HEAD
 heal = 50
 self_heal = 25
+=======
+>>>>>>> parent of e6bc8b6 (added a buch of stuff)
 knockback = 0
 metadata/_custom_type_script = "uid://dvdan2nufoyq6"
 
@@ -274,11 +286,10 @@ libraries = {
 }
 
 [node name="hp bar" type="ProgressBar" parent="."]
-z_index = 3
 offset_left = -16.0
-offset_top = 10.0
+offset_top = -40.0
 offset_right = 16.0
-offset_bottom = 17.0
+offset_bottom = -33.0
 theme_override_styles/background = SubResource("StyleBoxFlat_0lt1e")
 theme_override_styles/fill = SubResource("StyleBoxFlat_4ag63")
 value = 50.0
@@ -290,7 +301,6 @@ offset_top = -13.0
 offset_right = 13.0
 offset_bottom = 13.0
 action_mode = 0
-flat = true
 
 [node name="move_target" type="AnimatedSprite2D" parent="." node_paths=PackedStringArray("unit", "nav_agent")]
 top_level = true
@@ -305,7 +315,7 @@ metadata/_custom_type_script = "uid://cqhhcsxuhechc"
 
 [node name="Sprite2D" type="Sprite2D" parent="." node_paths=PackedStringArray("unit")]
 z_index = 2
-position = Vector2(0, -48)
+position = Vector2(0, -32)
 texture = ExtResource("14_4ppbf")
 hframes = 2
 vframes = 2

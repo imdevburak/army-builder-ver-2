@@ -1,64 +1,41 @@
+<<<<<<< HEAD
 [gd_scene load_steps=15 format=3 uid="uid://bbfuxwc4ojay8"]
+=======
+[gd_scene load_steps=12 format=3 uid="uid://bbfuxwc4ojay8"]
+>>>>>>> parent of e6bc8b6 (added a buch of stuff)
 
 [ext_resource type="Script" uid="uid://bochel1mb2ky3" path="res://Scenes/main/main.gd" id="1_4jhlv"]
 [ext_resource type="Script" uid="uid://buvpmjdq62mxv" path="res://Skripts/main/navigation manager/nav_manager.gd" id="2_4etoo"]
-[ext_resource type="Texture2D" uid="uid://bfdpimpbsv0li" path="res://Assets/maps/map_tutorial.png" id="2_8lqer"]
 [ext_resource type="PackedScene" uid="uid://bvg1b88eko3px" path="res://Scenes/main/enemies/boss.tscn" id="3_4jhlv"]
-[ext_resource type="Texture2D" uid="uid://bhottneg0qn36" path="res://Assets/maps/kollona.png" id="3_ra8v3"]
 [ext_resource type="Script" uid="uid://dt30hat8kc2iv" path="res://Scenes/main/camera/camera.gd" id="4_wcurd"]
 [ext_resource type="PackedScene" uid="uid://bnik3t52h101u" path="res://Scenes/main/whaiting line/unit_spawner.tscn" id="5_b3x3g"]
+<<<<<<< HEAD
 [ext_resource type="Texture2D" uid="uid://b7qjyfdisuwfq" path="res://Assets/enemies/spawner_no_upgrade.png" id="7_io28c"]
+=======
+[ext_resource type="Texture2D" uid="uid://8x704vkwy6lg" path="res://Assets/maps/map_tutorial_boss.png" id="7_b3x3g"]
+[ext_resource type="Script" uid="uid://drb06ksxnof7f" path="res://Skripts/main/wall.gd" id="7_hgq70"]
+>>>>>>> parent of e6bc8b6 (added a buch of stuff)
 [ext_resource type="Script" uid="uid://c3f53duw48628" path="res://Skripts/main/navigation manager/boss_attack_zone.gd" id="8_hgq70"]
-[ext_resource type="Texture2D" uid="uid://uyobmqqa241e" path="res://Assets/enemies/spawner_healer.png" id="8_moneo"]
-[ext_resource type="Texture2D" uid="uid://bjfjhl4trg25l" path="res://Assets/enemies/spawner_assasin.png" id="9_1xtop"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_d5b0a"]
-vertices = PackedVector2Array(594, -27.859375, 594, -68.140625, 654, -142, 654, 95.53125, 654, 198, 654, 438, 602, 380.14063, 602, 339.85938, 580.1406, 318, 572.1406, -6, 572.1406, -90, 74, -142, 531.8594, -90, 510, -68.140625, 184, -91.17969, 580.1406, 402, 74, 438, 539.8594, 402, 518, 380.14063, 188.14063, 394, 758, 90.49219, 758, 198, 210, 372.14063, 518, 339.85938, 539.8594, 318, 210, 331.85938, 531.8594, -6, 74, 206, -38, 206, -38, 114, 74, 114, 226, -27.859375, 510, -27.859375, 188.14063, 310, 204.14063, -6, 226, -70.17969, 163.85938, -6, 147.85938, 310, 142, -27.859375, 126, 331.85938, 147.85938, 394, 126, 372.14063, 142, -70.17969)
-polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(4, 5, 6, 7), PackedInt32Array(4, 7, 8), PackedInt32Array(9, 0, 3), PackedInt32Array(2, 1, 10), PackedInt32Array(11, 2, 10, 12), PackedInt32Array(11, 12, 13, 14), PackedInt32Array(15, 6, 5), PackedInt32Array(15, 5, 16, 17), PackedInt32Array(18, 17, 16, 19), PackedInt32Array(3, 20, 21, 4), PackedInt32Array(22, 23, 18, 19), PackedInt32Array(3, 4, 24, 23, 22, 25, 26, 9), PackedInt32Array(27, 28, 29, 30), PackedInt32Array(31, 13, 32, 33, 34), PackedInt32Array(13, 31, 35), PackedInt32Array(4, 8, 24), PackedInt32Array(26, 25, 33, 32), PackedInt32Array(36, 34, 33, 37), PackedInt32Array(38, 36, 37, 39, 27, 30), PackedInt32Array(40, 19, 16), PackedInt32Array(41, 40, 16), PackedInt32Array(41, 16, 27, 39), PackedInt32Array(38, 30, 11, 42), PackedInt32Array(14, 42, 11), PackedInt32Array(14, 13, 35)])
-outlines = Array[PackedVector2Array]([PackedVector2Array(-48, 104, 64, 104, 64, -152, 192, -152, 152, -64, 152, -32, 168, -16, 200, -16, 216, -32, 216, -64, 184, -80, 152, -64, 192, -152, 584, -152, 584, -64, 568, -80, 536, -80, 520, -64, 520, -32, 536, -16, 568, -16, 584, -32, 584, -64, 584, -152, 664, -152, 663.99994, 85.035, 768, 80, 768, 208, 664, 208, 664, 448, 600, 448, 576, 392, 592, 376, 592, 344, 576, 328, 544, 328, 528, 344, 528, 376, 544, 392, 576, 392, 600, 448, 128, 448, 152, 384, 184, 384, 200, 368, 200, 336, 184, 320, 152, 320, 136, 336, 136, 368, 152, 384, 128, 448, 64, 448, 63.999878, 355.42563, 64, 216, -48, 216)])
+vertices = PackedVector2Array(686, 414, 274, -6, 686, -14, 778, -14, 778, 414, 778, -106, 822, -198, 822, 550, 778, 506, 82, 550, 686, 506, 266, 506, 166, 506, 82, 254, 166, 414, 74, -198, 686, -106, -101.461, 254, -94.5078, 122, 74, 122, 274, -98, 182, -98, 182, -6, 266, 414)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3, 4), PackedInt32Array(3, 5, 6, 7), PackedInt32Array(8, 7, 9, 10), PackedInt32Array(10, 9, 11, 0), PackedInt32Array(12, 11, 9), PackedInt32Array(12, 9, 13, 14), PackedInt32Array(15, 6, 5, 16), PackedInt32Array(13, 17, 18, 19), PackedInt32Array(2, 1, 20, 16), PackedInt32Array(15, 16, 20, 21), PackedInt32Array(19, 15, 21, 22), PackedInt32Array(0, 11, 23, 1), PackedInt32Array(1, 23, 14, 13, 19, 22), PackedInt32Array(4, 3, 7), PackedInt32Array(4, 7, 8)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-104, 112, 64, 112, 64, -208, 192, -208, 192, -88, 192, -16, 264, -16, 264, -88, 192, -88, 192, -208, 768, -208, 768, -96, 696, -96, 696, -24, 768, -24, 768, -96, 768, -208, 832, -208, 832, 560, 768, 560, 768, 496, 768, 424, 696, 424, 696, 496, 768, 496, 768, 560, 176, 560, 176, 496, 256, 496, 256, 424, 176, 424, 176, 496, 176, 560, 72, 560, 72, 264, -104, 264, -112, 264)])
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_b3x3g"]
 size = Vector2(24, 152)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8lqer"]
-size = Vector2(600, 608)
+size = Vector2(761, 768)
 
 [node name="main" type="Node2D"]
 script = ExtResource("1_4jhlv")
-taunts = Array[String](["Try again", "You died"])
+taunts = Array[String](["Try again", "To bad", "LOL", ""])
 
-[node name="MapTutorialBoss2" type="Sprite2D" parent="."]
+[node name="MapTutorialBoss" type="Sprite2D" parent="."]
 position = Vector2(364.5, 163.5001)
-scale = Vector2(0.20889498, 0.20889498)
-texture = ExtResource("2_8lqer")
-
-[node name="kollona" type="Sprite2D" parent="."]
-z_index = 1
-y_sort_enabled = true
-position = Vector2(184.00002, -56)
-scale = Vector2(0.09073105, 0.09073105)
-texture = ExtResource("3_ra8v3")
-
-[node name="kollona2" type="Sprite2D" parent="."]
-z_index = 1
-y_sort_enabled = true
-position = Vector2(552, -56)
-scale = Vector2(0.09073105, 0.09073105)
-texture = ExtResource("3_ra8v3")
-
-[node name="kollona3" type="Sprite2D" parent="."]
-z_index = 1
-y_sort_enabled = true
-position = Vector2(564, 351.99994)
-scale = Vector2(0.09073105, 0.09073105)
-texture = ExtResource("3_ra8v3")
-
-[node name="kollona4" type="Sprite2D" parent="."]
-z_index = 1
-y_sort_enabled = true
-position = Vector2(170.00006, 344)
-scale = Vector2(0.09073105, 0.09073105)
-texture = ExtResource("3_ra8v3")
+scale = Vector2(2.971875, 2.971875)
+texture = ExtResource("7_b3x3g")
 
 [node name="navigation manger" type="NavigationRegion2D" parent="."]
 z_as_relative = false
@@ -67,43 +44,28 @@ navigation_polygon = SubResource("NavigationPolygon_d5b0a")
 script = ExtResource("2_4etoo")
 
 [node name="boss" parent="navigation manger" instance=ExtResource("3_4jhlv")]
-position = Vector2(372, 144)
+position = Vector2(452, 187)
 health = 600
 
 [node name="unit_spawner" parent="navigation manger" instance=ExtResource("5_b3x3g")]
-position = Vector2(0, 152)
+position = Vector2(-56, 152)
 puch_dir_x = 100.0
 unit_type = "res://Scenes/main/units/unit_no_upgrades.tscn"
 
-[node name="Sprite2D" type="Sprite2D" parent="navigation manger/unit_spawner"]
-position = Vector2(-6.67572e-06, -5)
-scale = Vector2(0.08203125, 0.07812499)
-texture = ExtResource("7_io28c")
-
 [node name="unit_spawner2" parent="navigation manger" instance=ExtResource("5_b3x3g")]
-position = Vector2(728, 112)
+position = Vector2(-56, 216)
 puch_dir_x = 100.0
 unit_type = "res://Scenes/main/units/healer.tscn"
 can_upgrade = true
 
-[node name="Sprite2D" type="Sprite2D" parent="navigation manger/unit_spawner2"]
-position = Vector2(-6.67572e-06, -5)
-scale = Vector2(0.08203125, 0.07812499)
-texture = ExtResource("8_moneo")
-
 [node name="unit_spawner3" parent="navigation manger" instance=ExtResource("5_b3x3g")]
-position = Vector2(728, 176)
+position = Vector2(16, 216)
 puch_dir_x = 100.0
 unit_type = "res://Scenes/main/units/assasin.tscn"
 can_upgrade = true
 
-[node name="Sprite2D" type="Sprite2D" parent="navigation manger/unit_spawner3"]
-position = Vector2(-1.0000155, -4.999998)
-scale = Vector2(0.08447263, 0.084472656)
-texture = ExtResource("9_1xtop")
-
 [node name="Camera" type="Camera2D" parent="."]
-position = Vector2(-152, 96)
+position = Vector2(-176, -2)
 script = ExtResource("4_wcurd")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
@@ -111,23 +73,24 @@ collision_layer = 8
 collision_mask = 7
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
-polygon = PackedVector2Array(520, -24, 536, -16, 576, -16, 584, -32, 584, -64, 552, -80, 520, -64)
+polygon = PackedVector2Array(696, -24, 768, -24, 768, -96, 696, -96)
 
 [node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="StaticBody2D"]
-position = Vector2(-544, 8)
-polygon = PackedVector2Array(712, -24, 744, -24, 760, -40, 760, -72, 728, -88, 696, -72, 696, -40)
+position = Vector2(-504, 8)
+polygon = PackedVector2Array(696, -24, 768, -24, 768, -96, 696, -96)
 
 [node name="CollisionPolygon2D3" type="CollisionPolygon2D" parent="StaticBody2D"]
-position = Vector2(-560, 416)
-polygon = PackedVector2Array(704, -40, 728, -32, 752, -40, 760, -64, 752, -88, 728, -96, 704, -88, 696, -64)
+position = Vector2(-512, 520)
+polygon = PackedVector2Array(688, -24, 768, -24, 768, -96, 688, -96)
 
 [node name="CollisionPolygon2D4" type="CollisionPolygon2D" parent="StaticBody2D"]
-position = Vector2(-160, 416)
-polygon = PackedVector2Array(696, -32, 720, -24, 744, -32, 752, -56, 744, -80, 720, -88, 696, -80, 688, -56)
+position = Vector2(8, 520)
+polygon = PackedVector2Array(688, -24, 760, -24, 760, -96, 688, -96)
 
 [node name="CollisionPolygon2D5" type="CollisionPolygon2D" parent="StaticBody2D"]
-position = Vector2(-16, 504)
-polygon = PackedVector2Array(688, -264, 688, -56, 72, -56, 72, -56, 72, -280, -32, -280, -32, -408, 72, -408, 72, -664, 688, -664, 688, -416, 792, -416, 792, -288, 688, -288, 688, -264, 816, -264, 816, -496, 712, -504, 712, -688, 32, -688, 32, -432, -64, -432, -64, -272, 40, -240, 40, 0, 720, -8, 720, -256)
+position = Vector2(8, 520)
+build_mode = 1
+polygon = PackedVector2Array(824, -728, 824, 40, 56, 40, 56, -256, -120, -256, -120, -416, 56, -416, 56, -728, 800, -728)
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 4.0
@@ -146,61 +109,52 @@ size_flags_horizontal = 4
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 10
 theme_override_font_sizes/font_size = 1
-text = "Press Esc to restart."
+text = "htyhfd"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="Label2" type="Label" parent="CanvasLayer"]
+offset_right = 40.0
+offset_bottom = 23.0
+
 [node name="StaticBody2D2" type="StaticBody2D" parent="."]
 position = Vector2(0, -2)
-collision_layer = 32
+collision_layer = 33
 collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2"]
-position = Vector2(64, 162)
+position = Vector2(68, 188)
 shape = SubResource("RectangleShape2D_b3x3g")
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D2"]
-position = Vector2(674, 146)
-shape = SubResource("RectangleShape2D_b3x3g")
-
-[node name="tutorial" type="Label" parent="."]
-offset_left = -312.0
-offset_top = -32.0
-offset_right = -54.0
-offset_bottom = 355.0
+[node name="Label" type="Label" parent="."]
+offset_left = -320.0
+offset_top = -152.0
+offset_right = -62.0
+offset_bottom = 235.0
 text = "Left click to move camera
-and select units.
-Right click to move selected units.
-Middle click to select all units.
+and select units
+right click to move selected units
+middle click to select  all units
+
+ collect helmets to upgrade units
+to upgrade units place then on
+upgrade station with helmet and 
+press it
+
+you can spawn units 
+with no attack here         --->
 
 
-You can spawn units 
-with no attack here.         --->
+and upgrade them here --->
 
-Press Esc to restart."
-
-[node name="tutorial2" type="Label" parent="."]
-offset_left = 780.0
-offset_top = -57.0
-offset_right = 1107.0
-offset_bottom = 330.0
-text = "
-Collect helmets to upgrade units.
-To upgrade klick on 
-upgrade station with unit on it.
-
-
-<--Healer
-
-
-<--Assasin"
+also press Esc to restart "
 
 [node name="boss_attack_zone" type="Area2D" parent="."]
 collision_layer = 128
 script = ExtResource("8_hgq70")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="boss_attack_zone"]
-position = Vector2(372, 144)
+position = Vector2(451.5, 176)
 shape = SubResource("RectangleShape2D_8lqer")
 debug_color = Color(0.7821834, 0, 0.16344151, 0.41960785)
 

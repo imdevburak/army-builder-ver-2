@@ -6,43 +6,43 @@
 [ext_resource type="Script" uid="uid://b6otl54ijygc7" path="res://Skripts/main/bullet/bullet_spawner.gd" id="3_qf4eg"]
 [ext_resource type="Texture2D" uid="uid://pesnujcsu0i8" path="res://Assets/tutorial/spritesheet(2).png" id="4_rnasj"]
 
-[sub_resource type="NavigationPolygon" id="NavigationPolygon_qf4eg"]
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_rnasj"]
 vertices = PackedVector2Array(606, 326, 34, 326, 34, 34, 606, 34)
 polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
 outlines = Array[PackedVector2Array]([PackedVector2Array(24, 24, 24, 336, 616, 336, 616, 24)])
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_rnasj"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_j8yeb"]
 size = Vector2(34, 106)
 
 [sub_resource type="Animation" id="Animation_rnasj"]
-resource_name = "choot"
+resource_name = "shoot"
 loop_mode = 1
 tracks/0/type = "method"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Attack")
+tracks/0/path = NodePath("BulletSpawner")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0.2),
+"times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "values": [{
-"args": ["dummy bullet", 90.0],
-"method": &"spawn_angle_attack"
+"args": ["dummy bullet", -90.0],
+"method": &"spawn_attack"
 }]
 }
 tracks/1/type = "method"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Attack2")
+tracks/1/path = NodePath("BulletSpawner2")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0.2),
+"times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "values": [{
-"args": ["dummy bullet", -90.0],
-"method": &"spawn_angle_attack"
+"args": ["dummy bullet", 90.0],
+"method": &"spawn_attack"
 }]
 }
 
@@ -66,9 +66,8 @@ animations = [{
 "speed": 1.0
 }]
 
-[node name="tutorial_room_2" type="Node2D" node_paths=PackedStringArray("unit")]
+[node name="tutorial_room_2" type="Node2D"]
 script = ExtResource("1_j8yeb")
-unit = NodePath("navigation manger/unit_no_upgrades")
 
 [node name="Polygon2D" type="Polygon2D" parent="."]
 color = Color(8.663535e-07, 0.7479128, 0.32224953, 1)
@@ -80,12 +79,11 @@ position = Vector2(320, 180)
 [node name="navigation manger" type="NavigationRegion2D" parent="."]
 z_as_relative = false
 y_sort_enabled = true
-navigation_polygon = SubResource("NavigationPolygon_qf4eg")
+navigation_polygon = SubResource("NavigationPolygon_rnasj")
 script = ExtResource("1_vt3dw")
 
 [node name="unit_no_upgrades" parent="navigation manger" instance=ExtResource("2_qf4eg")]
 position = Vector2(88, 192)
-friction = 0.05
 
 [node name="Polygon2D2" type="Polygon2D" parent="."]
 position = Vector2(552, 120)
@@ -107,18 +105,16 @@ metadata/_edit_use_anchors_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Polygon2D2/Area2D"]
 position = Vector2(7, 51)
-shape = SubResource("RectangleShape2D_rnasj")
+shape = SubResource("RectangleShape2D_j8yeb")
 
-[node name="Attack" type="Node2D" parent="." node_paths=PackedStringArray("AnimPlayer")]
-position = Vector2(256, 360)
+[node name="BulletSpawner" type="Node2D" parent="."]
+position = Vector2(254, 16)
 script = ExtResource("3_qf4eg")
-AnimPlayer = NodePath("../AnimationPlayer")
 metadata/_custom_type_script = "uid://b6otl54ijygc7"
 
-[node name="Attack2" type="Node2D" parent="." node_paths=PackedStringArray("AnimPlayer")]
-position = Vector2(384, 0)
+[node name="BulletSpawner2" type="Node2D" parent="."]
+position = Vector2(384, 360)
 script = ExtResource("3_qf4eg")
-AnimPlayer = NodePath("../AnimationPlayer")
 metadata/_custom_type_script = "uid://b6otl54ijygc7"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -127,18 +123,18 @@ libraries = {
 }
 autoplay = "shoot"
 
-[node name="goal2" type="Label" parent="."]
-offset_left = 296.0
-offset_top = 192.0
-offset_right = 342.0
-offset_bottom = 293.0
+[node name="Label" type="Label" parent="."]
+offset_left = 304.0
+offset_top = 200.0
+offset_right = 361.0
+offset_bottom = 288.0
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 10
-text = "HOLD"
-metadata/_edit_use_anchors_ = true
+text = "hold
+"
 
 [node name="how to select" type="AnimatedSprite2D" parent="."]
-position = Vector2(320, 166)
+position = Vector2(320, 176)
 scale = Vector2(0.1875, 0.1875)
 sprite_frames = SubResource("SpriteFrames_5qkxl")
 autoplay = "default"
