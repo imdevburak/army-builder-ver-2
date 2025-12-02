@@ -13,7 +13,10 @@ func _physics_process(delta: float) -> void:
 	
 	if Input.is_action_just_pressed("esc") or Autoload.game_win or ($"navigation manger/unit_spawner".line_size == 0 and Autoload.all_units.is_empty()):
 		if $Timer.is_stopped():
-			$Timer.start()
+			if Autoload.game_win:
+				$Timer.start(7)
+			else:
+				$Timer.start()
 		
 		$CanvasLayer/Label.visible = true
 	if Autoload.game_win:

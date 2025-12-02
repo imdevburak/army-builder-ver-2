@@ -24,23 +24,28 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	
 	if mouse_inside_area and Input.is_action_just_pressed("L_klick"):
-		var basic_unit = load(unit_type)
-		var unit_instanse = basic_unit.instantiate()
+		
 		if can_upgrade:
+			var queue_free_bodies := []
 			for body in upgrade_area.get_overlapping_bodies():
+				var basic_unit = load(unit_type)
+				var unit_instanse = basic_unit.instantiate()
 				if body is unit_base and body.holding_recourse:
 					unit_instanse.global_position = body.global_position
 					unit_instanse.velocity = body.velocity
 					unit_instanse.health = body.health
 					Autoload.all_units.append(unit_instanse)
 					add_sibling(unit_instanse)
-					
-					Autoload.units.erase(body)
-					body.queue_free()
+					queue_free_bodies.append(body)
+				
+			for body in queue_free_bodies:
+				Autoload.units.erase(body)
+				body.queue_free()
 			
 		elif line_size > 0:
 			
-			
+			var basic_unit = load(unit_type)
+			var unit_instanse = basic_unit.instantiate()
 			line_size -= 1
 			text_label.text = str(line_size)
 			unit_instanse.global_position = global_position

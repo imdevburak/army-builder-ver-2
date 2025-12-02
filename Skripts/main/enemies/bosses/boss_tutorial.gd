@@ -17,7 +17,7 @@ func _physics_process(delta: float) -> void:
 		Autoload.game_win = true
 		queue_free()
 	
-	velocity = lerp(velocity,target_velocity,0.1)
+	velocity = lerp(velocity,target_velocity,0.05)
 	
 	move_and_slide()
 

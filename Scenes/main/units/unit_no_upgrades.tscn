@@ -5,7 +5,7 @@
 [ext_resource type="Script" uid="uid://ds0xan0v3ps3v" path="res://Skripts/main/attack hitbox/attack_hitbox.gd" id="2_w22ff"]
 [ext_resource type="Script" uid="uid://caombhjx3w1vv" path="res://Skripts/main/push bodes away/puch_bodes_away.gd" id="3_3irlc"]
 [ext_resource type="Texture2D" uid="uid://bl3p2gpwa7wfu" path="res://Assets/units/spritesheet(1).png" id="4_6yilx"]
-[ext_resource type="Texture2D" uid="uid://bgv402swn1bmq" path="res://Assets/units/assasin_dead.png" id="4_43dth"]
+[ext_resource type="Texture2D" uid="uid://cgaxiv3183tbv" path="res://Assets/units/dead0000.png" id="4_43dth"]
 [ext_resource type="Script" uid="uid://ss6u6yn12htk" path="res://Skripts/main/animation_manager.gd" id="5_43dth"]
 [ext_resource type="Script" uid="uid://p64qmyacpa4a" path="res://Skripts/main/state machine/State_Machine.gd" id="6_uvbcy"]
 [ext_resource type="Script" uid="uid://c81x64hx8sfwy" path="res://Skripts/main/unit/states/wait.gd" id="7_6hs26"]
@@ -158,12 +158,11 @@ metadata/_custom_type_script = "uid://cqhhcsxuhechc"
 
 [node name="sprite" type="AnimatedSprite2D" parent="."]
 z_index = 1
-position = Vector2(2.7105054e-20, 8)
+position = Vector2(-3.2311743e-27, -8.000002)
 scale = Vector2(0.033812504, 0.033812504)
 sprite_frames = SubResource("SpriteFrames_kl5hy")
-animation = &"move"
+animation = &"dead"
 autoplay = "move"
-offset = Vector2(5.6409568e-05, -502.77258)
 
 [node name="AnimationManager" type="Node2D" parent="sprite" node_paths=PackedStringArray("parent", "anim_sprite")]
 script = ExtResource("5_43dth")
@@ -172,7 +171,6 @@ anim_sprite = NodePath("..")
 metadata/_custom_type_script = "uid://ss6u6yn12htk"
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
-debug_enabled = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_jsclr")

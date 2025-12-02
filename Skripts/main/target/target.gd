@@ -15,5 +15,4 @@ func _unhandled_input(event: InputEvent) -> void:
 		global_position = get_global_mouse_position()
 		nav_agent.target_position = global_position
 		
-	if Input.is_action_just_released("R_klick"):
-		unit.selected = false
+	

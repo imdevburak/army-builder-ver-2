@@ -42,8 +42,8 @@ func _process(delta: float) -> void:
 	
 	
 	#selects or deselects enemy
-	if select_button.is_hovered() and Input.is_action_pressed("L_klick") or Input.is_action_just_pressed("mid_klick"):
-		selected = true
+	if select_button.is_hovered() and Input.is_action_just_pressed("R_klick") or Input.is_action_just_pressed("mid_klick"):
+		selected = !selected
 		target.global_position = global_position
 	
 	

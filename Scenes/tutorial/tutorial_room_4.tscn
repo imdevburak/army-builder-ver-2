@@ -148,7 +148,7 @@ offset_right = 300.0
 offset_bottom = 283.0
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 10
-text = "heal ->"
+text = "HEAL ->"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="heal_tutorial"]
 position = Vector2(256, 179)

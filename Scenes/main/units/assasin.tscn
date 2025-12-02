@@ -5,7 +5,7 @@
 [ext_resource type="Script" uid="uid://ds0xan0v3ps3v" path="res://Skripts/main/attack hitbox/attack_hitbox.gd" id="2_xjqdp"]
 [ext_resource type="Texture2D" uid="uid://dbnydjcby1cc1" path="res://Assets/units/assasin_run.png" id="4_1cffw"]
 [ext_resource type="Script" uid="uid://p64qmyacpa4a" path="res://Skripts/main/state machine/State_Machine.gd" id="4_hxbk7"]
-[ext_resource type="Texture2D" uid="uid://bgv402swn1bmq" path="res://Assets/units/assasin_dead.png" id="4_ju6x6"]
+[ext_resource type="Texture2D" uid="uid://cgaxiv3183tbv" path="res://Assets/units/dead0000.png" id="4_ju6x6"]
 [ext_resource type="Script" uid="uid://ss6u6yn12htk" path="res://Skripts/main/animation_manager.gd" id="5_ah7a6"]
 [ext_resource type="Script" uid="uid://chum2ktf3br45" path="res://Skripts/main/unit/states/move.gd" id="6_1csaq"]
 [ext_resource type="Script" uid="uid://c81x64hx8sfwy" path="res://Skripts/main/unit/states/wait.gd" id="7_fyb7g"]
@@ -149,7 +149,6 @@ select_button = NodePath("Button")
 metadata/_custom_type_script = "uid://cyprxf4gmw8hy"
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
-debug_enabled = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_lx4x6")
@@ -183,10 +182,10 @@ debug_color = Color(0.984323, 0, 0.344669, 0.42)
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
 z_index = 1
 y_sort_enabled = true
-position = Vector2(-2.2737368e-13, -16)
+position = Vector2(0, -16)
 scale = Vector2(0.052, 0.052)
 sprite_frames = SubResource("SpriteFrames_ajp2o")
-animation = &"move"
+animation = &"idle"
 
 [node name="AnimationManager" type="Node2D" parent="Sprite" node_paths=PackedStringArray("parent", "anim_sprite")]
 script = ExtResource("5_ah7a6")

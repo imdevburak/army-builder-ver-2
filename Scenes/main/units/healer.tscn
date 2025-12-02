@@ -1,8 +1,9 @@
-[gd_scene load_steps=36 format=3 uid="uid://x1weeub25hk3"]
+[gd_scene load_steps=38 format=3 uid="uid://x1weeub25hk3"]
 
 [ext_resource type="Script" uid="uid://cyprxf4gmw8hy" path="res://Skripts/main/base_unit.gd" id="1_k1nd0"]
 [ext_resource type="Script" uid="uid://n0xi2gv4me3b" path="res://Skripts/main/attack hitbox/feld_of_veiw.gd" id="3_0lt1e"]
 [ext_resource type="Script" uid="uid://p64qmyacpa4a" path="res://Skripts/main/state machine/State_Machine.gd" id="3_k7bkv"]
+[ext_resource type="Texture2D" uid="uid://cwah7yt7swjkk" path="res://Assets/units/dead0001.png" id="5_61dnj"]
 [ext_resource type="Script" uid="uid://c81x64hx8sfwy" path="res://Skripts/main/unit/states/wait.gd" id="5_ao3qh"]
 [ext_resource type="Script" uid="uid://chum2ktf3br45" path="res://Skripts/main/unit/states/move.gd" id="5_llvpn"]
 [ext_resource type="Texture2D" uid="uid://cf7qcm56il3wr" path="res://Assets/units/spritesheet.png" id="6_2o60t"]
@@ -28,6 +29,10 @@ radius = 251.676
 [sub_resource type="CircleShape2D" id="CircleShape2D_pinif"]
 radius = 7.0
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_v6sit"]
+atlas = ExtResource("5_61dnj")
+region = Rect2(0, 0, 1024, 1024)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_me37b"]
 atlas = ExtResource("6_2o60t")
 region = Rect2(0, 0, 1024, 1024)
@@ -50,6 +55,14 @@ region = Rect2(3072, 0, 1024, 1024)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_me37b"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v6sit")
+}],
+"loop": true,
+"name": &"dead",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_me37b")
@@ -190,7 +203,6 @@ debug_color = Color(1, 0, 0, 0)
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 path_desired_distance = 0.1
 target_desired_distance = 2.0
-debug_enabled = true
 
 [node name="hitbox" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_pinif")
@@ -198,11 +210,11 @@ debug_color = Color(0.984323, 0, 0.344669, 0.42)
 
 [node name="unitSprite" type="AnimatedSprite2D" parent="."]
 z_index = 1
-position = Vector2(9.536743e-07, -16)
+position = Vector2(0, -16)
 scale = Vector2(0.05175781, 0.051757813)
 sprite_frames = SubResource("SpriteFrames_me37b")
-animation = &"move"
-autoplay = "move"
+animation = &"dead"
+autoplay = "idle"
 
 [node name="AnimationManager" type="Node2D" parent="unitSprite" node_paths=PackedStringArray("parent", "anim_sprite")]
 position = Vector2(-1.842571e-05, 309.13208)
@@ -246,8 +258,8 @@ on_heal_finiched = NodePath("../unit_wait")
 unit = NodePath("../..")
 attack_hitbox = NodePath("../../Attack_hitbox")
 anim_player = NodePath("../../AnimationPlayer")
-heal = 100
-self_heal = 50
+heal = 50
+self_heal = 25
 knockback = 0
 metadata/_custom_type_script = "uid://dvdan2nufoyq6"
 

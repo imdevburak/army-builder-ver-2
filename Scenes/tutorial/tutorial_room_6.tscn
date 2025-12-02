@@ -1,0 +1,92 @@
+[gd_scene load_steps=10 format=3 uid="uid://bdixnf2aawcom"]
+
+[ext_resource type="Script" uid="uid://dpnodr2wtgu0q" path="res://Skripts/tutorial/tutorial_room_6.gd" id="1_gco0f"]
+[ext_resource type="Script" uid="uid://buvpmjdq62mxv" path="res://Skripts/main/navigation manager/nav_manager.gd" id="2_h2d87"]
+[ext_resource type="PackedScene" uid="uid://v64308ap3hus" path="res://Scenes/main/units/unit_no_upgrades.tscn" id="3_lcgtt"]
+[ext_resource type="Texture2D" uid="uid://pesnujcsu0i8" path="res://Assets/tutorial/spritesheet(2).png" id="4_4fl87"]
+[ext_resource type="Script" uid="uid://dt30hat8kc2iv" path="res://Scenes/main/camera/camera.gd" id="5_h2d87"]
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_p7g0a"]
+vertices = PackedVector2Array(1014, 318, 42, 318, 42, 42, 886, 202, 886, 42, 970, 202, 1014, -118, 970, -98, 694, -118, 586, -98, 586, -246, 694, -246)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(2, 4, 3), PackedInt32Array(0, 3, 5), PackedInt32Array(6, 0, 5, 7), PackedInt32Array(8, 6, 7, 9), PackedInt32Array(8, 9, 10, 11)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(32, 32, 32, 328, 1024, 328, 1024, 32, 1024, -128, 704, -128, 704, -256, 576, -256, 576, -88, 960, -88, 960, 192, 896, 192, 896, 32)])
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_orep5"]
+size = Vector2(34, 106)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o1udi"]
+atlas = ExtResource("4_4fl87")
+region = Rect2(256, 0, 256, 256)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_pcx8k"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o1udi")
+}],
+"loop": true,
+"name": &"default",
+"speed": 1.0
+}]
+
+[node name="tutorial_room_6" type="Node2D"]
+script = ExtResource("1_gco0f")
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+color = Color(8.663535e-07, 0.7479128, 0.32224953, 1)
+polygon = PackedVector2Array(32, 32, 32, 328, 1024, 328, 1024, 32, 1024, -128, 704, -128, 704, -256, 576, -256, 576, -88, 960, -88, 960, 192, 896, 192, 896, 32)
+
+[node name="navigation manger" type="NavigationRegion2D" parent="."]
+z_as_relative = false
+y_sort_enabled = true
+navigation_polygon = SubResource("NavigationPolygon_p7g0a")
+script = ExtResource("2_h2d87")
+
+[node name="unit_no_upgrades" parent="navigation manger" instance=ExtResource("3_lcgtt")]
+position = Vector2(88, 192)
+friction = 0.05
+
+[node name="Polygon2D2" type="Polygon2D" parent="."]
+position = Vector2(632, -224)
+color = Color(0.92421633, 0, 0.29216275, 1)
+polygon = PackedVector2Array(-8, 0, 24, 0, 24, 104, -8, 104)
+
+[node name="goal" type="Label" parent="Polygon2D2"]
+offset_right = 40.0
+offset_bottom = 101.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+text = "G
+O
+A
+L"
+metadata/_edit_use_anchors_ = true
+
+[node name="Area2D" type="Area2D" parent="Polygon2D2"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Polygon2D2/Area2D"]
+position = Vector2(7, 51)
+shape = SubResource("RectangleShape2D_orep5")
+
+[node name="goal2" type="Label" parent="."]
+offset_left = 240.0
+offset_top = 152.0
+offset_right = 515.0
+offset_bottom = 253.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+text = "HOLD               TO CONTROL CAMERA"
+metadata/_edit_use_anchors_ = true
+
+[node name="how to select" type="AnimatedSprite2D" parent="."]
+position = Vector2(320, 166)
+scale = Vector2(0.1875, 0.1875)
+sprite_frames = SubResource("SpriteFrames_pcx8k")
+autoplay = "default"
+
+[node name="CameraController" type="Camera2D" parent="."]
+position = Vector2(320, 179)
+script = ExtResource("5_h2d87")
+metadata/_custom_type_script = "uid://dt30hat8kc2iv"
+
+[connection signal="body_entered" from="Polygon2D2/Area2D" to="." method="_on_area_2d_body_entered"]

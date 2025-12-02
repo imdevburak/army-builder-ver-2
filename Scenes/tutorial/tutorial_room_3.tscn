@@ -91,13 +91,13 @@ sprite_frames = SubResource("SpriteFrames_p1bf8")
 autoplay = "default"
 
 [node name="Label2" type="Label" parent="."]
-offset_left = 280.0
+offset_left = 272.0
 offset_top = 192.0
-offset_right = 368.0
+offset_right = 385.0
 offset_bottom = 280.0
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 10
-text = "to select all"
+text = "TO SELECT ALL"
 
 [node name="navigation manger" type="NavigationRegion2D" parent="."]
 z_as_relative = false

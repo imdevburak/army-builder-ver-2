@@ -8,6 +8,7 @@ var prev_mirrored : int
 
 func _process(delta: float) -> void:
 	if parent.health <= 0:
+		anim_sprite.position = Vector2.ZERO
 		anim_sprite.play("dead")
 		return
 	

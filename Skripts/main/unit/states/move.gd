@@ -28,12 +28,12 @@ func Physics_update(_delta):
 	else:
 		var nav_point_direction = unit.to_local(nav_agent.get_next_path_position()).normalized()
 		unit.target_velocity = nav_point_direction * speed
-		
+	
 	
 	if attack_hitbox.get_overlapping_bodies().size() != 0 and !anim_player.is_playing():
 		change_state.emit(self,on_attack_hitbox_entered.name)
 	
 	if unit.health <= 0:
 		change_state.emit(self,on_death.name)
-		
+	
 	

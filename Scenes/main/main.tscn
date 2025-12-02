@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://bbfuxwc4ojay8"]
+[gd_scene load_steps=15 format=3 uid="uid://bbfuxwc4ojay8"]
 
 [ext_resource type="Script" uid="uid://bochel1mb2ky3" path="res://Scenes/main/main.gd" id="1_4jhlv"]
 [ext_resource type="Script" uid="uid://buvpmjdq62mxv" path="res://Skripts/main/navigation manager/nav_manager.gd" id="2_4etoo"]
@@ -7,7 +7,6 @@
 [ext_resource type="Texture2D" uid="uid://bhottneg0qn36" path="res://Assets/maps/kollona.png" id="3_ra8v3"]
 [ext_resource type="Script" uid="uid://dt30hat8kc2iv" path="res://Scenes/main/camera/camera.gd" id="4_wcurd"]
 [ext_resource type="PackedScene" uid="uid://bnik3t52h101u" path="res://Scenes/main/whaiting line/unit_spawner.tscn" id="5_b3x3g"]
-[ext_resource type="Script" uid="uid://drb06ksxnof7f" path="res://Skripts/main/wall.gd" id="7_hgq70"]
 [ext_resource type="Texture2D" uid="uid://b7qjyfdisuwfq" path="res://Assets/enemies/spawner_no_upgrade.png" id="7_io28c"]
 [ext_resource type="Script" uid="uid://c3f53duw48628" path="res://Skripts/main/navigation manager/boss_attack_zone.gd" id="8_hgq70"]
 [ext_resource type="Texture2D" uid="uid://uyobmqqa241e" path="res://Assets/enemies/spawner_healer.png" id="8_moneo"]
@@ -110,7 +109,6 @@ script = ExtResource("4_wcurd")
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 collision_layer = 8
 collision_mask = 7
-script = ExtResource("7_hgq70")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
 polygon = PackedVector2Array(520, -24, 536, -16, 576, -16, 584, -32, 584, -64, 552, -80, 520, -64)
